@@ -126,7 +126,7 @@ body {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
-  color: #c1c1c1;
+  color: #1f1f1f;
   -webkit-overflow-scrolling: touch;
 }
 ::selection {
@@ -262,7 +262,7 @@ a {
   position: absolute;
   right: 0;
   min-height: 100%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.8);
   left: 300px;
   width: auto;
 }
@@ -1491,15 +1491,8 @@ body .ui-tooltip {
   margin-left: 30px;
 }
 .article-entry ul > li {
-  list-style: none;
-  margin: 0;
-}
-.article-entry ul > li:before {
-  content: '\f0fe';
-  font-family: FontAwesome;
-  font-size: 0.8em;
-  margin-right: 0.5em;
-  color: #c8c8c8;
+  margin-left: 1.1em;
+  list-style-type: circle;
 }
 .article-entry h1,
 .article-entry h2,
@@ -1507,43 +1500,13 @@ body .ui-tooltip {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-  color: #333;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-.article-entry h1,
-.article-entry h2 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid #eee;
+  margin-top: 20px;
+  color: #574c4c;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
 }
 .article-entry h1 {
-  font-size: 2.25rem;
-  line-height: 1.2;
-}
-.article-entry h2 {
-  font-size: 1.75rem;
-  line-height: 1.225;
-}
-.article-entry h3 {
-  font-size: 1.5rem;
-  line-height: 1.43;
-}
-.article-entry h4 {
-  font-size: 1.25rem;
-  line-height: 1.1;
-}
-.article-entry h1 {
-  margin: 0.67em 0;
-}
-.article-entry h5,
-.article-entry h6 {
-  font-size: 1rem;
-}
-.article-entry h6 {
-  color: #777;
+  margin-top: 30px;
 }
 .article-entry figure table {
   border: none;
@@ -3053,9 +3016,12 @@ pre .javascript .function {
 #search-form .fa-times:hover {
   zoom: 1.1;
   padding: 1px 0.6em;
-  border: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
   -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.25);
   box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+#search-form input {
+  background: rgba(255,255,255,0.5);
 }
 #local-search-result {
   margin: auto -12% auto -6%;
