@@ -273,6 +273,119 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-HTML/05-浮动" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/11/HTML/05-浮动/" class="article-date">
+      <time datetime="2017-01-11T03:02:56.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/HTML/05-浮动/">03-浮动</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="浮动（float）"><a href="#浮动（float）" class="headerlink" title="浮动（float）"></a>浮动（float）</h1><ul>
+<li><p>网页标准流</p>
+<ul>
+<li><p>元素在浏览器中的默认显示方式（独占一行，在一行，占元素位置）</p>
+<ul>
+<li>浮动：<ul>
+<li>float: left | right;</li>
+</ul>
+</li>
+<li><p>特点：</p>
+<ul>
+<li><p>浮动的元素不占位置（脱离标准流）</p>
+<ul>
+<li>块级元素在一行上显示的时候就使用浮动（脱标）      </li>
+<li><p>浮动可以实现模式转换（脱标）</p>
+<ul>
+<li>总结：<ul>
+<li>在网页布局中，块级元素在一行显示就使用浮动</li>
+<li>如果只是希望一个行内元素有宽度或者高度（进行模式转换），就使用display</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 使用：
+    - 为了实现图片和文字环绕效果，而设计了浮动该属性。【文字不会受浮动的影响，文字不会被浮动的元素压着】
+        - 网页布局块级元素一行显示
+        - 在网页布局中制作导航
+</code></pre><h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><ul>
+<li>消除浮动元素对后面元素的影响</li>
+<li><p>使用clear属性 :  left | right | both</p>
+<ul>
+<li>使用伪元素清除浮动（推荐的方式）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">                .cleafix:after&#123;</span><br><span class="line">                    content:<span class="string">""</span>;</span><br><span class="line">                    height:<span class="number">0</span>px;</span><br><span class="line">                    lin-height:<span class="number">0</span>px;</span><br><span class="line">                    display:block;</span><br><span class="line">                    clear:both;</span><br><span class="line">                    <span class="comment">/*隐藏*/</span></span><br><span class="line">                    visibility:hidden;</span><br><span class="line">                &#125;</span><br><span class="line">                .cleafix&#123;</span><br><span class="line">                    <span class="comment">/*兼容IE*/</span></span><br><span class="line">                    *zoom:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>给父元素设置overflow：hidden;</p>
+<ul>
+<li>如果父元素中有定位的元素，并且该定位的元素超出了父元素，那么不推荐使用该方式清除浮动。</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS初始化"><a href="#CSS初始化" class="headerlink" title="CSS初始化"></a>CSS初始化</h2><ul>
+<li>先将页面中标签默认的样式（内外边距，文字大小，文字颜色，文字字体。。。）恢复到原始的状态</li>
+<li>将页面中标签的样式设置为统一的样式</li>
+</ul>
+<h2 id="Overflow"><a href="#Overflow" class="headerlink" title="Overflow"></a>Overflow</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*默认超出父元素的内容也是可见*/</span></span><br><span class="line">overflow:visible;</span><br><span class="line"><span class="comment">/*将超出父元素的内容部分进行隐藏*/</span></span><br><span class="line">overflow:hidden;</span><br><span class="line"><span class="comment">/*如果内容超出父元素，会给父元素添加一个滚动条*/</span></span><br><span class="line">overflow:scroll;</span><br><span class="line"><span class="comment">/*如果内容超出父元素那么就添加滚动条，否则不添加*/</span></span><br><span class="line">overflow:auto;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-HTML/04-渐变与盒子模型" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

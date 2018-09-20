@@ -273,6 +273,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-jQuery/12-jQuery多库共存" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/24/jQuery/12-jQuery多库共存/" class="article-date">
+      <time datetime="2017-03-24T05:20:02.000Z" itemprop="datePublished">2017-03-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/24/jQuery/12-jQuery多库共存/">12-jQuery多库共存</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h1><p>我们知道jQuery占用了$这个标识符，如果引用的其他库也用到$这个标识符，这时候为了保证每个库都能正常使用，这时候就存在了多库共存的问题。</p>
+<p>后引入的$的会覆盖掉先引入的库中的$。</p>
+<p>$ === jQuery</p>
+<p>解决办法：</p>
+<p>jQuery的$和jQuery是两个相同的变量，因此遇到多库共存的时候，可以让jquery交出$符的控制权，这个时候还是可以使用$.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log($);<span class="comment">//function(selector, context)&#123;&#125;</span></span><br><span class="line"><span class="comment">//$.noConflict();//释放$的控制权</span></span><br><span class="line"><span class="built_in">console</span>.log($);&#123;<span class="attr">name</span>:<span class="string">"zhangsan"</span>,<span class="attr">age</span>:<span class="number">12</span>&#125;</span><br><span class="line">jQuery(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    jQuery(<span class="string">"div"</span>).html(<span class="string">"我不是div的内容"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jQuery/11-jQuery链式编程与隐式迭代" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1075,145 +1139,6 @@
 </tbody>
 </table>
 <p>  ​<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"jquery-1.12.4.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="comment">// 筛选选择器: 均为方法形式，作用是为了完善链式编程</span></span><br><span class="line">			<span class="comment">// 1 children() 子代选择器</span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串，如果不传默认选择所有子元素</span></span><br><span class="line">			<span class="comment">//  $('#list').css('width', '300px').children('.item').css('backgroundColor', 'red');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 2 find()  后代选择器 </span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串（必须有），如果不传会被忽略。</span></span><br><span class="line">			<span class="comment">// $('#list').css('width', '300px').find('li').css('backgroundColor', 'red');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 3 parent() 父元素选择器，相当于parentNode</span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串，如果不传默认选择所有父元素</span></span><br><span class="line">			<span class="comment">// $('p').parent('.box').css('backgroundColor', 'red');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 4 parents() 祖先元素选择器</span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串，如果不传默认选择所有的祖先元素，但是推荐传入参数。</span></span><br><span class="line">			<span class="comment">// $('.text').parents('div').css('backgroundColor', 'red');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 5 siblings() 兄弟元素获取</span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串，可选。</span></span><br><span class="line">			<span class="comment">//  $('.li').siblings('.item').text('这是其他同级元素');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 6 next() 和 prev()</span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串，可选。</span></span><br><span class="line">			<span class="comment">// $('.li').next().text('这是后一个li');</span></span><br><span class="line">			<span class="comment">// $('.li').prev().text('这是前一个li');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 7 nextAll() 和 prevAll()</span></span><br><span class="line">			<span class="comment">//   参数：选择器字符串，可选。</span></span><br><span class="line">			<span class="comment">// $('.li').nextAll('.item').text('这是后面的所有li');</span></span><br><span class="line">			<span class="comment">// $('.li').prevAll('.item').text('这是前面的所有li');</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 8 eq() 按索引获取指定的元素</span></span><br><span class="line">			<span class="comment">//   当需要按索引取值时推荐使用.eq()的形式，不需要进行字符串拼接。</span></span><br><span class="line">			<span class="keyword">var</span> index = <span class="number">2</span>;</span><br><span class="line">			<span class="comment">// $('li:eq(' + index + ')');</span></span><br><span class="line">			$(<span class="string">'li'</span>).eq(index).text(<span class="string">'这是第三个li'</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">	&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jQuery/02-jQuery入口函数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/21/jQuery/02-jQuery入口函数/" class="article-date">
-      <time datetime="2017-03-21T01:01:36.000Z" itemprop="datePublished">2017-03-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/21/jQuery/02-jQuery入口函数/">02-jQuery入口函数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="入口函数"><a href="#入口函数" class="headerlink" title="入口函数"></a>入口函数</h1><ul>
-<li><p>jQuery入口函数的两种写法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种写法</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="comment">//第二种写法</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对比JavaScript的入口函数jQuery的入口函数,执行时机</p>
-<ul>
-<li>1.JavaScript的入口函数要等到页面中所有资源（包括图片、文件）加载完成才开始执行。</li>
-<li>jQuery的入口函数只会等待文档树加载完成就开始执行，并不会等待图片、文件的加载。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// DOM中的入口函数执行时机：页面完全加载后（结构，图片，文件）</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'DOM的入口函数'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery的入口函数执行时机：结构加载完毕后执行</span></span><br><span class="line"><span class="comment">// jQuery入口函数的书写方式：</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'jQuery的入口函数1'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'jQuery的入口函数2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果需要使用jQuery设置页面完全加载后执行操作，可以使用以下形式：</span></span><br><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'这是jQuery在页面加载后执行的操作'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="jQuery提供了两个定级对象"><a href="#jQuery提供了两个定级对象" class="headerlink" title="jQuery提供了两个定级对象"></a>jQuery提供了两个定级对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">// $ jQuery</span></span><br><span class="line"><span class="comment">// 实际上$和jQuery是同一个对象，只不过起了两个名字</span></span><br><span class="line"><span class="built_in">console</span>.log($ === jQuery); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 $ 实际上是一个函数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> $); <span class="comment">// 'function'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// $根据传入的参数形式不同，会具有不同的功能</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'div'</span>); <span class="comment">// 选择器</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;); <span class="comment">// 入口函数</span></span><br><span class="line">$(<span class="built_in">document</span>); <span class="comment">// 可以让一个DOM对象具有更多的功能</span></span><br></pre></td></tr></table></figure>
-<h2 id="了解jQuery的-符号"><a href="#了解jQuery的-符号" class="headerlink" title="了解jQuery的$符号"></a>了解jQuery的$符号</h2><ul>
-<li><p><strong>$是什么</strong></p>
-<p>  <code>其实$就是一个函数：$();参数不一样，功能不一样</code></p>
-</li>
-</ul>
-<p>$常用的几种情况：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);<span class="comment">//参数是function，说明是入口函数</span></span><br><span class="line">$(<span class="string">"#btnSetConent"</span>);<span class="comment">//参数是字符串，并且以#开头，是一个标签选择，查找id=“btnSetContent”的元素</span></span><br><span class="line">$(<span class="string">"div"</span>);<span class="comment">//查找所有的div元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(funciton()&#123;&#125;)<span class="comment">//将document转换成jQuery对象</span></span><br></pre></td></tr></table></figure></p>
-<p>补充:</p>
-<p><code>$ === jQuery,也就是说能用$的地方，完全可以用jQuery，$仅仅是简写形式。</code></p>
-<h2 id="jQuery对象与DOM对象之间的转换"><a href="#jQuery对象与DOM对象之间的转换" class="headerlink" title="jQuery对象与DOM对象之间的转换"></a>jQuery对象与DOM对象之间的转换</h2><ul>
-<li>1.什么是DOM对象？<ul>
-<li>DOM对象：通过DOM方式获取的页面元素。</li>
-<li>jQuery对象：通过jQuery方式获取的页面元素。</li>
-</ul>
-</li>
-</ul>
-<p>使用JavaScript中的方法获取页面中的元素返回的对象就是dom对象。比如使用document.getElement*系列的方法返回的就是dom对象。</p>
-<ul>
-<li><p>2 DOM对象和jQuery对象的关系</p>
-<ul>
-<li>jQuery对象是伪数组形式，内部放置了DOM对象</li>
-<li>我们称jQuery对象是DOM对象的包装集。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">      <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);</span><br><span class="line"><span class="keyword">var</span> $box = $(<span class="string">'div'</span>);</span><br><span class="line">	<span class="built_in">console</span>.dir(box);</span><br><span class="line">	<span class="built_in">console</span>.log($box);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>3.功能的区别：</p>
-<ul>
-<li>DOM对象只能使用DOM的功能，无法使用jQuery功能</li>
-<li>jQuery对象只能使用jQuery功能，不能使用DOM功能<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">      box.text(<span class="string">'这是box'</span>);</span><br><span class="line">$box.innerHTML = <span class="string">'这是box的内容'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>4 DOM对象与jQuery对象的转换方式</p>
-</li>
-<li><p>4.1 将DOM对象转换为jQuery对象:将DOM对象传入到$()中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(box).text(<span class="string">'这是新内容'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4.2 将jQuery对象转换为DOM对象</p>
-<ul>
-<li>利用索引取出jQuery对象中的DOM对象(推荐)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$box[<span class="number">0</span>].innerHTML = <span class="string">'这是box的新内容'</span>;</span><br><span class="line">利用get(索引)</span><br><span class="line">$box.get(<span class="number">0</span>).innerHTML = <span class="string">'这也是新内容'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="什么是jquery对象？"><a href="#什么是jquery对象？" class="headerlink" title="什么是jquery对象？"></a>什么是jquery对象？</h2><ul>
-<li>jquery对象就是使用jquery的方法获取页面中的元素返回的对象就是jQuery对象。比如使用$()方法返回对象都是jquery对象。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"div"</span>);<span class="comment">//标签选择器返回的jquery对象。</span></span><br><span class="line">$(<span class="string">"#btnShowDiv"</span>);<span class="comment">//id选择器返回的jquery对象。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>jquery对象只能使用jquery对象的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $obj = $(<span class="string">"div"</span>);</span><br><span class="line">$obj.html(<span class="string">"jquery对象设置文本的方法"</span>);</span><br><span class="line">$obj.show();<span class="comment">//jquery对象显示文本</span></span><br><span class="line">$obj.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);<span class="comment">//jquery对象绑定事件</span></span><br></pre></td></tr></table></figure></p>
-<p>错误的用法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"div"</span>).innerHTML;<span class="comment">//jquery对象不能调用dom方法</span></span><br><span class="line"><span class="comment">//dom对象不能调用jquery方法。</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"btnShowDiv"</span>).show();</span><br></pre></td></tr></table></figure></p>
-<h2 id="深入了解jQuery对象"><a href="#深入了解jQuery对象" class="headerlink" title="深入了解jQuery对象"></a>深入了解jQuery对象</h2><ul>
-<li>jQuery对象其实就是DOM对象的包装集（包装了DOM对象的集合）<br>联想记忆：衣服和洗衣机的关系</li>
-</ul>
-<h2 id="jQuery对象和DOM对象的相互转换"><a href="#jQuery对象和DOM对象的相互转换" class="headerlink" title="jQuery对象和DOM对象的相互转换"></a>jQuery对象和DOM对象的相互转换</h2><ul>
-<li><ol>
-<li>jquery对象转DOM对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $li = $(<span class="string">"li"</span>);</span><br><span class="line"><span class="comment">//第一种方法（推荐使用）</span></span><br><span class="line">$li[<span class="number">0</span>]</span><br><span class="line"><span class="comment">//第二种方法</span></span><br><span class="line">$li.get(<span class="number">0</span>)</span><br><span class="line"><span class="comment">//其实jQuery对象转DOM对象的实质就是取出jQuery对象中封装的DOM对象。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>DOM对象转jquery对象（联想记忆：我有钱[美元]，所以我的功能就更强大）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $obj = $(domObj);</span><br><span class="line"><span class="comment">// $(document).ready(function()&#123;&#125;);就是典型的DOM对象转jQuery对象</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="区分jQuery和JavaScript"><a href="#区分jQuery和JavaScript" class="headerlink" title="区分jQuery和JavaScript"></a>区分jQuery和JavaScript</h2><ul>
-<li>JavaScript是一门编程语言，jquery是用JavaScript实现的一个JavaScript库，目的是简化我们的开发。（联想记忆：不能扛着洗衣机去出差）<br><img src="/images/jquery/7.png" alt=""></li>
-</ul>
 
       
     </div>

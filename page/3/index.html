@@ -273,6 +273,108 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-ajax/08-JSON" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/03/ajax/08-JSON/" class="article-date">
+      <time datetime="2017-05-03T04:15:35.000Z" itemprop="datePublished">2017-05-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/03/ajax/08-JSON/">08-JSON</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="什么是JSON？"><a href="#什么是JSON？" class="headerlink" title="什么是JSON？"></a>什么是JSON？</h2><p>JSON:  JavaScript Object Notation 是一种轻量级数据交互格式。</p>
+<p>数据交互: 每一种语言的编码都不一样，它们之间互不认识。但是现在的情况是不同的语言开发出的系统也需要进行数据交互，这时候就需要一种大家都认识的语言或者技术来实现。</p>
+<p><code>xml: 扩展标记语言</code></p>
+<h2 id="JSON数据的声明和使用"><a href="#JSON数据的声明和使用" class="headerlink" title="JSON数据的声明和使用"></a>JSON数据的声明和使用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">声明:  <span class="keyword">var</span> json_obj = &#123;<span class="string">"key1"</span>:<span class="string">"value1"</span>, <span class="string">"key2"</span>:<span class="string">"value2"</span>, ...&#125;;</span><br><span class="line"></span><br><span class="line">key: 双引号包含的字符串</span><br><span class="line"></span><br><span class="line">value: 数据→数值型、字符串、数组、json对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//key：必须用双引号</span></span><br><span class="line"><span class="keyword">var</span> json1 = &#123;<span class="string">"a"</span>:<span class="string">"Hello"</span>, <span class="string">"b"</span>:<span class="string">"world"</span>&#125;;</span><br><span class="line">alert(json1.a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> json2 = &#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"郭德纲"</span>,</span><br><span class="line">    <span class="string">"age"</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="string">"tudi"</span>: [<span class="string">'岳云鹏'</span>, <span class="string">'烧饼'</span>, <span class="string">'张云雷'</span>],</span><br><span class="line">    <span class="string">"son"</span>: &#123;<span class="string">"name"</span>:<span class="string">"郭麒麟"</span>, <span class="string">"age"</span>:<span class="number">20</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">alert(json2.name);</span><br><span class="line">alert(json2.tudi[<span class="number">1</span>]);</span><br><span class="line">alert(json2.son.name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//数组，内部的每个单元都是一个json</span></span><br><span class="line"><span class="keyword">var</span> json3 = [</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"赵四"</span>,   <span class="string">"age"</span>:<span class="number">50</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"小沈阳"</span>, <span class="string">"age"</span>:<span class="number">46</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"刘能"</span>,   <span class="string">"age"</span>:<span class="number">50</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"宋小宝"</span>, <span class="string">"age"</span>:<span class="number">52</span>&#125;,</span><br><span class="line">];</span><br><span class="line">alert(json3[<span class="number">2</span>].name);</span><br></pre></td></tr></table></figure>
+<p>JSON的本质:  JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;a:<span class="string">"hello"</span>, b:<span class="string">"world"</span>&#125;;       <span class="comment">// js对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="string">"a"</span>:<span class="string">"hello"</span>, <span class="string">"b"</span>:<span class="string">"world"</span>&#125;;    <span class="comment">// json格式的js对象，也可以叫json对象 (JSON才是真正的JSON对象)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'&#123;"a":"hello", "b":"world"&#125;'</span>;    <span class="comment">// json，也叫json格式的字符串 必须外层单引号，内存双引号</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"&#123;'a':'Hello', 'b':'world'&#125;"</span>;  <span class="comment">//错误，不能这样写，会影响到其他程序的执行</span></span><br></pre></td></tr></table></figure>
+<h2 id="PHP数组转JSON格式的字符串"><a href="#PHP数组转JSON格式的字符串" class="headerlink" title="PHP数组转JSON格式的字符串"></a>PHP数组转JSON格式的字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php提供了函数：  json_str  json_encode($arr);</span><br><span class="line"></span><br><span class="line">案例1: 索引数组转JSON      数组</span><br><span class="line"></span><br><span class="line">案例2: 关联数组转 JSON     json对象</span><br><span class="line"></span><br><span class="line">案例3: 二维数组转JSON      一维数组，每个单元都是一个json对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//索引数组</span></span><br><span class="line">$arr = [<span class="string">'zs'</span>, <span class="string">'ls'</span>, <span class="string">'ww'</span>];</span><br><span class="line"><span class="comment">// 一个索引数组被json_encode之后仍然是一个数组，</span></span><br><span class="line"><span class="comment">// 但是是一个字符串形式数组</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($arr); <span class="comment">// '["zs", "ls", "ww"]'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;hr&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//关联数组</span></span><br><span class="line">$info = [<span class="string">'id'</span>=&gt;<span class="number">1001</span>, <span class="string">'name'</span>=&gt;<span class="string">'王小明'</span>, <span class="string">'age'</span>=&gt;<span class="number">8</span>];</span><br><span class="line"><span class="comment">// 一维关联数组被json_encode之后是一个json字符串</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($info); <span class="comment">// '&#123;"id":1001, "name":"王小明", "age":8&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;hr&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二维数组</span></span><br><span class="line">$list = [</span><br><span class="line">    [<span class="string">'id'</span>=&gt;<span class="number">1001</span>, <span class="string">'name'</span>=&gt;<span class="string">'王小明'</span>, <span class="string">'age'</span>=&gt;<span class="number">8</span>],</span><br><span class="line">    [<span class="string">'id'</span>=&gt;<span class="number">1002</span>, <span class="string">'name'</span>=&gt;<span class="string">'韩梅梅'</span>, <span class="string">'age'</span>=&gt;<span class="number">10</span>],</span><br><span class="line">    [<span class="string">'id'</span>=&gt;<span class="number">1003</span>, <span class="string">'name'</span>=&gt;<span class="string">'李雷'</span>, <span class="string">'age'</span>=&gt;<span class="number">9</span>]</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 二维数组，会转为数组，内部的每个单元都是json</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($list);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">'[</span></span><br><span class="line"><span class="comment">    &#123;"id":1001,"name":"王小明","age":8&#125;,</span></span><br><span class="line"><span class="comment">    &#123;"id":1002,"name":"韩梅梅","age":10&#125;,</span></span><br><span class="line"><span class="comment">    &#123;"id":1003,"name":"李雷","age":9&#125;,</span></span><br><span class="line"><span class="comment">]'</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>执行结果:</p>
+<p><img src="/images/ajax/1534815890487.png" alt="1534815890487"></p>
+<h2 id="JSON字符串转JSON对象-javascript代码"><a href="#JSON字符串转JSON对象-javascript代码" class="headerlink" title="JSON字符串转JSON对象 javascript代码"></a>JSON字符串转JSON对象 javascript代码</h2><p>前端的ajax请求，最后接收到的都是字符串  responseText，以字符串形式接收后端返回的数据<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">'[&#123;"id":10001,"name":"zs","age":20&#125;,&#123;"id":10002,"name":"ls","age":21&#125;,&#123;"id":10003,"name":"ww","age":19&#125;]'</span></span><br></pre></td></tr></table></figure></p>
+<pre><code>json格式的字符串转为json对象:  JSON.parse(json_str); 
+
+参数: json格式的字符串
+</code></pre><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'&#123;"id":1001,"name":"王小明","age":8&#125;'</span>;</span><br><span class="line">alert(s.name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将json格式字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> json = JSON.parse(s);</span><br><span class="line">alert(json.name);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = <span class="string">'[&#123;"id":1001,"name":"\u738b\u5c0f\u660e","age":8&#125;,&#123;"id":1002,"name":"\u97e9\u6885\u6885","age":10&#125;,&#123;"id":1003,"name":"\u674e\u96f7","age":9&#125;]'</span>;</span><br><span class="line">alert(arr[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = JSON.parse(arr);</span><br><span class="line">console.log(arr1[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+<h2 id="案例-搜索用户名，显示用户列表信息"><a href="#案例-搜索用户名，显示用户列表信息" class="headerlink" title="案例 搜索用户名，显示用户列表信息"></a>案例 搜索用户名，显示用户列表信息</h2><p><img src="/images/ajax/1534817413691.png" alt="1534817413691"></p>
+<pre><code>思路:
+
+1) 创建一个搜索页面，定义好搜索框，表头。在搜索按钮上绑定点击事件。
+
+2) 点击事件能够发送ajax请求，并将用户名文本框中的内容一起发送到后端php程序
+
+3) 后端php程序接收用户名，链接MySQL进行模糊查询，再将数组返回给前端
+
+4) 前端接收到后端php返回值之后，循环显示出来
+
+
+代码实现 : 
+
+1) 创建一个搜索页面，定义好搜索框，表头。在搜索按钮上绑定点击事件。
+
+页面布局 :
+</code></pre><p><img src="/images/ajax/1534818204798.png" alt="1534818204798"> </p>
+<pre><code>2) 点击事件能够发送ajax请求，并将用户名文本框中的内容一起发送到后端php程序,在搜索按钮上绑定点击事件  获取文本框中的用户名，发送ajax请求。
+</code></pre><p><img src="/images/ajax/1534818226839.png" alt="1534818226839"></p>
+<pre><code>3) 后端php程序接收用户名，链接mysql进行模糊查询，在将数组返回给前端。
+</code></pre><p>核心操作:</p>
+<pre><code>将资源转为二维数组，再将二维数组转为json字符串，再返回给前端 --&gt;
+</code></pre><p><img src="/images/ajax/1534819468793.png" alt="1534819468793"></p>
+<p><img src="/images/ajax/1534819480657.png" alt="1534819480657"></p>
+<pre><code>4) 前端接收到后端php返回值之后，循环显示出来 
+</code></pre><p><img src="/images/ajax/1534820413728.png" alt="1534820413728"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-ajax/07-文件上传与进度条" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1187,105 +1289,6 @@ $_SESSION 超全局变量就能设置和读取session中的内容
 </code></pre><h2 id="删除session"><a href="#删除session" class="headerlink" title="删除session"></a>删除session</h2><p> unset($_SESSION[‘name’]);    //删除单个session</p>
 <p>   session_destroy();                   //删除所有session</p>
 <p><img src="/images/php/1534480227294.png" alt="1534480227294"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP/26-cookie技术" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/27/PHP/26-cookie技术/" class="article-date">
-      <time datetime="2017-04-27T05:20:09.000Z" itemprop="datePublished">2017-04-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/PHP/26-cookie技术/">26-cookie技术</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="cookie技术"><a href="#cookie技术" class="headerlink" title="cookie技术"></a>cookie技术</h1><h2 id="什么是cookie？"><a href="#什么是cookie？" class="headerlink" title="什么是cookie？"></a>什么是cookie？</h2><p>  cookie是将数据持久化存储到客户端的一种技术。</p>
-<p>   网站可以将数据写到浏览器中， 一个网站最多能在一个浏览器写20个cookie。</p>
-<p>   一个浏览器能够设置的总cookie数最多为300个，每个不能超过4kb。</p>
-<p>   cookie既能保存在文件中，也能保存在内存中。</p>
-<h2 id="设置-读取cookie"><a href="#设置-读取cookie" class="headerlink" title="设置/读取cookie"></a>设置/读取cookie</h2><p>1) 设置cookie</p>
-<p>   setcookie(var1 , var2, var3);</p>
-<p>   var1: cookie的名称</p>
-<p>   var2: 名称对应的值， 可选参数</p>
-<p>   var3: cookie的有效期， 可选参数</p>
-<p>   <img src="/images/php/1534478105079.png" alt="1534478105079"></p>
-<p>2) 读取cookie信息</p>
-<p>   使用php的超全局变量 $_COOKIE进行读取</p>
-<p>   <img src="/images/php/1534478123739.png" alt="1534478123739"></p>
-<p>   通过浏览器查看cookie信息:</p>
-<p>   <img src="/images/php/1534478176053.png" alt="1534478176053"></p>
-<p>   <img src="/images/php/1534478276084.png" alt="1534478276084"></p>
-<h2 id="cookie有效期"><a href="#cookie有效期" class="headerlink" title="cookie有效期"></a>cookie有效期</h2><p>  setcookie函数的参数3可以控制cookie有效期</p>
-<pre><code>参数3设置为-1 或者 不设置，关闭浏览器即失效
-参数3设置为 time()+秒数，则在当前时间点的多少秒之后失效
-</code></pre><p>  设置cookie时，如果设置了有效期，则cookie会保存在文件中；如果没有设置有效期，则cookie保存在内存中。</p>
-<h2 id="cookie的有效范围"><a href="#cookie的有效范围" class="headerlink" title="cookie的有效范围"></a>cookie的有效范围</h2><p>  <strong>setcookie函数还有参数4、5，可以用来控制cookie的有效访问，但是一般不用。</strong></p>
-<p>只需要记住下面的情况即可：   </p>
-<pre><code>在不使用参数4和5的情况下，cookie在当前目录及子目录中有效，在上层目录中无效。
-</code></pre><p><img src="/images/php/1534478631803.png" alt="1534478631803"></p>
-<h2 id="cookie删除"><a href="#cookie删除" class="headerlink" title="cookie删除"></a>cookie删除</h2><p> setcookie函数第二个参数设置为null，就可以删除cookie</p>
-<pre><code>setcookie(&apos;name&apos;, null);
-</code></pre><p><img src="/images/php/1534478730006.png" alt="1534478730006"></p>
-<h2 id="js控制cookie"><a href="#js控制cookie" class="headerlink" title="js控制cookie"></a>js控制cookie</h2><p> cookie是将数据保存在客户端的，所以可以使用javascript来读取/设置cookie。 </p>
-<p>   设置cookie:   document.cookie = “名称=值;expires=时间”</p>
-<p>   读取cookie:   document.cookie</p>
-<p>读取cookie:</p>
-<p><img src="/images/php/1534479056017.png" alt="1534479056017"></p>
-<p><img src="/images/php/1534479028505.png" alt="1534479028505"></p>
-<p>设置cookie:</p>
-<p>  expires: 用来指定cookie有效期的</p>
-<p><img src="/images/php/1534479410042.png" alt="1534479410042"></p>
-<h2 id="cookie原理"><a href="#cookie原理" class="headerlink" title="cookie原理"></a>cookie原理</h2><p>当浏览器访问一个带cookie的页面时，cookie会随着响应头返回给浏览器。</p>
-<p>  当再次访问该网站的页面时，cookie会随着请求头一起发送给服务器。</p>
-<p><img src="/images/php/1534556304079.png" alt="1534556304079"></p>
-<p><img src="/images/php/1534556836082.png" alt="1534556836082"></p>
 
       
     </div>

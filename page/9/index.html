@@ -273,6 +273,161 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS/32-构造函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/13/JS/32-构造函数/" class="article-date">
+      <time datetime="2017-03-13T01:08:50.000Z" itemprop="datePublished">2017-03-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/13/JS/32-构造函数/">32-构造函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p>内容引导：</p>
+<ul>
+<li>构造函数语法</li>
+<li>分析构造函数</li>
+<li>构造函数和实例对象的关系<ul>
+<li>实例的 constructor 属性</li>
+<li>instanceof 操作符</li>
+</ul>
+</li>
+<li>普通函数调用和构造函数调用的区别</li>
+<li>构造函数的返回值</li>
+<li>构造函数的静态成员和实例成员<ul>
+<li>函数也是对象</li>
+<li>实例成员</li>
+<li>静态成员</li>
+</ul>
+</li>
+<li>构造函数的问题</li>
+</ul>
+<h2 id="更优雅的工厂函数：构造函数"><a href="#更优雅的工厂函数：构造函数" class="headerlink" title="更优雅的工厂函数：构造函数"></a>更优雅的工厂函数：构造函数</h2><ul>
+<li>一种更优雅的工厂函数就是下面这样，构造函数：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">18</span>)</span><br><span class="line">p1.sayName() <span class="comment">// =&gt; Jack</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Mike'</span>, <span class="number">23</span>)</span><br><span class="line">p2.sayName() <span class="comment">// =&gt; Mike</span></span><br></pre></td></tr></table></figure>
+<h2 id="解析构造函数代码的执行"><a href="#解析构造函数代码的执行" class="headerlink" title="解析构造函数代码的执行"></a>解析构造函数代码的执行</h2><blockquote>
+<p>在上面的示例中，<code>Person()</code> 函数取代了 <code>createPerson()</code> 函数，但是实现效果是一样的。<br>这是为什么呢？</p>
+<p>我们注意到，<code>Person()</code> 中的代码与 <code>createPerson()</code> 有以下几点不同之处：</p>
+</blockquote>
+<ul>
+<li>没有显示的创建对象</li>
+<li>直接将属性和方法赋给了 <code>this</code> 对象</li>
+<li>没有 <code>return</code> 语句</li>
+<li>函数名使用的是大写的 <code>Person</code></li>
+</ul>
+<p>而要创建 <code>Person</code> 实例，则必须使用 <code>new</code> 操作符。<br>以这种方式调用构造函数会经历以下 4 个步骤：</p>
+<ol>
+<li>创建一个新对象</li>
+<li>将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）</li>
+<li>执行构造函数中的代码</li>
+<li>返回新对象</li>
+</ol>
+<ul>
+<li>下面是具体的伪代码：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 当使用 new 操作符调用 Person() 的时候，实际上这里会先创建一个对象</span></span><br><span class="line"><span class="comment">// var instance = &#123;&#125;</span></span><br><span class="line"><span class="comment">// 然后让内部的 this 指向 instance 对象</span></span><br><span class="line"><span class="comment">// this = instance</span></span><br><span class="line"><span class="comment">// 接下来所有针对 this 的操作实际上操作的就是 instance</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在函数的结尾处会将 this 返回，也就是 instance</span></span><br><span class="line"><span class="comment">// return this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="构造函数和实例对象的关系"><a href="#构造函数和实例对象的关系" class="headerlink" title="构造函数和实例对象的关系"></a>构造函数和实例对象的关系</h2><blockquote>
+<p>使用构造函数的好处不仅仅在于代码的简洁性，更重要的是我们可以识别对象的具体类型了。</p>
+</blockquote>
+<blockquote>
+<p>在每一个实例对象中的__proto__中同时有一个 <code>constructor</code> 属性，该属性指向创建该实例的构造函数：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1.constructor === Person) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p2.constructor === Person) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.constructor === p2.constructor) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对象的 <code>constructor</code> 属性最初是用来标识对象类型的，<br>但是，如果要检测对象的类型，还是使用 <code>instanceof</code> 操作符更可靠一些：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1 <span class="keyword">instanceof</span> Person) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p2 <span class="keyword">instanceof</span> Person) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li>构造函数是根据具体的事物抽象出来的抽象模板</li>
+<li>实例对象是根据抽象的构造函数模板得到的具体实例对象</li>
+<li>每一个实例对象都具有一个 <code>constructor</code> 属性，指向创建该实例的构造函数<ul>
+<li>注意： <code>constructor</code> 是实例的属性的说法不严谨，具体后面的原型会讲到</li>
+</ul>
+</li>
+<li>可以通过实例的 <code>constructor</code> 属性判断实例和构造函数之间的关系<ul>
+<li>注意：这种方式不严谨，推荐使用 <code>instanceof</code> 操作符，后面学原型会解释为什么</li>
+</ul>
+</li>
+</ul>
+<h2 id="构造函数的问题"><a href="#构造函数的问题" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h2><p>使用构造函数带来的最大的好处就是创建对象更方便了，但是其本身也存在一个浪费内存的问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.type = <span class="string">'human'</span></span><br><span class="line"><span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'zxx'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">16</span>)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在该示例中，从表面上好像没什么问题，但是实际上这样做，有一个很大的弊端。</p>
+<p>那就是对于每一个实例对象，<code>type</code> 和 <code>sayHello</code> 都是一模一样的内容，</p>
+<p>每一次生成一个实例，都必须为重复的内容，多占用一些内存，如果实例对象很多，会造成极大的内存浪费。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1.sayHello === p2.sayHello) <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>对于这种问题我们可以把需要共享的函数定义到构造函数外部：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span> = <span class="title">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.type = <span class="string">'human'</span></span><br><span class="line"><span class="keyword">this</span>.sayHello = sayHello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'zxx'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayHello === p2.sayHello) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样确实可以了，但是如果有多个需要共享的函数的话就会造成全局命名空间冲突的问题。</p>
+</blockquote>
+<blockquote>
+<p>你肯定想到了可以把多个函数放到一个对象中用来避免全局命名空间冲突的问题：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fns = &#123;</span><br><span class="line">sayHello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;,</span><br><span class="line">sayAge: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.type = <span class="string">'human'</span></span><br><span class="line"><span class="keyword">this</span>.sayHello = fns.sayHello</span><br><span class="line"><span class="keyword">this</span>.sayAge = fns.sayAge</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'zxx'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayHello === p2.sayHello) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayAge === p2.sayAge) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>至此，我们利用自己的方式基本上解决了构造函数的内存浪费问题。<br>但是代码看起来还是那么的格格不入，那有没有更好的方式呢？</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>构造函数语法</li>
+<li>分析构造函数</li>
+<li>构造函数和实例对象的关系<ul>
+<li>实例的 constructor 属性</li>
+<li>instanceof 操作符</li>
+</ul>
+</li>
+<li>构造函数的问题</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS/31-创建对象" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1118,98 +1273,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">navigator.userAgent;   <span class="comment">// 用户代理字符串：浏览器版本</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(navigator.platform);</span><br><span class="line">        <span class="built_in">console</span>.log(navigator.userAgent); <span class="comment">// 用户代理字符串</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>history 对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后退：</span></span><br><span class="line">   history.back();</span><br><span class="line">   history.go(<span class="number">-1</span>);</span><br><span class="line">   <span class="comment">//前进：</span></span><br><span class="line">   history.forward();</span><br><span class="line">   history.go(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS/22-BOM.window对象" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/02/JS/22-BOM.window对象/" class="article-date">
-      <time datetime="2017-03-02T03:22:59.000Z" itemprop="datePublished">2017-03-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/JS/22-BOM.window对象/">22-BOM</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><blockquote>
-<p>BOM（Browser Object Model）：浏览器对象模型，提供了一套操作浏览器功能的工具。</p>
-</blockquote>
-<p>BOM包含的内容很多，但是很多东西都不太常用，在BOM中需要大家掌握的就一个东西，那就是定时器 。</p>
-<h2 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h2><ul>
-<li>window对象的基本介绍<ul>
-<li>window对象是js在浏览器环境中的顶级对象</li>
-<li>window对象中的功能有很多，根据功能划分为多个对象，而这些对象也是window的属性</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li><p>window对象是一个全局对象，也可以说是JavaScript在浏览器环境中的顶级对象</p>
-</li>
-<li><p>像document、alert()、console这些都是window的属性，其实BOM中基本所有的属性和方法都是属性window的。</p>
-</li>
-<li><p>所有定义在全局作用域中的变量、函数、都是window对象的属性和方法</p>
-</li>
-<li><p>window对象下的属性和方法调用的时候可以省略window</p>
-</li>
-</ol>
-<h2 id="window-onload"><a href="#window-onload" class="headerlink" title="window.onload"></a>window.onload</h2><blockquote>
-<p>window.onload事件会在窗体加载完成后执行，通常我们称之为入口函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//里面的代码会在页面加载完成后执行。</span></span><br><span class="line">    <span class="comment">//页面加载完成包括结构的加载、还有图片、文件的加载完成。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>如果有图片加载，那么代码一定要写到window.onload里面，否则会出现图片没有加载完成，获取到的宽度和高度不对的情况。</p>
-<p>浏览器会对页面的加载做优化，在加载图片的时候，图片的引入会延迟。</p>
-<h2 id="window-open与window-close"><a href="#window-open与window-close" class="headerlink" title="window.open与window.close"></a>window.open与window.close</h2><blockquote>
-<p>window.open() 打开一个窗口</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法：window.open(url, [name], [features]);</span></span><br><span class="line"><span class="comment">//参数1：需要载入的url地址</span></span><br><span class="line"><span class="comment">//参数2：新窗口的名称</span></span><br><span class="line">    <span class="comment">//_self:在当前窗口打开</span></span><br><span class="line">    <span class="comment">//_blank:在新的窗口打开</span></span><br><span class="line"><span class="comment">//参数3：窗口的属性，指定窗口的大小</span></span><br><span class="line"><span class="comment">//返回值：会返回刚刚创建的那个窗口，用于关闭</span></span><br><span class="line"><span class="comment">//示例：</span></span><br><span class="line"><span class="keyword">var</span> newWin = <span class="built_in">window</span>.open(<span class="string">"http://www.baidu.com"</span>,<span class="string">"_blank"</span>, <span class="string">"width=300,height=300"</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>window.close() 关闭窗口<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newWin.close()；<span class="comment">//newWin是刚刚创建的那个窗口</span></span><br><span class="line"><span class="built_in">window</span>.close();<span class="comment">//把当前窗口给关闭了</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 
       

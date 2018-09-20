@@ -273,6 +273,83 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-PHP/06-PHP流程控制" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/23/PHP/06-PHP流程控制/" class="article-date">
+      <time datetime="2017-04-23T06:09:57.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/PHP/06-PHP流程控制/">06-PHP流程控制</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><h2 id="选择结构-if…else"><a href="#选择结构-if…else" class="headerlink" title="选择结构  (if…else)"></a>选择结构  (if…else)</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(判断表达式)&#123;</span><br><span class="line">    程序块<span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    程序块<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(判断表达式)&#123;</span><br><span class="line">    程序块;</span><br><span class="line">&#125; <span class="keyword">elseif</span>(判断表达式) &#123;</span><br><span class="line">    程序块;</span><br><span class="line">&#125; ...&#123;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    程序块;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>小练习：判断三个变量中的最大值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">'content-type:text/html;charset=utf-8'</span>);</span><br><span class="line">$a = <span class="number">40</span>;</span><br><span class="line">$b = <span class="number">50</span>;</span><br><span class="line">$c = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($a &gt; $b) &#123;</span><br><span class="line">    <span class="keyword">if</span> ($a &gt; $c) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'最大值是：$a'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'最大值是：$c'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ($b &gt; $c) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'最大值是：$b'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'最大值是：$c'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>小练习：判断时间，提示不同的问候语</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">'content-type:text/html;charset=utf-8'</span>);</span><br><span class="line">$time = <span class="number">10</span>; <span class="comment">//此处应该动态获取当前时间（小时）。因为没有学过动态获取时间，先固定成某个值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($time &gt;= <span class="number">0</span> &amp;&amp; $time &lt; <span class="number">6</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"凌晨好"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> ($time &gt;= <span class="number">6</span> &amp;&amp; $time &lt; <span class="number">12</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"上午好"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> ($time &gt;= <span class="number">12</span> &amp;&amp; $time &lt; <span class="number">18</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"下午好"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> ($time &gt;= <span class="number">18</span> &amp;&amp; $time &lt; <span class="number">24</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"晚上好"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"时间有误"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#不允许这么写。没有这种语法 6 &lt;=  $time  &lt; 12</span></span><br></pre></td></tr></table></figure>
+<h2 id="循环结构-while-for-do…while"><a href="#循环结构-while-for-do…while" class="headerlink" title="循环结构  (while / for / do…while)"></a>循环结构  (while / for / do…while)</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(判断表达式)&#123;</span><br><span class="line">    程序块;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(赋值表达式; 判断表达式; 步进表达式)&#123;</span><br><span class="line">    程序块;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    程序块</span><br><span class="line">&#125; <span class="keyword">while</span>(判断表达式)</span><br><span class="line"></span><br><span class="line">下面循环执行几次?</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">1</span>; i == <span class="number">1</span>; $i++)&#123;&#125;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">1</span>; i = <span class="number">1</span>; $i++)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>小练习：输出1-100之间的偶数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= <span class="number">100</span>; $i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> ($i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> $i . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>小练习：输出九九乘法口诀表</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= <span class="number">9</span>; $i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> ($j = <span class="number">1</span>; $j &lt;= $i; $j++) &#123;</span><br><span class="line">        <span class="keyword">echo</span> $i * $j . <span class="string">"&amp;nbsp;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分支结构-switch"><a href="#分支结构-switch" class="headerlink" title="分支结构  (switch)"></a>分支结构  (switch)</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(变量)&#123;</span><br><span class="line">    <span class="keyword">case</span> 值<span class="number">1</span>:</span><br><span class="line">        程序块<span class="number">1</span>；</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 值<span class="number">2</span>:</span><br><span class="line">        程序块<span class="number">2</span>；</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        程序块</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量一般使用 : 整型  字符  字符串</span></span><br></pre></td></tr></table></figure>
+<p>小练习：不同语言的”我爱你”<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">'content-type:text/html;charset=utf-8'</span>);</span><br><span class="line">$lang = <span class="string">'dasdsad'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> ($lang) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'zh-cn'</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我爱你"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'en-us'</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"I love you"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'de-de'</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Ich liebe dich"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'ja-jp'</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"あなたのことが好きです"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'fr-fr'</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Je t'aime!"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"语种错误"</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="特殊语句-continue、-break"><a href="#特殊语句-continue、-break" class="headerlink" title="特殊语句  (continue、 break)"></a>特殊语句  (continue、 break)</h2><ul>
+<li><p>contiune: 结束当前循环，直接跳入下一次循环</p>
+</li>
+<li><p>break: 结束整个循环</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/05-PHP变量、常量、运算符" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1111,70 +1188,6 @@ null (空)
 <p>2.引入jQuery</p>
 <p>3.引入jQueryUI的js文件</p>
 <p>4.使用jQueryUI功能</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jQuery/12-jQuery多库共存" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/24/jQuery/12-jQuery多库共存/" class="article-date">
-      <time datetime="2017-03-24T05:20:02.000Z" itemprop="datePublished">2017-03-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/24/jQuery/12-jQuery多库共存/">12-jQuery多库共存</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h1><p>我们知道jQuery占用了$这个标识符，如果引用的其他库也用到$这个标识符，这时候为了保证每个库都能正常使用，这时候就存在了多库共存的问题。</p>
-<p>后引入的$的会覆盖掉先引入的库中的$。</p>
-<p>$ === jQuery</p>
-<p>解决办法：</p>
-<p>jQuery的$和jQuery是两个相同的变量，因此遇到多库共存的时候，可以让jquery交出$符的控制权，这个时候还是可以使用$.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log($);<span class="comment">//function(selector, context)&#123;&#125;</span></span><br><span class="line"><span class="comment">//$.noConflict();//释放$的控制权</span></span><br><span class="line"><span class="built_in">console</span>.log($);&#123;<span class="attr">name</span>:<span class="string">"zhangsan"</span>,<span class="attr">age</span>:<span class="number">12</span>&#125;</span><br><span class="line">jQuery(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    jQuery(<span class="string">"div"</span>).html(<span class="string">"我不是div的内容"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

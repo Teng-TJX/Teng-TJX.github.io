@@ -273,6 +273,145 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-jQuery/02-jQuery入口函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/21/jQuery/02-jQuery入口函数/" class="article-date">
+      <time datetime="2017-03-21T01:01:36.000Z" itemprop="datePublished">2017-03-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/jQuery/02-jQuery入口函数/">02-jQuery入口函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="入口函数"><a href="#入口函数" class="headerlink" title="入口函数"></a>入口函数</h1><ul>
+<li><p>jQuery入口函数的两种写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种写法</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="comment">//第二种写法</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对比JavaScript的入口函数jQuery的入口函数,执行时机</p>
+<ul>
+<li>1.JavaScript的入口函数要等到页面中所有资源（包括图片、文件）加载完成才开始执行。</li>
+<li>jQuery的入口函数只会等待文档树加载完成就开始执行，并不会等待图片、文件的加载。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// DOM中的入口函数执行时机：页面完全加载后（结构，图片，文件）</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'DOM的入口函数'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery的入口函数执行时机：结构加载完毕后执行</span></span><br><span class="line"><span class="comment">// jQuery入口函数的书写方式：</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'jQuery的入口函数1'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'jQuery的入口函数2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果需要使用jQuery设置页面完全加载后执行操作，可以使用以下形式：</span></span><br><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'这是jQuery在页面加载后执行的操作'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="jQuery提供了两个定级对象"><a href="#jQuery提供了两个定级对象" class="headerlink" title="jQuery提供了两个定级对象"></a>jQuery提供了两个定级对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">// $ jQuery</span></span><br><span class="line"><span class="comment">// 实际上$和jQuery是同一个对象，只不过起了两个名字</span></span><br><span class="line"><span class="built_in">console</span>.log($ === jQuery); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 $ 实际上是一个函数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> $); <span class="comment">// 'function'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// $根据传入的参数形式不同，会具有不同的功能</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'div'</span>); <span class="comment">// 选择器</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;); <span class="comment">// 入口函数</span></span><br><span class="line">$(<span class="built_in">document</span>); <span class="comment">// 可以让一个DOM对象具有更多的功能</span></span><br></pre></td></tr></table></figure>
+<h2 id="了解jQuery的-符号"><a href="#了解jQuery的-符号" class="headerlink" title="了解jQuery的$符号"></a>了解jQuery的$符号</h2><ul>
+<li><p><strong>$是什么</strong></p>
+<p>  <code>其实$就是一个函数：$();参数不一样，功能不一样</code></p>
+</li>
+</ul>
+<p>$常用的几种情况：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);<span class="comment">//参数是function，说明是入口函数</span></span><br><span class="line">$(<span class="string">"#btnSetConent"</span>);<span class="comment">//参数是字符串，并且以#开头，是一个标签选择，查找id=“btnSetContent”的元素</span></span><br><span class="line">$(<span class="string">"div"</span>);<span class="comment">//查找所有的div元素</span></span><br><span class="line">$(<span class="built_in">document</span>).ready(funciton()&#123;&#125;)<span class="comment">//将document转换成jQuery对象</span></span><br></pre></td></tr></table></figure></p>
+<p>补充:</p>
+<p><code>$ === jQuery,也就是说能用$的地方，完全可以用jQuery，$仅仅是简写形式。</code></p>
+<h2 id="jQuery对象与DOM对象之间的转换"><a href="#jQuery对象与DOM对象之间的转换" class="headerlink" title="jQuery对象与DOM对象之间的转换"></a>jQuery对象与DOM对象之间的转换</h2><ul>
+<li>1.什么是DOM对象？<ul>
+<li>DOM对象：通过DOM方式获取的页面元素。</li>
+<li>jQuery对象：通过jQuery方式获取的页面元素。</li>
+</ul>
+</li>
+</ul>
+<p>使用JavaScript中的方法获取页面中的元素返回的对象就是dom对象。比如使用document.getElement*系列的方法返回的就是dom对象。</p>
+<ul>
+<li><p>2 DOM对象和jQuery对象的关系</p>
+<ul>
+<li>jQuery对象是伪数组形式，内部放置了DOM对象</li>
+<li>我们称jQuery对象是DOM对象的包装集。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">      <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);</span><br><span class="line"><span class="keyword">var</span> $box = $(<span class="string">'div'</span>);</span><br><span class="line">	<span class="built_in">console</span>.dir(box);</span><br><span class="line">	<span class="built_in">console</span>.log($box);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>3.功能的区别：</p>
+<ul>
+<li>DOM对象只能使用DOM的功能，无法使用jQuery功能</li>
+<li>jQuery对象只能使用jQuery功能，不能使用DOM功能<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">      box.text(<span class="string">'这是box'</span>);</span><br><span class="line">$box.innerHTML = <span class="string">'这是box的内容'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>4 DOM对象与jQuery对象的转换方式</p>
+</li>
+<li><p>4.1 将DOM对象转换为jQuery对象:将DOM对象传入到$()中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(box).text(<span class="string">'这是新内容'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.2 将jQuery对象转换为DOM对象</p>
+<ul>
+<li>利用索引取出jQuery对象中的DOM对象(推荐)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$box[<span class="number">0</span>].innerHTML = <span class="string">'这是box的新内容'</span>;</span><br><span class="line">利用get(索引)</span><br><span class="line">$box.get(<span class="number">0</span>).innerHTML = <span class="string">'这也是新内容'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是jquery对象？"><a href="#什么是jquery对象？" class="headerlink" title="什么是jquery对象？"></a>什么是jquery对象？</h2><ul>
+<li>jquery对象就是使用jquery的方法获取页面中的元素返回的对象就是jQuery对象。比如使用$()方法返回对象都是jquery对象。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"div"</span>);<span class="comment">//标签选择器返回的jquery对象。</span></span><br><span class="line">$(<span class="string">"#btnShowDiv"</span>);<span class="comment">//id选择器返回的jquery对象。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>jquery对象只能使用jquery对象的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $obj = $(<span class="string">"div"</span>);</span><br><span class="line">$obj.html(<span class="string">"jquery对象设置文本的方法"</span>);</span><br><span class="line">$obj.show();<span class="comment">//jquery对象显示文本</span></span><br><span class="line">$obj.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);<span class="comment">//jquery对象绑定事件</span></span><br></pre></td></tr></table></figure></p>
+<p>错误的用法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"div"</span>).innerHTML;<span class="comment">//jquery对象不能调用dom方法</span></span><br><span class="line"><span class="comment">//dom对象不能调用jquery方法。</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"btnShowDiv"</span>).show();</span><br></pre></td></tr></table></figure></p>
+<h2 id="深入了解jQuery对象"><a href="#深入了解jQuery对象" class="headerlink" title="深入了解jQuery对象"></a>深入了解jQuery对象</h2><ul>
+<li>jQuery对象其实就是DOM对象的包装集（包装了DOM对象的集合）<br>联想记忆：衣服和洗衣机的关系</li>
+</ul>
+<h2 id="jQuery对象和DOM对象的相互转换"><a href="#jQuery对象和DOM对象的相互转换" class="headerlink" title="jQuery对象和DOM对象的相互转换"></a>jQuery对象和DOM对象的相互转换</h2><ul>
+<li><ol>
+<li>jquery对象转DOM对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $li = $(<span class="string">"li"</span>);</span><br><span class="line"><span class="comment">//第一种方法（推荐使用）</span></span><br><span class="line">$li[<span class="number">0</span>]</span><br><span class="line"><span class="comment">//第二种方法</span></span><br><span class="line">$li.get(<span class="number">0</span>)</span><br><span class="line"><span class="comment">//其实jQuery对象转DOM对象的实质就是取出jQuery对象中封装的DOM对象。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>DOM对象转jquery对象（联想记忆：我有钱[美元]，所以我的功能就更强大）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $obj = $(domObj);</span><br><span class="line"><span class="comment">// $(document).ready(function()&#123;&#125;);就是典型的DOM对象转jQuery对象</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="区分jQuery和JavaScript"><a href="#区分jQuery和JavaScript" class="headerlink" title="区分jQuery和JavaScript"></a>区分jQuery和JavaScript</h2><ul>
+<li>JavaScript是一门编程语言，jquery是用JavaScript实现的一个JavaScript库，目的是简化我们的开发。（联想记忆：不能扛着洗衣机去出差）<br><img src="/images/jquery/7.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jQuery/01-jQuery简介" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1869,161 +2008,6 @@
 <li>私有成员（一般就是非函数成员）放到构造函数中</li>
 <li>共享成员（一般就是函数）放到原型对象中</li>
 <li>如果重置了 <code>prototype</code> 记得修正 <code>constructor</code> 的指向</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS/32-构造函数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/13/JS/32-构造函数/" class="article-date">
-      <time datetime="2017-03-13T01:08:50.000Z" itemprop="datePublished">2017-03-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/JS/32-构造函数/">32-构造函数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p>内容引导：</p>
-<ul>
-<li>构造函数语法</li>
-<li>分析构造函数</li>
-<li>构造函数和实例对象的关系<ul>
-<li>实例的 constructor 属性</li>
-<li>instanceof 操作符</li>
-</ul>
-</li>
-<li>普通函数调用和构造函数调用的区别</li>
-<li>构造函数的返回值</li>
-<li>构造函数的静态成员和实例成员<ul>
-<li>函数也是对象</li>
-<li>实例成员</li>
-<li>静态成员</li>
-</ul>
-</li>
-<li>构造函数的问题</li>
-</ul>
-<h2 id="更优雅的工厂函数：构造函数"><a href="#更优雅的工厂函数：构造函数" class="headerlink" title="更优雅的工厂函数：构造函数"></a>更优雅的工厂函数：构造函数</h2><ul>
-<li>一种更优雅的工厂函数就是下面这样，构造函数：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">18</span>)</span><br><span class="line">p1.sayName() <span class="comment">// =&gt; Jack</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Mike'</span>, <span class="number">23</span>)</span><br><span class="line">p2.sayName() <span class="comment">// =&gt; Mike</span></span><br></pre></td></tr></table></figure>
-<h2 id="解析构造函数代码的执行"><a href="#解析构造函数代码的执行" class="headerlink" title="解析构造函数代码的执行"></a>解析构造函数代码的执行</h2><blockquote>
-<p>在上面的示例中，<code>Person()</code> 函数取代了 <code>createPerson()</code> 函数，但是实现效果是一样的。<br>这是为什么呢？</p>
-<p>我们注意到，<code>Person()</code> 中的代码与 <code>createPerson()</code> 有以下几点不同之处：</p>
-</blockquote>
-<ul>
-<li>没有显示的创建对象</li>
-<li>直接将属性和方法赋给了 <code>this</code> 对象</li>
-<li>没有 <code>return</code> 语句</li>
-<li>函数名使用的是大写的 <code>Person</code></li>
-</ul>
-<p>而要创建 <code>Person</code> 实例，则必须使用 <code>new</code> 操作符。<br>以这种方式调用构造函数会经历以下 4 个步骤：</p>
-<ol>
-<li>创建一个新对象</li>
-<li>将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）</li>
-<li>执行构造函数中的代码</li>
-<li>返回新对象</li>
-</ol>
-<ul>
-<li>下面是具体的伪代码：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 当使用 new 操作符调用 Person() 的时候，实际上这里会先创建一个对象</span></span><br><span class="line"><span class="comment">// var instance = &#123;&#125;</span></span><br><span class="line"><span class="comment">// 然后让内部的 this 指向 instance 对象</span></span><br><span class="line"><span class="comment">// this = instance</span></span><br><span class="line"><span class="comment">// 接下来所有针对 this 的操作实际上操作的就是 instance</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在函数的结尾处会将 this 返回，也就是 instance</span></span><br><span class="line"><span class="comment">// return this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="构造函数和实例对象的关系"><a href="#构造函数和实例对象的关系" class="headerlink" title="构造函数和实例对象的关系"></a>构造函数和实例对象的关系</h2><blockquote>
-<p>使用构造函数的好处不仅仅在于代码的简洁性，更重要的是我们可以识别对象的具体类型了。</p>
-</blockquote>
-<blockquote>
-<p>在每一个实例对象中的__proto__中同时有一个 <code>constructor</code> 属性，该属性指向创建该实例的构造函数：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1.constructor === Person) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p2.constructor === Person) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.constructor === p2.constructor) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>对象的 <code>constructor</code> 属性最初是用来标识对象类型的，<br>但是，如果要检测对象的类型，还是使用 <code>instanceof</code> 操作符更可靠一些：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1 <span class="keyword">instanceof</span> Person) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p2 <span class="keyword">instanceof</span> Person) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
-<p>总结：</p>
-<ul>
-<li>构造函数是根据具体的事物抽象出来的抽象模板</li>
-<li>实例对象是根据抽象的构造函数模板得到的具体实例对象</li>
-<li>每一个实例对象都具有一个 <code>constructor</code> 属性，指向创建该实例的构造函数<ul>
-<li>注意： <code>constructor</code> 是实例的属性的说法不严谨，具体后面的原型会讲到</li>
-</ul>
-</li>
-<li>可以通过实例的 <code>constructor</code> 属性判断实例和构造函数之间的关系<ul>
-<li>注意：这种方式不严谨，推荐使用 <code>instanceof</code> 操作符，后面学原型会解释为什么</li>
-</ul>
-</li>
-</ul>
-<h2 id="构造函数的问题"><a href="#构造函数的问题" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h2><p>使用构造函数带来的最大的好处就是创建对象更方便了，但是其本身也存在一个浪费内存的问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.type = <span class="string">'human'</span></span><br><span class="line"><span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'zxx'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">16</span>)</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>在该示例中，从表面上好像没什么问题，但是实际上这样做，有一个很大的弊端。</p>
-<p>那就是对于每一个实例对象，<code>type</code> 和 <code>sayHello</code> 都是一模一样的内容，</p>
-<p>每一次生成一个实例，都必须为重复的内容，多占用一些内存，如果实例对象很多，会造成极大的内存浪费。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1.sayHello === p2.sayHello) <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<ul>
-<li>对于这种问题我们可以把需要共享的函数定义到构造函数外部：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span> = <span class="title">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.type = <span class="string">'human'</span></span><br><span class="line"><span class="keyword">this</span>.sayHello = sayHello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'zxx'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayHello === p2.sayHello) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这样确实可以了，但是如果有多个需要共享的函数的话就会造成全局命名空间冲突的问题。</p>
-</blockquote>
-<blockquote>
-<p>你肯定想到了可以把多个函数放到一个对象中用来避免全局命名空间冲突的问题：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fns = &#123;</span><br><span class="line">sayHello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;,</span><br><span class="line">sayAge: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name</span><br><span class="line"><span class="keyword">this</span>.age = age</span><br><span class="line"><span class="keyword">this</span>.type = <span class="string">'human'</span></span><br><span class="line"><span class="keyword">this</span>.sayHello = fns.sayHello</span><br><span class="line"><span class="keyword">this</span>.sayAge = fns.sayAge</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'zxx'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'Jack'</span>, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayHello === p2.sayHello) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayAge === p2.sayAge) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
-<p>至此，我们利用自己的方式基本上解决了构造函数的内存浪费问题。<br>但是代码看起来还是那么的格格不入，那有没有更好的方式呢？</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>构造函数语法</li>
-<li>分析构造函数</li>
-<li>构造函数和实例对象的关系<ul>
-<li>实例的 constructor 属性</li>
-<li>instanceof 操作符</li>
-</ul>
-</li>
-<li>构造函数的问题</li>
 </ul>
 
       

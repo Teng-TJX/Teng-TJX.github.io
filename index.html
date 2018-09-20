@@ -591,6 +591,183 @@
 
 
   
+    <article id="post-同源策略" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/08/同源策略/" class="article-date">
+      <time datetime="2017-06-08T11:11:39.000Z" itemprop="datePublished">2017-06-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/08/同源策略/">01-Ajax 技术</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="浏览器同源政策及其规避方法"><a href="#浏览器同源政策及其规避方法" class="headerlink" title="浏览器同源政策及其规避方法"></a>浏览器同源政策及其规避方法</h1><p><strong>浏览器安全的基石是”同源政策”（<a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank" rel="noopener">same-origin policy</a>）。很多开发者都知道这一点，但了解得不全面。</strong></p>
+<p><strong>本文详细介绍”同源政策”的各个方面，以及如何规避它</strong>。</p>
+<ul>
+<li><p><strong>含义</strong></p>
+<ul>
+<li><p>1995年同源策略有Netscape公司引入浏览器，目前所有浏览器都实行这个政策。最初，它的含义是指，A网页设置的 Cookie，B网页不能打开，除非这两个网页”同源”。所谓”同源”指的是”三个相同”。</p>
+<ul>
+<li><strong>协议相同</strong></li>
+<li><strong>域名相同</strong></li>
+<li><strong>端口相同</strong></li>
+</ul>
+</li>
+<li><p>例子</p>
+<ul>
+<li><p><strong>举例来说</strong>，<code>http://www.example.com/dir/page.html</code>这个网址，协议是<code>http://</code>，域名是<code>www.example.com</code>，端口是<code>80</code>（默认端口可以省略）。它的同源情况如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://www.example.com/dir2/other.html：同源</span><br><span class="line">http://example.com/dir/other.html：不同源（域名不同）</span><br><span class="line">http://v2.www.example.com/dir/other.html：不同源（域名不同）</span><br><span class="line">http://www.example.com:81/dir/other.html：不同源（端口不同）</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>目的</strong></p>
+<ul>
+<li>同源政策的目的，是为了保证用户信息的安全，防止恶意的网站窃取数据。</li>
+</ul>
+</li>
+<li><p><strong>限制范围</strong></p>
+<ul>
+<li><p>随着互联网的发展，”同源政策”越来越严格。目前，如果非同源，共有三种行为受到限制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">（1） Cookie、LocalStorage 和 IndexDB 无法读取。</span><br><span class="line">	 </span><br><span class="line">（2） DOM 无法获得。</span><br><span class="line"></span><br><span class="line">（3） AJAX 请求不能发送。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>##cookie</p>
+<p>Cookie 是服务器写入浏览器的一小段信息，只有同源的网页才能共享。但是，两个网页一级域名相同，只是二级域名不同，浏览器允许通过设置<code>document.domain</code>共享 Cookie。</p>
+<p>举例来说，A网页是<code>http://w1.example.com/a.html</code>，B网页是<code>http://w2.example.com/b.html</code>，那么只要设置相同的<code>document.domain</code>，两个网页就可以共享Cookie。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.domain = &apos;example.com&apos;;</span><br><span class="line">使用条件：</span><br><span class="line">     有其他页面 window 对象的引用。</span><br><span class="line">     二级域名相同。</span><br><span class="line">     协议相同。</span><br><span class="line">     端口相同。</span><br></pre></td></tr></table></figure>
+<p>现在，A网页通过脚本设置一个 Cookie。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &quot;test1=hello&quot;;</span><br></pre></td></tr></table></figure>
+<p>B网页就可以读到这个 Cookie。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var allCookie = document.cookie;</span><br></pre></td></tr></table></figure>
+<p>注意，这种方法只适用于 Cookie 和 iframe 窗口，LocalStorage 和 IndexDB 无法通过这种方法，规避同源政策，而要使用下文介绍的PostMessage API。</p>
+<p>另外，服务器也可以在设置Cookie的时候，指定Cookie的所属域名为一级域名，比如<code>.example.com</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: key=value; domain=.example.com; path=/</span><br></pre></td></tr></table></figure>
+<p>这样的话，二级域名和三级域名不用做任何设置，都可以读取这个Cookie。</p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><p>如果两个网页不同源，就无法拿到对方的DOM。典型的例子是<code>iframe</code>窗口和<code>window.open</code>方法打开的窗口，它们与父窗口无法通信。</p>
+<p>比如，父窗口运行下面的命令，如果<code>iframe</code>窗口不是同源，就会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;myIFrame&quot;).contentWindow.document</span><br><span class="line">// Uncaught DOMException: Blocked a frame from accessing a cross-origin frame.</span><br></pre></td></tr></table></figure>
+<p>上面命令中，父窗口想获取子窗口的DOM，因为跨源导致报错。</p>
+<p>反之亦然，子窗口获取主窗口的DOM也会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.parent.document.body</span><br><span class="line">// 报错</span><br></pre></td></tr></table></figure>
+<p>如果两个窗口一级域名相同，只是二级域名不同，那么设置上一节介绍的<code>document.domain</code>属性，就可以规避同源政策，拿到DOM。</p>
+<p>对于完全不同源的网站，目前有三种方法，可以解决跨域窗口的通信问题。</p>
+<ul>
+<li><p>片段识别符（fragment identifier）</p>
+<ul>
+<li><p>片段标识符（fragment identifier）指的是，URL的<code>#</code>号后面的部分，比如<code>http://example.com/x.html#fragment</code>的<code>#fragment</code>。如果只是改变片段标识符，页面不会重新刷新</p>
+</li>
+<li><p>父窗口可以把信息，写入子窗口的片段标识符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var src = originURL + &apos;#&apos; + data;</span><br><span class="line">document.getElementById(&apos;myIFrame&apos;).src = src;</span><br></pre></td></tr></table></figure>
+<p>子窗口通过监听<code>hashchange</code>事件得到通知。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.onhashchange = checkMessage;</span><br><span class="line"></span><br><span class="line">function checkMessage() &#123;</span><br><span class="line">  var message = window.location.hash;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样的，子窗口也可以改变父窗口的片段标识符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent.location.href= target + &quot;#&quot; + hash;</span><br></pre></td></tr></table></figure>
+<p>接着，子窗口跳回一个与主窗口同域的网址。<br>location = ‘<a href="http://parent.url.com/xxx.html&#39;" target="_blank" rel="noopener">http://parent.url.com/xxx.html&#39;</a>;</p>
+</li>
+</ul>
+<h2 id="window-name"><a href="#window-name" class="headerlink" title="window.name"></a>window.name</h2><p>​</p>
+<ul>
+<li><p>浏览器窗口有<code>window.name</code>属性。这个属性的最大特点是，无论是否同源，只要在同一个窗口里，前一个网页设置了这个属性，后一个网页可以读取它。</p>
+</li>
+<li><p>父窗口先打开一个子窗口，载入一个不同源的网页，该网页将信息写入<code>window.name</code>属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.name = data;</span><br></pre></td></tr></table></figure>
+<p>接着，子窗口跳回一个与主窗口同域的网址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = &apos;http://parent.url.com/xxx.html&apos;;</span><br></pre></td></tr></table></figure>
+<p>然后，主窗口就可以读取子窗口的<code>window.name</code>了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var data = document.getElementById(&apos;myFrame&apos;).contentWindow.name;</span><br></pre></td></tr></table></figure>
+<p>这种方法的优点是，<code>window.name</code>容量很大，可以放置非常长的字符串；缺点是必须监听子窗口<code>window.name</code>属性的变化，影响网页性能。</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="window-postMessage"><a href="#window-postMessage" class="headerlink" title="window.postMessage"></a>window.postMessage</h2><p>​</p>
+<p>上面两种方法都属于破解，HTML5为了解决这个问题，引入了一个全新的API：跨文档通信 API（Cross-document messaging）</p>
+<ul>
+<li>这个API为<code>window</code>对象新增了一个<code>window.postMessage</code>方法，允许跨窗口通信，不论这两个窗口是否同源。</li>
+</ul>
+<p>举例来说，父窗口<code>http://aaa.com</code>向子窗口<code>http://bbb.com</code>发消息，调用<code>postMessage</code>方法就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var popup = window.open(&apos;http://bbb.com&apos;, &apos;title&apos;);</span><br><span class="line">popup.postMessage(&apos;Hello World!&apos;, &apos;http://bbb.com&apos;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>postMessage</code>方法的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源（origin），即”协议 + 域名 + 端口”。也可以设为<code>*</code>，表示不限制域名，向所有窗口发送。</li>
+<li>父窗口和子窗口都可以通过<code>message</code>事件，监听对方的消息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;message&apos;, function(e) &#123;</span><br><span class="line">  console.log(e.data);</span><br><span class="line">&#125;,false);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>message</code>事件的事件对象<code>event</code>，提供以下三个属性<ul>
+<li><code>event.source</code>：发送消息的窗口</li>
+<li><code>event.origin</code>: 消息发向的网址</li>
+<li><code>event.data</code>: 消息内容</li>
+</ul>
+</li>
+</ul>
+<p>下面的例子是，子窗口通过<code>event.source</code>属性引用父窗口，然后发送消息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;message&apos;, receiveMessage);</span><br><span class="line">function receiveMessage(event) &#123;</span><br><span class="line">  event.source.postMessage(&apos;Nice to see you!&apos;, &apos;*&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>event.origin</code>属性可以过滤不是发给本窗口的消息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;message&apos;, receiveMessage);</span><br><span class="line">function receiveMessage(event) &#123;</span><br><span class="line">  if (event.origin !== &apos;http://aaa.com&apos;) return;</span><br><span class="line">  if (event.data === &apos;Hello World&apos;) &#123;</span><br><span class="line">      event.source.postMessage(&apos;Hello&apos;, event.origin);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    console.log(event.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h2><p>通过<code>window.postMessage</code>，读写其他窗口的 LocalStorage 也成为了可能。下面是一个例子，主窗口写入iframe子窗口的<code>localStorage</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">window.onmessage = function(e) &#123;</span><br><span class="line">  if (e.origin !== &apos;http://bbb.com&apos;) &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  var payload = JSON.parse(e.data);</span><br><span class="line">  localStorage.setItem(payload.key, JSON.stringify(payload.data));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，子窗口将父窗口发来的消息，写入自己的LocalStorage。</p>
+<p>父窗口发送消息的代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var win = document.getElementsByTagName(&apos;iframe&apos;)[0].contentWindow;</span><br><span class="line">var obj = &#123; name: &apos;Jack&apos; &#125;;</span><br><span class="line">win.postMessage(JSON.stringify(&#123;key: &apos;storage&apos;, data: obj&#125;), &apos;http://bbb.com&apos;)</span><br></pre></td></tr></table></figure>
+<p>加强版的子窗口接收消息的代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">window.onmessage = function(e) &#123;</span><br><span class="line">  if (e.origin !== &apos;http://bbb.com&apos;) return;</span><br><span class="line">  var payload = JSON.parse(e.data);</span><br><span class="line">  switch (payload.method) &#123;</span><br><span class="line">    case &apos;set&apos;:</span><br><span class="line">      localStorage.setItem(payload.key, JSON.stringify(payload.data));</span><br><span class="line">      break;</span><br><span class="line">    case &apos;get&apos;:</span><br><span class="line">      var parent = window.parent;</span><br><span class="line">      var data = localStorage.getItem(payload.key);</span><br><span class="line">      parent.postMessage(data, &apos;http://aaa.com&apos;);</span><br><span class="line">      break;</span><br><span class="line">    case &apos;remove&apos;:</span><br><span class="line">      localStorage.removeItem(payload.key);</span><br><span class="line">      break;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>加强版的父窗口发送消息代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var win = document.getElementsByTagName(&apos;iframe&apos;)[0].contentWindow;</span><br><span class="line">var obj = &#123; name: &apos;Jack&apos; &#125;;</span><br><span class="line">// 存入对象</span><br><span class="line">win.postMessage(JSON.stringify(&#123;key: &apos;storage&apos;, method: &apos;set&apos;, data: obj&#125;), &apos;http://bbb.com&apos;);</span><br><span class="line">// 读取对象</span><br><span class="line">win.postMessage(JSON.stringify(&#123;key: &apos;storage&apos;, method: &quot;get&quot;&#125;), &quot;*&quot;);</span><br><span class="line">window.onmessage = function(e) &#123;</span><br><span class="line">  if (e.origin != &apos;http://aaa.com&apos;) return;</span><br><span class="line">  // &quot;Jack&quot;</span><br><span class="line">  console.log(JSON.parse(e.data).name);</span><br></pre></td></tr></table></figure>
+<p>本文摘自：<a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener">阮一峰</a>网络日志</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-H5C3/13-视差滚动" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1529,363 +1706,6 @@
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span> <span class="attr">data-my-name</span>=<span class="string">"itcast"</span> <span class="attr">data-age</span>=<span class="string">"10"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--1. 大家理解的自定义属性：自己定义的属性--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--2. 非标准属性：就是自定义属性--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--3. 像：name class id title alt 标准属性  反之 非标准--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--H5规范 用来存储数据的属性 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--4. 以 data- 开始的属性认为是自定义属性 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--5. 操作自定义属性注意些：--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--6. dataset对象 指定的是当前dom元素上的自定义属性的集合 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--7. 获取自定义属性：dataset.属性名称 dataset[属性名称] --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--8. 设置自定义属性： dataset.属性名称 = 属性值   dataset[属性名称] = 属性值 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--9. 自定义属性的名称遵从驼峰命名 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--10. dom上的属性的定义 不支持大写 写了也转换成小写--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">/*</span></span><br><span class="line"><span class="undefined">  Node.dataset是以对象形式存在的，当我们为同一个DOM节点指定了多个自定义属性时，</span></span><br><span class="line"><span class="undefined">  Node.dataset则存储了所有的自定义属性的值。</span></span><br><span class="line"><span class="undefined">  */</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> demo = <span class="built_in">document</span>.querySelector(反馈);</span></span><br><span class="line"><span class="javascript"><span class="comment">//获取</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//注：当我们如下格式设置时，则需要以驼峰格式才能正确获取</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> name = demo.dataset[<span class="string">'myName'</span>];</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> age = demo.dataset[<span class="string">'age'</span>];</span></span><br><span class="line"><span class="javascript"><span class="comment">//设置</span></span></span><br><span class="line"><span class="javascript">demo.dataset[<span class="string">'name'</span>] = <span class="string">'web developer'</span>;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>/&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在不使用第三方库的情况下，使用最便捷的方式操作DOM，完成页面效果</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5C3/">H5C3</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-H5C3/05-fullpage" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/17/H5C3/05-fullpage/" class="article-date">
-      <time datetime="2017-05-17T06:08:05.000Z" itemprop="datePublished">2017-05-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/H5C3/05-fullpage/">05-fullpage</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="全屏切换"><a href="#全屏切换" class="headerlink" title="全屏切换"></a>全屏切换</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>掌握fullpage的使用完成全屏切换效果</li>
-</ul>
-<h2 id="fullpage插件"><a href="#fullpage插件" class="headerlink" title="fullpage插件"></a>fullpage插件</h2><h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><ul>
-<li>基于 jQuery 的插件，它能够帮你很方便、很轻松的制作出全屏网站。</li>
-<li>支持鼠标滚动，支持前进后退和键盘控制，多个回调函数，<br>支持手机、平板触摸事件，支持 CSS3 动画，支持窗口缩放，窗口缩放时自动调整，<br>可设置滚动宽度、背景颜色、滚动速度、循环选项、回调、文本对齐方式等等。</li>
-<li>参考文档：<a href="http://www.dowebok.com/demo/2014/77/" target="_blank" rel="noopener">http://www.dowebok.com/demo/2014/77/</a></li>
-</ul>
-<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ul>
-<li><p>引用文件</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/jquery.fullPage.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.fullPage.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>html结构</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"fullpage"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span>第一屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span>第二屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第一屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第二屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第三屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第四屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span>第四屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>js初始化</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'#fullpage'</span>).fullpage();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="参考api"><a href="#参考api" class="headerlink" title="参考api"></a>参考api</h3><ul>
-<li>配置</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>类型</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>verticalCentered</td>
-<td>字符串</td>
-<td>true</td>
-<td>内容是否垂直居中</td>
-</tr>
-<tr>
-<td>resize</td>
-<td>布尔值</td>
-<td>false</td>
-<td>字体是否随着窗口缩放而缩放</td>
-</tr>
-<tr>
-<td>slidesColor</td>
-<td>数组</td>
-<td>无</td>
-<td>设置背景颜色</td>
-</tr>
-<tr>
-<td>sectionsColor</td>
-<td>数组</td>
-<td>无</td>
-<td>设置背景颜色</td>
-</tr>
-<tr>
-<td>anchors</td>
-<td>数组</td>
-<td>无</td>
-<td>定义锚链接</td>
-</tr>
-<tr>
-<td>scrollingSpeed</td>
-<td>整数</td>
-<td>700</td>
-<td>滚动速度，单位为毫秒</td>
-</tr>
-<tr>
-<td>easing</td>
-<td>字符串</td>
-<td>easeInQuart</td>
-<td>滚动动画方式</td>
-</tr>
-<tr>
-<td>menu</td>
-<td>布尔值</td>
-<td>false</td>
-<td>绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动</td>
-</tr>
-<tr>
-<td>navigation</td>
-<td>布尔值</td>
-<td>false</td>
-<td>是否显示项目导航</td>
-</tr>
-<tr>
-<td>navigationPosition</td>
-<td>字符串</td>
-<td>right</td>
-<td>项目导航的位置，可选 left 或 right</td>
-</tr>
-<tr>
-<td>navigationColor</td>
-<td>字符串</td>
-<td>#000</td>
-<td>项目导航的颜色</td>
-</tr>
-<tr>
-<td>navigationTooltips</td>
-<td>数组</td>
-<td>空</td>
-<td>项目导航的 tip</td>
-</tr>
-<tr>
-<td>slidesNavigation</td>
-<td>布尔值</td>
-<td>false</td>
-<td>是否显示左右滑块的项目导航</td>
-</tr>
-<tr>
-<td>slidesNavPosition</td>
-<td>字符串</td>
-<td>bottom</td>
-<td>左右滑块的项目导航的位置，可选 top 或 bottom</td>
-</tr>
-<tr>
-<td>controlArrowColor</td>
-<td>字符串</td>
-<td>#fff</td>
-<td>左右滑块的箭头的背景颜色</td>
-</tr>
-<tr>
-<td>loopBottom</td>
-<td>布尔值</td>
-<td>false</td>
-<td>滚动到最底部后是否滚回顶部</td>
-</tr>
-<tr>
-<td>loopTop</td>
-<td>布尔值</td>
-<td>false</td>
-<td>滚动到最顶部后是否滚底部</td>
-</tr>
-<tr>
-<td>loopHorizontal</td>
-<td>布尔值</td>
-<td>true</td>
-<td>左右滑块是否循环滑动</td>
-</tr>
-<tr>
-<td>autoScrolling</td>
-<td>布尔值</td>
-<td>true</td>
-<td>是否使用插件的滚动方式，如果选择 false，则会出现浏览器自带的滚动条</td>
-</tr>
-<tr>
-<td>scrollOverflow</td>
-<td>布尔值</td>
-<td>false</td>
-<td>内容超过满屏后是否显示滚动条</td>
-</tr>
-<tr>
-<td>css3</td>
-<td>布尔值</td>
-<td>false</td>
-<td>是否使用 CSS3 transforms 滚动</td>
-</tr>
-<tr>
-<td>paddingTop</td>
-<td>字符串</td>
-<td>0</td>
-<td>与顶部的距离</td>
-</tr>
-<tr>
-<td>paddingBottom</td>
-<td>字符串</td>
-<td>0</td>
-<td>与底部距离</td>
-</tr>
-<tr>
-<td>fixedElements</td>
-<td>字符串</td>
-<td>无</td>
-<td></td>
-</tr>
-<tr>
-<td>normalScrollElements</td>
-<td></td>
-<td>无</td>
-<td></td>
-</tr>
-<tr>
-<td>keyboardScrolling</td>
-<td>布尔值</td>
-<td>true</td>
-<td>是否使用键盘方向键导航</td>
-</tr>
-<tr>
-<td>touchSensitivity</td>
-<td>整数</td>
-<td>5</td>
-<td></td>
-</tr>
-<tr>
-<td>continuousVertical</td>
-<td>布尔值</td>
-<td>false</td>
-<td>是否循环滚动，与 loopTop 及 loopBottom 不兼容</td>
-</tr>
-<tr>
-<td>animateAnchor</td>
-<td>布尔值</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>normalScrollElementTouchThreshold</td>
-<td>整数</td>
-<td>5</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>方法</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>moveSectionUp()</td>
-<td>向上滚动</td>
-</tr>
-<tr>
-<td>moveSectionDown()</td>
-<td>向下滚动</td>
-</tr>
-<tr>
-<td>moveTo(section, slide)</td>
-<td>滚动到</td>
-</tr>
-<tr>
-<td>moveSlideRight()</td>
-<td>slide 向右滚动</td>
-</tr>
-<tr>
-<td>moveSlideLeft()</td>
-<td>slide 向左滚动</td>
-</tr>
-<tr>
-<td>setAutoScrolling()</td>
-<td>设置页面滚动方式，设置为 true 时自动滚动</td>
-</tr>
-<tr>
-<td>setAllowScrolling()</td>
-<td>添加或删除鼠标滚轮/触控板控制</td>
-</tr>
-<tr>
-<td>setKeyboardScrolling()</td>
-<td>添加或删除键盘方向键控制</td>
-</tr>
-<tr>
-<td>setScrollingSpeed()</td>
-<td>定义以毫秒为单位的滚动速度</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>回调函数</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>afterLoad</td>
-<td>滚动到某一屏后的回调函数，接收 anchorLink 和 index 两个参数，anchorLink 是锚链接的名称，index 是序号，从1开始计算</td>
-</tr>
-<tr>
-<td>onLeave</td>
-<td>滚动前的回调函数，接收 index、nextIndex 和 direction 3个参数：index 是离开的“页面”的序号，从1开始计算；nextIndex 是滚动到的“页面”的序号，从1开始计算；direction 判断往上滚动还是往下滚动，值是 up 或 down。</td>
-</tr>
-<tr>
-<td>afterRender</td>
-<td>页面结构生成后的回调函数，或者说页面初始化完成后的回调函数</td>
-</tr>
-<tr>
-<td>afterSlideLoad</td>
-<td>滚动到某一水平滑块后的回调函数，与 afterLoad 类似，接收 anchorLink、index、slideIndex、direction 4个参数</td>
-</tr>
-<tr>
-<td>onSlideLeave</td>
-<td>某一水平滑块滚动前的回调函数，与 onLeave 类似，接收 anchorLink、index、slideIndex、direction 4个参数</td>
-</tr>
-</tbody>
-</table>
 
       
     </div>

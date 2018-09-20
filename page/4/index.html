@@ -273,6 +273,105 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-PHP/26-cookie技术" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/27/PHP/26-cookie技术/" class="article-date">
+      <time datetime="2017-04-27T05:20:09.000Z" itemprop="datePublished">2017-04-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/PHP/26-cookie技术/">26-cookie技术</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="cookie技术"><a href="#cookie技术" class="headerlink" title="cookie技术"></a>cookie技术</h1><h2 id="什么是cookie？"><a href="#什么是cookie？" class="headerlink" title="什么是cookie？"></a>什么是cookie？</h2><p>  cookie是将数据持久化存储到客户端的一种技术。</p>
+<p>   网站可以将数据写到浏览器中， 一个网站最多能在一个浏览器写20个cookie。</p>
+<p>   一个浏览器能够设置的总cookie数最多为300个，每个不能超过4kb。</p>
+<p>   cookie既能保存在文件中，也能保存在内存中。</p>
+<h2 id="设置-读取cookie"><a href="#设置-读取cookie" class="headerlink" title="设置/读取cookie"></a>设置/读取cookie</h2><p>1) 设置cookie</p>
+<p>   setcookie(var1 , var2, var3);</p>
+<p>   var1: cookie的名称</p>
+<p>   var2: 名称对应的值， 可选参数</p>
+<p>   var3: cookie的有效期， 可选参数</p>
+<p>   <img src="/images/php/1534478105079.png" alt="1534478105079"></p>
+<p>2) 读取cookie信息</p>
+<p>   使用php的超全局变量 $_COOKIE进行读取</p>
+<p>   <img src="/images/php/1534478123739.png" alt="1534478123739"></p>
+<p>   通过浏览器查看cookie信息:</p>
+<p>   <img src="/images/php/1534478176053.png" alt="1534478176053"></p>
+<p>   <img src="/images/php/1534478276084.png" alt="1534478276084"></p>
+<h2 id="cookie有效期"><a href="#cookie有效期" class="headerlink" title="cookie有效期"></a>cookie有效期</h2><p>  setcookie函数的参数3可以控制cookie有效期</p>
+<pre><code>参数3设置为-1 或者 不设置，关闭浏览器即失效
+参数3设置为 time()+秒数，则在当前时间点的多少秒之后失效
+</code></pre><p>  设置cookie时，如果设置了有效期，则cookie会保存在文件中；如果没有设置有效期，则cookie保存在内存中。</p>
+<h2 id="cookie的有效范围"><a href="#cookie的有效范围" class="headerlink" title="cookie的有效范围"></a>cookie的有效范围</h2><p>  <strong>setcookie函数还有参数4、5，可以用来控制cookie的有效访问，但是一般不用。</strong></p>
+<p>只需要记住下面的情况即可：   </p>
+<pre><code>在不使用参数4和5的情况下，cookie在当前目录及子目录中有效，在上层目录中无效。
+</code></pre><p><img src="/images/php/1534478631803.png" alt="1534478631803"></p>
+<h2 id="cookie删除"><a href="#cookie删除" class="headerlink" title="cookie删除"></a>cookie删除</h2><p> setcookie函数第二个参数设置为null，就可以删除cookie</p>
+<pre><code>setcookie(&apos;name&apos;, null);
+</code></pre><p><img src="/images/php/1534478730006.png" alt="1534478730006"></p>
+<h2 id="js控制cookie"><a href="#js控制cookie" class="headerlink" title="js控制cookie"></a>js控制cookie</h2><p> cookie是将数据保存在客户端的，所以可以使用javascript来读取/设置cookie。 </p>
+<p>   设置cookie:   document.cookie = “名称=值;expires=时间”</p>
+<p>   读取cookie:   document.cookie</p>
+<p>读取cookie:</p>
+<p><img src="/images/php/1534479056017.png" alt="1534479056017"></p>
+<p><img src="/images/php/1534479028505.png" alt="1534479028505"></p>
+<p>设置cookie:</p>
+<p>  expires: 用来指定cookie有效期的</p>
+<p><img src="/images/php/1534479410042.png" alt="1534479410042"></p>
+<h2 id="cookie原理"><a href="#cookie原理" class="headerlink" title="cookie原理"></a>cookie原理</h2><p>当浏览器访问一个带cookie的页面时，cookie会随着响应头返回给浏览器。</p>
+<p>  当再次访问该网站的页面时，cookie会随着请求头一起发送给服务器。</p>
+<p><img src="/images/php/1534556304079.png" alt="1534556304079"></p>
+<p><img src="/images/php/1534556836082.png" alt="1534556836082"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/25-PHP会话控制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1229,82 +1328,6 @@ join 表2  on  链接条件
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table ali_cate(</span><br><span class="line">  cate_id tinyint UNSIGNED auto_increment primary key,</span><br><span class="line">  cate_name varchar(<span class="number">10</span>) unique not <span class="keyword">null</span>,</span><br><span class="line">  cate_slug varchar(<span class="number">30</span>) UNIQUE not <span class="keyword">null</span>,</span><br><span class="line">  cate_addtime date not <span class="keyword">null</span></span><br><span class="line">)engine=myisam <span class="keyword">default</span> charset=utf8;</span><br></pre></td></tr></table></figure>
 <p>ali_article（文章表）： 文章id（主键）、文章标题、文章内容、文章作者、所属栏目、发布时间、文章状态（草稿、已发布）</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table ali_article(</span><br><span class="line">  article_id int UNSIGNED auto_increment primary key,</span><br><span class="line">  article_title varchar(<span class="number">30</span>) UNIQUE not <span class="keyword">null</span>,</span><br><span class="line">  article_content text not <span class="keyword">null</span>,</span><br><span class="line">  article_adminid int UNSIGNED not <span class="keyword">null</span>,</span><br><span class="line">	article_cateid tinyint UNSIGNED not <span class="keyword">null</span>,</span><br><span class="line">  article_addtime int not <span class="keyword">null</span>,</span><br><span class="line">  article_state enum(<span class="string">'草稿'</span>,<span class="string">'已发布'</span>)</span><br><span class="line">)engine=myisam <span class="keyword">default</span> charset=utf8;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP/16-创建数据表" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/25/PHP/16-创建数据表/" class="article-date">
-      <time datetime="2017-04-25T05:55:46.000Z" itemprop="datePublished">2017-04-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/PHP/16-创建数据表/">16-创建数据表</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h1><h2 id="创建表的基本格式"><a href="#创建表的基本格式" class="headerlink" title="创建表的基本格式"></a>创建表的基本格式</h2><p>语句格式:</p>
-<p>CREATE TABLE 表名 (</p>
-<pre><code>列名     数据类型(长度)    完整性约束条件,
-
-列名     数据类型(长度)    完整性约束条件,
-......
-</code></pre><p>) engine=myisam default charset=utf8</p>
-<p><strong>注意事项:</strong></p>
-<p>   <strong>列名、数据类型、长度是必有的； 完整性约束条件可以没有</strong></p>
-<p>   <strong>最后的 utf8 没有 -</strong></p>
-<h2 id="创建用户表-–-users"><a href="#创建用户表-–-users" class="headerlink" title="创建用户表 – users"></a>创建用户表 – users</h2><hr>
-<p>案例:  在cms数据库中，创建一张users数据表，该表中只保存用户id和用户名两个字段</p>
-<p><strong>一定要先选中 cms 库，再去打开查询编辑器</strong></p>
-<p><img src="/images/php/1534046076681.png" alt=""></p>
-<p><img src="/images/php/1534046277367.png" alt=""></p>
-<p>uid   int (5) :  uid字段是整型的，长度是5 (0–99999)</p>
-<p>uname varchar(20): uname字段是字符串类型，长度是20 </p>
 
       
     </div>

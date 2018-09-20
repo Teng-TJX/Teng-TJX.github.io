@@ -273,6 +273,363 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-H5C3/05-fullpage" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/17/H5C3/05-fullpage/" class="article-date">
+      <time datetime="2017-05-17T06:08:05.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/H5C3/05-fullpage/">05-fullpage</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="全屏切换"><a href="#全屏切换" class="headerlink" title="全屏切换"></a>全屏切换</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>掌握fullpage的使用完成全屏切换效果</li>
+</ul>
+<h2 id="fullpage插件"><a href="#fullpage插件" class="headerlink" title="fullpage插件"></a>fullpage插件</h2><h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><ul>
+<li>基于 jQuery 的插件，它能够帮你很方便、很轻松的制作出全屏网站。</li>
+<li>支持鼠标滚动，支持前进后退和键盘控制，多个回调函数，<br>支持手机、平板触摸事件，支持 CSS3 动画，支持窗口缩放，窗口缩放时自动调整，<br>可设置滚动宽度、背景颜色、滚动速度、循环选项、回调、文本对齐方式等等。</li>
+<li>参考文档：<a href="http://www.dowebok.com/demo/2014/77/" target="_blank" rel="noopener">http://www.dowebok.com/demo/2014/77/</a></li>
+</ul>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ul>
+<li><p>引用文件</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/jquery.fullPage.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.fullPage.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>html结构</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"fullpage"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span>第一屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span>第二屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第一屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第二屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第三屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>第三屏的第四屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span>&gt;</span>第四屏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js初始化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'#fullpage'</span>).fullpage();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考api"><a href="#参考api" class="headerlink" title="参考api"></a>参考api</h3><ul>
+<li>配置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>verticalCentered</td>
+<td>字符串</td>
+<td>true</td>
+<td>内容是否垂直居中</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>布尔值</td>
+<td>false</td>
+<td>字体是否随着窗口缩放而缩放</td>
+</tr>
+<tr>
+<td>slidesColor</td>
+<td>数组</td>
+<td>无</td>
+<td>设置背景颜色</td>
+</tr>
+<tr>
+<td>sectionsColor</td>
+<td>数组</td>
+<td>无</td>
+<td>设置背景颜色</td>
+</tr>
+<tr>
+<td>anchors</td>
+<td>数组</td>
+<td>无</td>
+<td>定义锚链接</td>
+</tr>
+<tr>
+<td>scrollingSpeed</td>
+<td>整数</td>
+<td>700</td>
+<td>滚动速度，单位为毫秒</td>
+</tr>
+<tr>
+<td>easing</td>
+<td>字符串</td>
+<td>easeInQuart</td>
+<td>滚动动画方式</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>布尔值</td>
+<td>false</td>
+<td>绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动</td>
+</tr>
+<tr>
+<td>navigation</td>
+<td>布尔值</td>
+<td>false</td>
+<td>是否显示项目导航</td>
+</tr>
+<tr>
+<td>navigationPosition</td>
+<td>字符串</td>
+<td>right</td>
+<td>项目导航的位置，可选 left 或 right</td>
+</tr>
+<tr>
+<td>navigationColor</td>
+<td>字符串</td>
+<td>#000</td>
+<td>项目导航的颜色</td>
+</tr>
+<tr>
+<td>navigationTooltips</td>
+<td>数组</td>
+<td>空</td>
+<td>项目导航的 tip</td>
+</tr>
+<tr>
+<td>slidesNavigation</td>
+<td>布尔值</td>
+<td>false</td>
+<td>是否显示左右滑块的项目导航</td>
+</tr>
+<tr>
+<td>slidesNavPosition</td>
+<td>字符串</td>
+<td>bottom</td>
+<td>左右滑块的项目导航的位置，可选 top 或 bottom</td>
+</tr>
+<tr>
+<td>controlArrowColor</td>
+<td>字符串</td>
+<td>#fff</td>
+<td>左右滑块的箭头的背景颜色</td>
+</tr>
+<tr>
+<td>loopBottom</td>
+<td>布尔值</td>
+<td>false</td>
+<td>滚动到最底部后是否滚回顶部</td>
+</tr>
+<tr>
+<td>loopTop</td>
+<td>布尔值</td>
+<td>false</td>
+<td>滚动到最顶部后是否滚底部</td>
+</tr>
+<tr>
+<td>loopHorizontal</td>
+<td>布尔值</td>
+<td>true</td>
+<td>左右滑块是否循环滑动</td>
+</tr>
+<tr>
+<td>autoScrolling</td>
+<td>布尔值</td>
+<td>true</td>
+<td>是否使用插件的滚动方式，如果选择 false，则会出现浏览器自带的滚动条</td>
+</tr>
+<tr>
+<td>scrollOverflow</td>
+<td>布尔值</td>
+<td>false</td>
+<td>内容超过满屏后是否显示滚动条</td>
+</tr>
+<tr>
+<td>css3</td>
+<td>布尔值</td>
+<td>false</td>
+<td>是否使用 CSS3 transforms 滚动</td>
+</tr>
+<tr>
+<td>paddingTop</td>
+<td>字符串</td>
+<td>0</td>
+<td>与顶部的距离</td>
+</tr>
+<tr>
+<td>paddingBottom</td>
+<td>字符串</td>
+<td>0</td>
+<td>与底部距离</td>
+</tr>
+<tr>
+<td>fixedElements</td>
+<td>字符串</td>
+<td>无</td>
+<td></td>
+</tr>
+<tr>
+<td>normalScrollElements</td>
+<td></td>
+<td>无</td>
+<td></td>
+</tr>
+<tr>
+<td>keyboardScrolling</td>
+<td>布尔值</td>
+<td>true</td>
+<td>是否使用键盘方向键导航</td>
+</tr>
+<tr>
+<td>touchSensitivity</td>
+<td>整数</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>continuousVertical</td>
+<td>布尔值</td>
+<td>false</td>
+<td>是否循环滚动，与 loopTop 及 loopBottom 不兼容</td>
+</tr>
+<tr>
+<td>animateAnchor</td>
+<td>布尔值</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>normalScrollElementTouchThreshold</td>
+<td>整数</td>
+<td>5</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>moveSectionUp()</td>
+<td>向上滚动</td>
+</tr>
+<tr>
+<td>moveSectionDown()</td>
+<td>向下滚动</td>
+</tr>
+<tr>
+<td>moveTo(section, slide)</td>
+<td>滚动到</td>
+</tr>
+<tr>
+<td>moveSlideRight()</td>
+<td>slide 向右滚动</td>
+</tr>
+<tr>
+<td>moveSlideLeft()</td>
+<td>slide 向左滚动</td>
+</tr>
+<tr>
+<td>setAutoScrolling()</td>
+<td>设置页面滚动方式，设置为 true 时自动滚动</td>
+</tr>
+<tr>
+<td>setAllowScrolling()</td>
+<td>添加或删除鼠标滚轮/触控板控制</td>
+</tr>
+<tr>
+<td>setKeyboardScrolling()</td>
+<td>添加或删除键盘方向键控制</td>
+</tr>
+<tr>
+<td>setScrollingSpeed()</td>
+<td>定义以毫秒为单位的滚动速度</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>回调函数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>afterLoad</td>
+<td>滚动到某一屏后的回调函数，接收 anchorLink 和 index 两个参数，anchorLink 是锚链接的名称，index 是序号，从1开始计算</td>
+</tr>
+<tr>
+<td>onLeave</td>
+<td>滚动前的回调函数，接收 index、nextIndex 和 direction 3个参数：index 是离开的“页面”的序号，从1开始计算；nextIndex 是滚动到的“页面”的序号，从1开始计算；direction 判断往上滚动还是往下滚动，值是 up 或 down。</td>
+</tr>
+<tr>
+<td>afterRender</td>
+<td>页面结构生成后的回调函数，或者说页面初始化完成后的回调函数</td>
+</tr>
+<tr>
+<td>afterSlideLoad</td>
+<td>滚动到某一水平滑块后的回调函数，与 afterLoad 类似，接收 anchorLink、index、slideIndex、direction 4个参数</td>
+</tr>
+<tr>
+<td>onSlideLeave</td>
+<td>某一水平滑块滚动前的回调函数，与 onLeave 类似，接收 anchorLink、index、slideIndex、direction 4个参数</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5C3/">H5C3</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-H5C3/04-边框图片" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -434,7 +791,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .box&#123;</span></span><br><span class="line"><span class="undefined">            width: 200px;</span></span><br><span class="line"><span class="undefined">            height: 200px;</span></span><br><span class="line"><span class="undefined">            position: relative;</span></span><br><span class="line"><span class="undefined">            margin: 100px auto;</span></span><br><span class="line"><span class="undefined">            /*辅助3d效果开发  视觉效果 */</span></span><br><span class="line"><span class="undefined">            /*透视：理解成在屏幕外面安排一只眼睛帮我们开3d效果*/</span></span><br><span class="line"><span class="undefined">            /* 形成近大远小 效果  */</span></span><br><span class="line"><span class="undefined">            /*perspective: 300px;*/</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*真正意义的3D呈现 */</span></span><br><span class="line"><span class="undefined">            transform-style: preserve-3d;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            transform: rotateX(30deg) rotateY(-30deg);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            animation: rotate 4s linear infinite;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box &gt; div&#123;</span></span><br><span class="line"><span class="undefined">            width: 100%;</span></span><br><span class="line"><span class="undefined">            height: 100%;</span></span><br><span class="line"><span class="undefined">            position: absolute;</span></span><br><span class="line"><span class="undefined">            left: 0;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">            line-height: 200px;</span></span><br><span class="line"><span class="undefined">            font-size: 20px;</span></span><br><span class="line"><span class="undefined">            opacity: 0.4;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box .front&#123;</span></span><br><span class="line"><span class="undefined">            background: red;</span></span><br><span class="line"><span class="undefined">            transform: translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box .back&#123;</span></span><br><span class="line"><span class="undefined">            background: blue;</span></span><br><span class="line"><span class="undefined">            transform: rotateY(-180deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box .left&#123;</span></span><br><span class="line"><span class="undefined">            background: green;</span></span><br><span class="line"><span class="undefined">            transform: rotateY(-90deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box .right&#123;</span></span><br><span class="line"><span class="undefined">            background: yellow;</span></span><br><span class="line"><span class="undefined">            transform: rotateY(-270deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box .top&#123;</span></span><br><span class="line"><span class="undefined">            background: pink;</span></span><br><span class="line"><span class="undefined">            transform: rotateX(90deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .box .bottom&#123;</span></span><br><span class="line"><span class="undefined">            background: hotpink;</span></span><br><span class="line"><span class="undefined">            transform: rotateX(-90deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        /* 立方体的中心在电脑平面上  */</span></span><br><span class="line"><span class="undefined">        /* 当你选择过后正面朝外 Z正方向也是朝外 */</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        @keyframes rotate &#123;</span></span><br><span class="line"><span class="undefined">            from&#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            to&#123;</span></span><br><span class="line"><span class="undefined">                transform: rotateX(30deg) rotateY(-390deg);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"front"</span>&gt;</span>front<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"back"</span>&gt;</span>back<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top"</span>&gt;</span>top<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bottom"</span>&gt;</span>bottom<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="undefined">            width: 200px;</span></span><br><span class="line"><span class="undefined">            height: 200px;</span></span><br><span class="line"><span class="undefined">            position: relative;</span></span><br><span class="line"><span class="undefined">            margin: 100px auto;</span></span><br><span class="line"><span class="css">            <span class="comment">/*辅助3d效果开发  视觉效果 */</span></span></span><br><span class="line"><span class="css">            <span class="comment">/*透视：理解成在屏幕外面安排一只眼睛帮我们开3d效果*/</span></span></span><br><span class="line"><span class="css">            <span class="comment">/* 形成近大远小 效果  */</span></span></span><br><span class="line"><span class="css">            <span class="comment">/*perspective: 300px;*/</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="comment">/*真正意义的3D呈现 */</span></span></span><br><span class="line"><span class="undefined">            transform-style: preserve-3d;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            transform: rotateX(30deg) rotateY(-30deg);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            animation: rotate 4s linear infinite;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="undefined">            width: 100%;</span></span><br><span class="line"><span class="undefined">            height: 100%;</span></span><br><span class="line"><span class="undefined">            position: absolute;</span></span><br><span class="line"><span class="undefined">            left: 0;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">            line-height: 200px;</span></span><br><span class="line"><span class="undefined">            font-size: 20px;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">opacity</span>: 0<span class="selector-class">.4</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> <span class="selector-class">.front</span>&#123;</span></span><br><span class="line"><span class="undefined">            background: red;</span></span><br><span class="line"><span class="undefined">            transform: translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> <span class="selector-class">.back</span>&#123;</span></span><br><span class="line"><span class="undefined">            background: blue;</span></span><br><span class="line"><span class="undefined">            transform: rotateY(-180deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> <span class="selector-class">.left</span>&#123;</span></span><br><span class="line"><span class="undefined">            background: green;</span></span><br><span class="line"><span class="undefined">            transform: rotateY(-90deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> <span class="selector-class">.right</span>&#123;</span></span><br><span class="line"><span class="undefined">            background: yellow;</span></span><br><span class="line"><span class="undefined">            transform: rotateY(-270deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> <span class="selector-class">.top</span>&#123;</span></span><br><span class="line"><span class="undefined">            background: pink;</span></span><br><span class="line"><span class="undefined">            transform: rotateX(90deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> <span class="selector-class">.bottom</span>&#123;</span></span><br><span class="line"><span class="undefined">            background: hotpink;</span></span><br><span class="line"><span class="undefined">            transform: rotateX(-90deg) translateZ(100px);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="comment">/* 立方体的中心在电脑平面上  */</span></span></span><br><span class="line"><span class="css">        <span class="comment">/* 当你选择过后正面朝外 Z正方向也是朝外 */</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        @<span class="keyword">keyframes</span> rotate &#123;</span></span><br><span class="line"><span class="undefined">            from&#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            to&#123;</span></span><br><span class="line"><span class="undefined">                transform: rotateX(30deg) rotateY(-390deg);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"front"</span>&gt;</span>front<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"back"</span>&gt;</span>back<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top"</span>&gt;</span>top<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bottom"</span>&gt;</span>bottom<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>怎么在2d的网页体现3d效果<ul>
 <li>拍照片  物体 呈现 近大远小</li>
@@ -1379,108 +1736,6 @@ echo $callback . &quot;(&apos;$str&apos;)&quot;;
 <p><img src="/images/ajax/1534991137939.png" alt="1534991137939"></p>
 <p>2) php页面接收表单数据，拼接SQL语句并执行  （自己完成）</p>
 <p>3) 前端接收结果，进行提示</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ajax/08-JSON" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/03/ajax/08-JSON/" class="article-date">
-      <time datetime="2017-05-03T04:15:35.000Z" itemprop="datePublished">2017-05-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/ajax/08-JSON/">08-JSON</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="什么是JSON？"><a href="#什么是JSON？" class="headerlink" title="什么是JSON？"></a>什么是JSON？</h2><p>JSON:  JavaScript Object Notation 是一种轻量级数据交互格式。</p>
-<p>数据交互: 每一种语言的编码都不一样，它们之间互不认识。但是现在的情况是不同的语言开发出的系统也需要进行数据交互，这时候就需要一种大家都认识的语言或者技术来实现。</p>
-<p><code>xml: 扩展标记语言</code></p>
-<h2 id="JSON数据的声明和使用"><a href="#JSON数据的声明和使用" class="headerlink" title="JSON数据的声明和使用"></a>JSON数据的声明和使用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">声明:  <span class="keyword">var</span> json_obj = &#123;<span class="string">"key1"</span>:<span class="string">"value1"</span>, <span class="string">"key2"</span>:<span class="string">"value2"</span>, ...&#125;;</span><br><span class="line"></span><br><span class="line">key: 双引号包含的字符串</span><br><span class="line"></span><br><span class="line">value: 数据→数值型、字符串、数组、json对象</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//key：必须用双引号</span></span><br><span class="line"><span class="keyword">var</span> json1 = &#123;<span class="string">"a"</span>:<span class="string">"Hello"</span>, <span class="string">"b"</span>:<span class="string">"world"</span>&#125;;</span><br><span class="line">alert(json1.a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> json2 = &#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"郭德纲"</span>,</span><br><span class="line">    <span class="string">"age"</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="string">"tudi"</span>: [<span class="string">'岳云鹏'</span>, <span class="string">'烧饼'</span>, <span class="string">'张云雷'</span>],</span><br><span class="line">    <span class="string">"son"</span>: &#123;<span class="string">"name"</span>:<span class="string">"郭麒麟"</span>, <span class="string">"age"</span>:<span class="number">20</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">alert(json2.name);</span><br><span class="line">alert(json2.tudi[<span class="number">1</span>]);</span><br><span class="line">alert(json2.son.name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//数组，内部的每个单元都是一个json</span></span><br><span class="line"><span class="keyword">var</span> json3 = [</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"赵四"</span>,   <span class="string">"age"</span>:<span class="number">50</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"小沈阳"</span>, <span class="string">"age"</span>:<span class="number">46</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"刘能"</span>,   <span class="string">"age"</span>:<span class="number">50</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"宋小宝"</span>, <span class="string">"age"</span>:<span class="number">52</span>&#125;,</span><br><span class="line">];</span><br><span class="line">alert(json3[<span class="number">2</span>].name);</span><br></pre></td></tr></table></figure>
-<p>JSON的本质:  JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;a:<span class="string">"hello"</span>, b:<span class="string">"world"</span>&#125;;       <span class="comment">// js对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="string">"a"</span>:<span class="string">"hello"</span>, <span class="string">"b"</span>:<span class="string">"world"</span>&#125;;    <span class="comment">// json格式的js对象，也可以叫json对象 (JSON才是真正的JSON对象)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'&#123;"a":"hello", "b":"world"&#125;'</span>;    <span class="comment">// json，也叫json格式的字符串 必须外层单引号，内存双引号</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"&#123;'a':'Hello', 'b':'world'&#125;"</span>;  <span class="comment">//错误，不能这样写，会影响到其他程序的执行</span></span><br></pre></td></tr></table></figure>
-<h2 id="PHP数组转JSON格式的字符串"><a href="#PHP数组转JSON格式的字符串" class="headerlink" title="PHP数组转JSON格式的字符串"></a>PHP数组转JSON格式的字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php提供了函数：  json_str  json_encode($arr);</span><br><span class="line"></span><br><span class="line">案例1: 索引数组转JSON      数组</span><br><span class="line"></span><br><span class="line">案例2: 关联数组转 JSON     json对象</span><br><span class="line"></span><br><span class="line">案例3: 二维数组转JSON      一维数组，每个单元都是一个json对象</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//索引数组</span></span><br><span class="line">$arr = [<span class="string">'zs'</span>, <span class="string">'ls'</span>, <span class="string">'ww'</span>];</span><br><span class="line"><span class="comment">// 一个索引数组被json_encode之后仍然是一个数组，</span></span><br><span class="line"><span class="comment">// 但是是一个字符串形式数组</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($arr); <span class="comment">// '["zs", "ls", "ww"]'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;hr&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//关联数组</span></span><br><span class="line">$info = [<span class="string">'id'</span>=&gt;<span class="number">1001</span>, <span class="string">'name'</span>=&gt;<span class="string">'王小明'</span>, <span class="string">'age'</span>=&gt;<span class="number">8</span>];</span><br><span class="line"><span class="comment">// 一维关联数组被json_encode之后是一个json字符串</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($info); <span class="comment">// '&#123;"id":1001, "name":"王小明", "age":8&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;hr&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二维数组</span></span><br><span class="line">$list = [</span><br><span class="line">    [<span class="string">'id'</span>=&gt;<span class="number">1001</span>, <span class="string">'name'</span>=&gt;<span class="string">'王小明'</span>, <span class="string">'age'</span>=&gt;<span class="number">8</span>],</span><br><span class="line">    [<span class="string">'id'</span>=&gt;<span class="number">1002</span>, <span class="string">'name'</span>=&gt;<span class="string">'韩梅梅'</span>, <span class="string">'age'</span>=&gt;<span class="number">10</span>],</span><br><span class="line">    [<span class="string">'id'</span>=&gt;<span class="number">1003</span>, <span class="string">'name'</span>=&gt;<span class="string">'李雷'</span>, <span class="string">'age'</span>=&gt;<span class="number">9</span>]</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 二维数组，会转为数组，内部的每个单元都是json</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($list);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">'[</span></span><br><span class="line"><span class="comment">    &#123;"id":1001,"name":"王小明","age":8&#125;,</span></span><br><span class="line"><span class="comment">    &#123;"id":1002,"name":"韩梅梅","age":10&#125;,</span></span><br><span class="line"><span class="comment">    &#123;"id":1003,"name":"李雷","age":9&#125;,</span></span><br><span class="line"><span class="comment">]'</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>执行结果:</p>
-<p><img src="/images/ajax/1534815890487.png" alt="1534815890487"></p>
-<h2 id="JSON字符串转JSON对象-javascript代码"><a href="#JSON字符串转JSON对象-javascript代码" class="headerlink" title="JSON字符串转JSON对象 javascript代码"></a>JSON字符串转JSON对象 javascript代码</h2><p>前端的ajax请求，最后接收到的都是字符串  responseText，以字符串形式接收后端返回的数据<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">'[&#123;"id":10001,"name":"zs","age":20&#125;,&#123;"id":10002,"name":"ls","age":21&#125;,&#123;"id":10003,"name":"ww","age":19&#125;]'</span></span><br></pre></td></tr></table></figure></p>
-<pre><code>json格式的字符串转为json对象:  JSON.parse(json_str); 
-
-参数: json格式的字符串
-</code></pre><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'&#123;"id":1001,"name":"王小明","age":8&#125;'</span>;</span><br><span class="line">alert(s.name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将json格式字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> json = JSON.parse(s);</span><br><span class="line">alert(json.name);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = <span class="string">'[&#123;"id":1001,"name":"\u738b\u5c0f\u660e","age":8&#125;,&#123;"id":1002,"name":"\u97e9\u6885\u6885","age":10&#125;,&#123;"id":1003,"name":"\u674e\u96f7","age":9&#125;]'</span>;</span><br><span class="line">alert(arr[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = JSON.parse(arr);</span><br><span class="line">console.log(arr1[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
-<h2 id="案例-搜索用户名，显示用户列表信息"><a href="#案例-搜索用户名，显示用户列表信息" class="headerlink" title="案例 搜索用户名，显示用户列表信息"></a>案例 搜索用户名，显示用户列表信息</h2><p><img src="/images/ajax/1534817413691.png" alt="1534817413691"></p>
-<pre><code>思路:
-
-1) 创建一个搜索页面，定义好搜索框，表头。在搜索按钮上绑定点击事件。
-
-2) 点击事件能够发送ajax请求，并将用户名文本框中的内容一起发送到后端php程序
-
-3) 后端php程序接收用户名，链接MySQL进行模糊查询，再将数组返回给前端
-
-4) 前端接收到后端php返回值之后，循环显示出来
-
-
-代码实现 : 
-
-1) 创建一个搜索页面，定义好搜索框，表头。在搜索按钮上绑定点击事件。
-
-页面布局 :
-</code></pre><p><img src="/images/ajax/1534818204798.png" alt="1534818204798"> </p>
-<pre><code>2) 点击事件能够发送ajax请求，并将用户名文本框中的内容一起发送到后端php程序,在搜索按钮上绑定点击事件  获取文本框中的用户名，发送ajax请求。
-</code></pre><p><img src="/images/ajax/1534818226839.png" alt="1534818226839"></p>
-<pre><code>3) 后端php程序接收用户名，链接mysql进行模糊查询，在将数组返回给前端。
-</code></pre><p>核心操作:</p>
-<pre><code>将资源转为二维数组，再将二维数组转为json字符串，再返回给前端 --&gt;
-</code></pre><p><img src="/images/ajax/1534819468793.png" alt="1534819468793"></p>
-<p><img src="/images/ajax/1534819480657.png" alt="1534819480657"></p>
-<pre><code>4) 前端接收到后端php返回值之后，循环显示出来 
-</code></pre><p><img src="/images/ajax/1534820413728.png" alt="1534820413728"></p>
 
       
     </div>
