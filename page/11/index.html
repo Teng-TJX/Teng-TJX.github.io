@@ -358,6 +358,88 @@
 
 
   
+    <article id="post-JS/14-String类型对象" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/24/JS/14-String类型对象/" class="article-date">
+      <time datetime="2017-02-24T03:15:13.000Z" itemprop="datePublished">2017-02-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/JS/14-String类型对象/">14-String类型对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="String字符串对象"><a href="#String字符串对象" class="headerlink" title="String字符串对象"></a>String字符串对象</h1><h2 id="字符串的不可变性"><a href="#字符串的不可变性" class="headerlink" title="字符串的不可变性"></a>字符串的不可变性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'abc'</span>;</span><br><span class="line">str = <span class="string">'hello'</span>;</span><br><span class="line"><span class="comment">// 当重新给str赋值的时候，数据'abc'不会被修改，依然在内存中</span></span><br><span class="line"><span class="comment">// 重新给字符串赋值，会重新在内存中开辟空间，这个特点就是字符串的不可变</span></span><br><span class="line"><span class="comment">// 由于字符串的不可变，在大量拼接字符串的时候会有效率问题</span></span><br></pre></td></tr></table></figure>
+<h3 id="基本包装对象"><a href="#基本包装对象" class="headerlink" title="基本包装对象"></a>基本包装对象</h3><ul>
+<li><p>思考：为什么基本数据类型字符串，可以像对象一样使用？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'abc'</span>;   <span class="comment">// 普通字符串不是对象</span></span><br><span class="line"><span class="keyword">var</span> len = str.length; <span class="comment">// 但是为什么可以像对象一样使用点出东西？</span></span><br><span class="line">alert(len); <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//把字符串包装成对象 → 基本包装类型</span></span><br><span class="line"><span class="keyword">var</span> strObj = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'abc'</span>);  <span class="comment">// 把字符串包装成对象</span></span><br><span class="line"><span class="keyword">var</span> len = strObj.length;  <span class="comment">// 因为是对象，所以可以点出东西。</span></span><br><span class="line">alert(len); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="字符串对象常用的方法"><a href="#字符串对象常用的方法" class="headerlink" title="字符串对象常用的方法"></a>字符串对象常用的方法</h2><ul>
+<li><p>字符串所有的方法，都 不会修改字符串本身(字符串是不可变的)，操作完成会 返回一个新的字符串</p>
+<ul>
+<li>以下方法，可以自己尝试查手册或文档使用</li>
+</ul>
+</li>
+<li><p>获取字符串中的单个字符</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">字符串.charAt(index);</span><br><span class="line">字符串[index];      <span class="comment">// 推荐使用</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串的拼接concat-和-截取slice"><a href="#字符串的拼接concat-和-截取slice" class="headerlink" title="字符串的拼接concat 和 截取slice"></a>字符串的拼接concat 和 截取slice</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 拼接</span></span><br><span class="line">字符串.concat(str1,str2,str3...);</span><br><span class="line">拼接符 +     <span class="comment">//推荐使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 截取</span></span><br><span class="line">字符串.slice(star,end);</span><br></pre></td></tr></table></figure>
+<h3 id="查询字符是否在字符串中存在"><a href="#查询字符是否在字符串中存在" class="headerlink" title="查询字符是否在字符串中存在"></a>查询字符是否在字符串中存在</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">字符串.indexOf(); </span><br><span class="line">字符串.lastIndexOf();</span><br></pre></td></tr></table></figure>
+<h3 id="去除空白符trim"><a href="#去除空白符trim" class="headerlink" title="去除空白符trim"></a>去除空白符trim</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串.trim();  <span class="comment">// 去除字符串两边的空格</span></span><br></pre></td></tr></table></figure>
+<h3 id="字母字符大小写转换toUpperCase-toLowerCase"><a href="#字母字符大小写转换toUpperCase-toLowerCase" class="headerlink" title="字母字符大小写转换toUpperCase/toLowerCase"></a>字母字符大小写转换toUpperCase/toLowerCase</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">字符串.toUpperCase(); 	<span class="comment">// 转换大写 重点</span></span><br><span class="line">字符串.toLowerCase(); 	<span class="comment">// 转换小写 重点</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串替换replace"><a href="#字符串替换replace" class="headerlink" title="字符串替换replace"></a>字符串替换replace</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串.replace(newStr,oldStr);</span><br></pre></td></tr></table></figure>
+<h3 id="字符串分割split"><a href="#字符串分割split" class="headerlink" title="字符串分割split"></a>字符串分割split</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串.split(sp);  <span class="comment">// 把一个字符串分割成字符串数组。</span></span><br></pre></td></tr></table></figure>
+<h3 id="还有很多方法"><a href="#还有很多方法" class="headerlink" title="还有很多方法"></a>还有很多方法</h3><pre><code>- 查用MDN文档 或 离线手册 学习内置对象的属性 或 方法。
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS/11-内置对象" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1791,123 +1873,6 @@
 <p>  6.赋值运算符：</p>
 <h2 id="补充弱类型：强类型和弱类型。"><a href="#补充弱类型：强类型和弱类型。" class="headerlink" title="补充弱类型：强类型和弱类型。"></a>补充弱类型：强类型和弱类型。</h2><p>   强类型：在创建变量时，就必须确定其数据类型。</p>
 <p>   弱类型：在创建变量时，变量内部可以保存的数类型是不定的。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS/03-数据类型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/18/JS/03-数据类型/" class="article-date">
-      <time datetime="2017-02-18T03:21:51.000Z" itemprop="datePublished">2017-02-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/18/JS/03-数据类型/">03-数据类型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
-<li><p>数据类型的分类</p>
-<ul>
-<li>数据类型分为 <strong>基本数据类型</strong> 和 <strong>引用数据类型</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
-<li><p>1.Number类型：</p>
-<p>意义：表示生活中的数值、价格、年龄、大小等…</p>
-<p>Number类型的数值：</p>
-<p>①正数、负数、0（用十进制、八进制用0开头、十六进制用0x开头都可表示）；</p>
-<p>②小数既浮点数</p>
-<p>③无穷大和无穷小（infinity、-infinity）</p>
-<p>④Number.MAM_VALUE和Number.MIN_VALUE</p>
-<p>⑤NaN（not a number）（不是数值类型的数）</p>
-<p>​    检测；IsNaN（数据）；返回布尔类型<br>进制</p>
-</li>
-</ul>
-<h2 id="十进制-【常用】"><a href="#十进制-【常用】" class="headerlink" title="十进制 【常用】"></a>十进制 【常用】</h2><ul>
-<li>序列范围      0-9</li>
-<li>十进制数字： 0;1;2;3;4;5;6;7;8;9;10;11;12;13;100;200;-100等</li>
-</ul>
-<h2 id="八进制-【了解】"><a href="#八进制-【了解】" class="headerlink" title="八进制 【了解】"></a>八进制 【了解】</h2><ul>
-<li>序列范围     0-7</li>
-<li>八进制数字：<br>八进制数字表示必须以0为前缀表示<br>如：01; 02; 03; 04; 05; 06; 07; 等</li>
-<li>注意：在参与运算或使用时，八进制会自动转成十进制来运算。</li>
-</ul>
-<h2 id="十六进制-【了解】"><a href="#十六进制-【了解】" class="headerlink" title="十六进制 【了解】"></a>十六进制 【了解】</h2><ul>
-<li>序列范围：0-9及a-f</li>
-<li>十六进制数字:<br>十六进制数字表示必须以0x为前缀表示<br>如：0x0; 0x1; 0x2; 0x3 0x4; 0x5; 0xa;等</li>
-<li>注意：在参与运算或使用时，十六进制会自动转成十进制来运算。</li>
-</ul>
-<ul>
-<li><p>2.String类型</p>
-</li>
-<li><p>意义：描述一段内容。</p>
-</li>
-<li><p>特点：用电影好或双引号包裹起来的字符。（单双引号嵌套使用）；</p>
-</li>
-<li><p>转义符： \’       将单引号转化成普通字符</p>
-<p>​        \”       将双引号转化成普通字符</p>
-<p>​        \n      换行</p>
-<p>​        \t       制表符</p>
-<p>​        拼接符：+    ，    和字符串相加</p>
-<p>3.Boolean 类型</p>
-<p>​    取值：true 和 false 两种值。</p>
-<p>​    意义：用程序来表示肯定或者否定。</p>
-<p>4.Undefined 类型</p>
-<p>​    意义：声明的变量没有赋值时，默认变量值是undefined。</p>
-<p>​    该类型只有一个值，undefined。</p>
-<p>5.Null 类型</p>
-<p>意义：在垃圾回收机制中，没有用的数据会被清除掉（没有被变量引用的）。所以如果一个变量不在使用        原先赋的值时Null赋给该变量，内存中的垃圾回收机制就可以清除数据。</p>
-<p>Null的作用就是断开变量与内存  中数据的联系。                               </p>
-<p>Null只有一个值，null</p>
-<p>类型被称为Null，但是用 typeof 检测 出 Object</p>
-</li>
-</ul>
 
       
     </div>

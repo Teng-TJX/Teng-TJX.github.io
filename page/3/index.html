@@ -273,6 +273,206 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-ajax/09-jQuery提供的Ajax方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/03/ajax/09-jQuery提供的Ajax方法/" class="article-date">
+      <time datetime="2017-05-03T05:05:35.000Z" itemprop="datePublished">2017-05-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/03/ajax/09-jQuery提供的Ajax方法/">09-jQuery提供的Ajax方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="jQuery提供的Ajax方法"><a href="#jQuery提供的Ajax方法" class="headerlink" title="jQuery提供的Ajax方法"></a>jQuery提供的Ajax方法</h1><p> jQuery提供了4个ajax方法:  $.get()  $.post()  $.ajax()  $.getJSON()</p>
+<p> 前三个常用</p>
+<h2 id="get"><a href="#get" class="headerlink" title="$.get"></a>$.get</h2><p>$.get(var1, var2, var3, var4);</p>
+<p>  参数1: 请求的后端程序的地址</p>
+<p>  参数2: 要发送到后端程序的数据，json对象/js对象（推荐）或者 字符串</p>
+<p>  参数3: 当readyState==4时的触发函数，该函数中有一个参数，就是后端程序返回的数据</p>
+<p>  参数4: 设置返回数据的类型:  text(默认)  json     xml</p>
+<p>案例: 在get.html文件中发送一个ajax请求，去请求后端的get.php页面，同时将id=1数据发送给后端</p>
+<p>示例: </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.get(<span class="string">'get.php'</span>, &#123;<span class="string">"goods_id"</span>:<span class="number">10101</span>, <span class="string">"_"</span>:Math.random()&#125;, <span class="function"><span class="keyword">function</span><span class="params">(msg)</span></span>&#123;</span><br><span class="line">    alert(msg);</span><br><span class="line">&#125;, <span class="string">'json'</span>);</span><br></pre></td></tr></table></figure>
+<p>解析:   上面的代码等价于原生js的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">        msg = xhr.responseText;</span><br><span class="line">        msg = JSON.parse(msg);</span><br><span class="line">        alert(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.open(<span class="string">'get'</span>, <span class="string">'getData.php?goods_id=10101&amp;_='</span>+Math.random());</span><br><span class="line">xhr.send(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+<p>使用jquery提供的ajax方法，就是为了简化开发。</p>
+<p>使用 $.get 改造 1.5的搜索案例</p>
+<p>1) 表格和文本框一样</p>
+<p><img src="/images/ajax/1534823217314.png" alt="1534823217314"></p>
+<p>2) $.get发送请求</p>
+<p><img src="/images/ajax/1534823247683.png" alt="1534823247683"></p>
+<h2 id="post"><a href="#post" class="headerlink" title="$.post"></a>$.post</h2><p>$.post函数的用法和$.get一模一样，只是发送请求方式变为post</p>
+<p> $.post(var1, var2, var3 , var4);    //最标准的写法</p>
+<p>  参数1: 请求的后台程序的地址</p>
+<p>  参数2: 要发送到后台程序的数据，json对象/js对象（推荐） 或者 字符串</p>
+<p>  参数3: 当readyState=4时的触发函数，该函数中有一个参数，就是后台程序返回的数据</p>
+<p>  参数4: 设置返回数据的类型:  text(默认)  json     xml</p>
+<p>示例: </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.post(<span class="string">'getData.php'</span>, &#123;<span class="string">"goods_id"</span>:<span class="number">10101</span>&#125;, <span class="function"><span class="keyword">function</span><span class="params">(msg)</span></span>&#123;</span><br><span class="line">    alert(msg);</span><br><span class="line">&#125;, <span class="string">'json'</span>);</span><br></pre></td></tr></table></figure>
+<p>解析:   上面的代码等价于原生js的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">        msg = xhr.responseText;</span><br><span class="line">        msg = JSON.parse(msg);</span><br><span class="line">        alert(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.open(<span class="string">'post'</span>, <span class="string">'getData.php'</span>);</span><br><span class="line"><span class="keyword">var</span> param = <span class="string">'goods_id=10101'</span>;</span><br><span class="line">xhr.setRequestHeader(<span class="string">'content-type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(param);</span><br></pre></td></tr></table></figure>
+<h2 id="案例-—-搜索框下拉列表"><a href="#案例-—-搜索框下拉列表" class="headerlink" title="案例 — 搜索框下拉列表"></a>案例 — 搜索框下拉列表</h2><p><img src="/images/ajax/1524120186289.png" alt="1524120186289"></p>
+<p>数据表设计:</p>
+<p><img src="/images/ajax/1524127782691.png" alt="1524127782691"></p>
+<p>key_id: 主键</p>
+<p>key_name: 关键词</p>
+<p> 思路分析:</p>
+<ol>
+<li><p>index.html  —  在搜索框上绑定keyup事件，获取搜索框内容并发送ajax请求<br>1) 在搜索文本框上绑定键盘弹起事件<br>2) 事件函数<br>   ① 获取搜索框内容<br>   ② 发送ajax请求，等待结果</p>
+</li>
+<li><p>getKeys.php —  接收关键词，并根据关键词从数据表中查出相关的其他关键词，返回给前端<br>1) 接收关键词<br>2) 编写SQL语句，查询和接收关键词相关的所有关键词<br>3) 将查询结果返回给前端</p>
+</li>
+<li><p>index.html — 将接收到关键词循环显示到下拉列表（tips）中<br>接收后端返回结果并显示<br>1) 制作下拉列表<br>2) 将后端返回的每条关键词都填充到下拉列表中<br>3) 完善下拉列表<br>   ① 每次循环取出关键词时都先创建div，并将关键词放在div中<br>   ② 为div绑定鼠标悬浮事件（高亮显示）和鼠标移出事件（取消高亮显示）<br>   ③ 为div绑定点击事件，将选中的关键词放入搜索框<br>   ④ 将每个div都放入tips<br>   ⑤ 将tips显示出来<br>   ⑥ 每次向tips中填充数据时，都要先清空tips</p>
+</li>
+</ol>
+<p>代码实现:</p>
+<p>index.html  —  在搜索框上绑定keyup事件，获取搜索框内容并发送ajax请求</p>
+<p>1) 在搜索文本框上绑定键盘弹起事件</p>
+<p>2) 事件函数</p>
+<p>   ① 获取搜索框内容</p>
+<p>   ② 发送ajax请求，等待结果</p>
+<p><img src="/images/ajax/1534824918237.png" alt="1534824918237"></p>
+<p>getKeys.php —  接收关键词，并根据关键词从数据表中查出相关的其他关键词，返回给前端</p>
+<p>1) 接收关键词</p>
+<p>2) 编写SQL语句，查询和接收关键词相关的所有关键词</p>
+<p>3) 将查询结果返回给前端</p>
+<p><img src="/images/ajax/1534825243027.png" alt="1534825243027"></p>
+<p>下拉列表</p>
+<p><img src="/images/ajax/1534825758739.png" alt="1534825758739"></p>
+<p>index.html 将结果显示到下拉菜单中</p>
+<p><img src="/images/ajax/1534826892534.png" alt="1534826892534"></p>
+<p><img src="/images/ajax/1534826904482.png" alt="1534826904482"></p>
+<p><img src="/images/ajax/1534826917378.png" alt="1534826917378"></p>
+<p>关键点总结:</p>
+<p>1) 使用键盘弹起事件来触发ajax请求</p>
+<p>   ① 获取搜索框中的内容</p>
+<p>   ② 发送ajax请求，并将搜索框中的内容一起发送给后端</p>
+<p>2) 接收到的数据需要循环显示在下拉菜单中</p>
+<p>   ① 将返回的字符串转为数组（内部是json对象）</p>
+<p>   ② 循环数组，取出每一个相似关键词</p>
+<p>   ③ 在循环中创建div对象，将关键词加入div对象</p>
+<p>   ④ 在div上绑定鼠标悬浮事件，修改背景和字体颜色</p>
+<p>   ⑤ 在div上绑定鼠标移出事件，修改背景和字体颜色为初始颜色</p>
+<p>   ⑥ 在div上绑定点击事件，将内容写在搜索框中，并隐藏下拉列表</p>
+<p>   ⑦ 将div追加到下拉列表中，然后再将下拉列表显示出来</p>
+<p>   ⑧  在循环显示下拉列表之前先清空下拉列表中已有内容</p>
+<h2 id="ajax方法"><a href="#ajax方法" class="headerlink" title="$.ajax方法"></a>$.ajax方法</h2><p>$.ajax使用JS对象来配置ajax请求  —  $.ajax(obj);</p>
+<p> 必须配置项：</p>
+<blockquote>
+<p>url:         要请求的后台程序地址</p>
+</blockquote>
+<blockquote>
+<p>data:      要发送到后台程序的数据 (建议使用json/js对象格式，也可以使用字符串，也可以是FormData)</p>
+</blockquote>
+<blockquote>
+<p>type:      请求类型  post和get 两种  (put、delete)</p>
+</blockquote>
+<blockquote>
+<p>dataType:  返回值类型  text(默认) 、 json 、xml 、 jsonp(跨域使用) </p>
+</blockquote>
+<blockquote>
+<p>success:   成功完成ajax触发的事件，回调函数，其参数是后端程序的返回数据</p>
+</blockquote>
+<p>简单案例:</p>
+<p>1) 发送ajax请求</p>
+<p><img src="/images/ajax/1534987626513.png" alt="1534987626513"></p>
+<p>2) 后端返回数据</p>
+<p> <img src="/images/ajax/1534987638554.png" alt="1534987638554"></p>
+<p> 其他配置项：</p>
+<blockquote>
+<p>cache: 是否进行缓存(true/fasle)，如果设置type为get，一般设置该项为false(不缓存)。</p>
+</blockquote>
+<blockquote>
+<p>async: 同步/异步设置，true(异步、默认) false(同步)。</p>
+</blockquote>
+<blockquote>
+<p>timeout: 超时设置，多少ms之后扔未接收到后端返回数据，则结束本次请求。— 进入error方法中</p>
+</blockquote>
+<blockquote>
+<p>error: 请求失败时的回调函数，该函数有三个参数。参数1是xhr对象，参数2是错误信息（错误信息通常是 “null”, “timeout”, “error”, “not modified” 和 “parsererror”），参数3是异常对象（可选）。</p>
+</blockquote>
+<blockquote>
+<p>complete: Ajax完成时的回调函数。不论请求成功还是失败都会执行该方法</p>
+</blockquote>
+<blockquote>
+<p>beforeSend: 发送Ajax之前执行的回调函数。</p>
+</blockquote>
+<blockquote>
+<p>beforeSend()  —&gt;  success/error()  —&gt; complete()</p>
+</blockquote>
+<blockquote>
+<p>contentType:  头信息设置，使用FormData对象时设置该值为false，其他情况会自动设置，不需要手动设置。</p>
+</blockquote>
+<blockquote>
+<p>processData:  处理数据方式，使用FormData对象时设置该值为false，其他情况会自动设置，不需要手动设置。</p>
+</blockquote>
+<p>  注意: <strong>contentType和processData只有在使用FormData对象时，设置为false，其余情况均不用设置</strong></p>
+<h2 id="案例-—-添加新管理员"><a href="#案例-—-添加新管理员" class="headerlink" title="案例 —  添加新管理员"></a>案例 —  添加新管理员</h2><p><img src="/images/ajax/1526375360112.png" alt="1526375360112"></p>
+<p>如果发送的数据是FormData，那么就只能使用原生js 或者 $.ajax</p>
+<p>  $.ajax发送请求时，如果发送的数据是FormData时，必须设置 contentType和processData为false</p>
+<p>  1) 表单页(index.html)</p>
+<pre><code>提交按钮上，绑定点击事件，获取表单数据，发送ajax请求
+</code></pre><p>  2) php页面接收表单数据，拼接SQL语句并执行 </p>
+<p>  3) 前端接收结果，进行提示</p>
+<p>代码实现:</p>
+<p>1) 表单页(index.html)</p>
+<pre><code>提交按钮上，绑定点击事件，获取表单数据，发送ajax请求
+
+ 因为用到FormData来获取表单数据，所以必须用$.ajax，发送请求时要额外配置contentType和processData
+</code></pre><p><img src="/images/ajax/1534991115290.png" alt="1534991115290"></p>
+<p><img src="/images/ajax/1534991126414.png" alt="1534991126414"></p>
+<p><img src="/images/ajax/1534991137939.png" alt="1534991137939"></p>
+<p>2) php页面接收表单数据，拼接SQL语句并执行  （自己完成）</p>
+<p>3) 前端接收结果，进行提示</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-ajax/08-JSON" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1213,83 +1413,6 @@ var3： 有效期。 可选参数，如果不设置该值或者设置为-1，浏
 <pre><code>unset($_SESSION[‘name’]);    //删除单个session
 session_destroy();                   //删除所有session
 </code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP/27-session技术" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/27/PHP/27-session技术/" class="article-date">
-      <time datetime="2017-04-27T06:34:16.000Z" itemprop="datePublished">2017-04-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/PHP/27-session技术/">27-session技术</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="session技术"><a href="#session技术" class="headerlink" title="session技术"></a>session技术</h1><h2 id="session介绍"><a href="#session介绍" class="headerlink" title="session介绍"></a>session介绍</h2><p>因为cookie是保存在客户端的数据，不够安全，所以出现了session。</p>
-<p>session会将数据保存到服务器端（保存在 <strong>文件</strong>、内存服务器或数据表中），安全性就可以得到保证。</p>
-<h2 id="设置-读取session"><a href="#设置-读取session" class="headerlink" title="设置/读取session"></a>设置/读取session</h2><p>重点:</p>
-<pre><code>php使用session时，首先要使用session_start()函数来开启session。
-$_SESSION 超全局变量就能设置和读取session中的内容
-</code></pre><p>1) 设置session</p>
-<p>   将session作为数组操作就可以。</p>
-<p><img src="/images/php/1534479772737.png" alt="1534479772737"></p>
-<p>2) 读取session</p>
-<p><img src="/images/php/1534479789250.png" alt="1534479789250"></p>
-<h2 id="session作用范围"><a href="#session作用范围" class="headerlink" title="session作用范围"></a>session作用范围</h2><p>   在当前网站的任何一个页面设置过session，则该网站的所有页面都能得到该session的数据</p>
-<p>   例如: 在 <a href="http://www.jd.com" target="_blank" rel="noopener">www.jd.com</a> 的某个页面中设置session，那么在jd网站的任何一个页面都能找到该session</p>
-<p>   同理，在localhost的某个页面中设置session，那么在localhost的任何一个php页面都能找到</p>
-<p><img src="/images/php/1534480032772.png" alt="1534480032772"></p>
-<h2 id="session的有效期"><a href="#session的有效期" class="headerlink" title="session的有效期"></a>session的有效期</h2><pre><code>浏览器关闭时，session消失
-</code></pre><h2 id="删除session"><a href="#删除session" class="headerlink" title="删除session"></a>删除session</h2><p> unset($_SESSION[‘name’]);    //删除单个session</p>
-<p>   session_destroy();                   //删除所有session</p>
-<p><img src="/images/php/1534480227294.png" alt="1534480227294"></p>
-
       
     </div>
     

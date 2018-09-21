@@ -273,6 +273,83 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-PHP/27-session技术" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/27/PHP/27-session技术/" class="article-date">
+      <time datetime="2017-04-27T06:34:16.000Z" itemprop="datePublished">2017-04-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/PHP/27-session技术/">27-session技术</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="session技术"><a href="#session技术" class="headerlink" title="session技术"></a>session技术</h1><h2 id="session介绍"><a href="#session介绍" class="headerlink" title="session介绍"></a>session介绍</h2><p>因为cookie是保存在客户端的数据，不够安全，所以出现了session。</p>
+<p>session会将数据保存到服务器端（保存在 <strong>文件</strong>、内存服务器或数据表中），安全性就可以得到保证。</p>
+<h2 id="设置-读取session"><a href="#设置-读取session" class="headerlink" title="设置/读取session"></a>设置/读取session</h2><p>重点:</p>
+<pre><code>php使用session时，首先要使用session_start()函数来开启session。
+$_SESSION 超全局变量就能设置和读取session中的内容
+</code></pre><p>1) 设置session</p>
+<p>   将session作为数组操作就可以。</p>
+<p><img src="/images/php/1534479772737.png" alt="1534479772737"></p>
+<p>2) 读取session</p>
+<p><img src="/images/php/1534479789250.png" alt="1534479789250"></p>
+<h2 id="session作用范围"><a href="#session作用范围" class="headerlink" title="session作用范围"></a>session作用范围</h2><p>   在当前网站的任何一个页面设置过session，则该网站的所有页面都能得到该session的数据</p>
+<p>   例如: 在 <a href="http://www.jd.com" target="_blank" rel="noopener">www.jd.com</a> 的某个页面中设置session，那么在jd网站的任何一个页面都能找到该session</p>
+<p>   同理，在localhost的某个页面中设置session，那么在localhost的任何一个php页面都能找到</p>
+<p><img src="/images/php/1534480032772.png" alt="1534480032772"></p>
+<h2 id="session的有效期"><a href="#session的有效期" class="headerlink" title="session的有效期"></a>session的有效期</h2><pre><code>浏览器关闭时，session消失
+</code></pre><h2 id="删除session"><a href="#删除session" class="headerlink" title="删除session"></a>删除session</h2><p> unset($_SESSION[‘name’]);    //删除单个session</p>
+<p>   session_destroy();                   //删除所有session</p>
+<p><img src="/images/php/1534480227294.png" alt="1534480227294"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/26-cookie技术" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1248,86 +1325,6 @@ join 表2  on  链接条件
 </blockquote>
 <p>表： ali_article    ali_admin   ali_cate</p>
 <p><img src="/images/php/1534220828795.png" alt="1534220828795"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP/17-关系型数据库介绍" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/25/PHP/17-关系型数据库介绍/" class="article-date">
-      <time datetime="2017-04-25T07:23:21.000Z" itemprop="datePublished">2017-04-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/PHP/17-关系型数据库介绍/">17-创建数据表</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="1-关系型数据库"><a href="#1-关系型数据库" class="headerlink" title="1. 关系型数据库"></a>1. 关系型数据库</h1><h2 id="1-1-关系型数据库简介"><a href="#1-1-关系型数据库简介" class="headerlink" title="1.1 关系型数据库简介"></a>1.1 关系型数据库简介</h2><blockquote>
-<p>案例: 创建一个数据表，能够保存学生的基本信息(学号、姓名、年龄等)和学生每一科的考试成绩</p>
-</blockquote>
-<p>1)  一张表的形式</p>
-<p><img src="/images/php/03.jpg" alt="img"> </p>
-<p>缺点: 重复数据太多（数据冗余）</p>
-<p>2) 关系型数据库:</p>
-<p><img src="/images/php/02.png" alt="1528187325051"></p>
-<p>缺点: 表多<br>优点:<br>   数据耦合性低<br>   每个数据表都能够独立管理</p>
-<h2 id="1-2-student-和-dept表"><a href="#1-2-student-和-dept表" class="headerlink" title="1.2 student 和 dept表"></a>1.2 student 和 dept表</h2><p> 目标: 创建student和dept表用来存储学生的基本信息、学院基本信息和学生所属的学院信息</p>
-<p><img src="/images/php/04.png" alt="1534172874473"></p>
-<p>   student：学生表，所需字段  学号、姓名、性别、年龄、系别</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table student(</span><br><span class="line">  sno int UNSIGNED auto_increment primary key,</span><br><span class="line">  sname varchar(<span class="number">20</span>) not <span class="keyword">null</span>,</span><br><span class="line">  sage tinyint UNSIGNED not <span class="keyword">null</span>,</span><br><span class="line">  sgender enum(<span class="string">'男'</span>,<span class="string">'女'</span>) not <span class="keyword">null</span>,</span><br><span class="line">  sdept tinyint UNSIGNED not <span class="keyword">null</span></span><br><span class="line">)engine=myisam <span class="keyword">default</span> charset=utf8;</span><br></pre></td></tr></table></figure>
-<p>   dept：系别表，所需字段  系号  系名</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">  dept_id tinyint UNSIGNED auto_increment primary key,</span><br><span class="line">  dept_name varchar(<span class="number">20</span>) unique not <span class="keyword">null</span></span><br><span class="line">)engine=myisam <span class="keyword">default</span> charset=utf8;</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-ali-admin、ali-cate和ali-article的关系"><a href="#1-3-ali-admin、ali-cate和ali-article的关系" class="headerlink" title="1.3 ali_admin、ali_cate和ali_article的关系"></a>1.3 ali_admin、ali_cate和ali_article的关系</h2><p>   目标: 创建 ali_cate表和ali_article表，用来保存栏目基本信息、文章信息 以及 作者、栏目、文章的关系</p>
-<p><img src="/images/php/05.png" alt="05"></p>
-<p>ali_cate表（栏目表）： 栏目id (主键)、 栏目名、栏目别名、栏目创建时间</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table ali_cate(</span><br><span class="line">  cate_id tinyint UNSIGNED auto_increment primary key,</span><br><span class="line">  cate_name varchar(<span class="number">10</span>) unique not <span class="keyword">null</span>,</span><br><span class="line">  cate_slug varchar(<span class="number">30</span>) UNIQUE not <span class="keyword">null</span>,</span><br><span class="line">  cate_addtime date not <span class="keyword">null</span></span><br><span class="line">)engine=myisam <span class="keyword">default</span> charset=utf8;</span><br></pre></td></tr></table></figure>
-<p>ali_article（文章表）： 文章id（主键）、文章标题、文章内容、文章作者、所属栏目、发布时间、文章状态（草稿、已发布）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table ali_article(</span><br><span class="line">  article_id int UNSIGNED auto_increment primary key,</span><br><span class="line">  article_title varchar(<span class="number">30</span>) UNIQUE not <span class="keyword">null</span>,</span><br><span class="line">  article_content text not <span class="keyword">null</span>,</span><br><span class="line">  article_adminid int UNSIGNED not <span class="keyword">null</span>,</span><br><span class="line">	article_cateid tinyint UNSIGNED not <span class="keyword">null</span>,</span><br><span class="line">  article_addtime int not <span class="keyword">null</span>,</span><br><span class="line">  article_state enum(<span class="string">'草稿'</span>,<span class="string">'已发布'</span>)</span><br><span class="line">)engine=myisam <span class="keyword">default</span> charset=utf8;</span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -273,6 +273,99 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-PHP/07-PHP数组" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/23/PHP/07-PHP数组/" class="article-date">
+      <time datetime="2017-04-23T08:18:17.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/PHP/07-PHP数组/">07-PHP数组</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  arr = [<span class="number">123</span>, <span class="string">'abc'</span>, <span class="number">234</span>];   </span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+<p>   PHP的数组分为索引数组和关联数组两类:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">索引数组: **下标是数字**的数组就是索引数组</span><br><span class="line">关联数组: **下标是字符串**的数组就是关联数组 (重点)</span><br></pre></td></tr></table></figure>
+<p>格式：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$arr = <span class="keyword">array</span>();</span><br><span class="line">$arr = [];</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明索引数组</span></span><br><span class="line"><span class="comment">//               0         1         2</span></span><br><span class="line">$arr1 = <span class="keyword">array</span>(<span class="string">'福禄娃'</span>, <span class="string">'海绵宝宝'</span>, <span class="string">'猪猪侠'</span>);</span><br><span class="line">$arr2 = <span class="keyword">array</span>(<span class="number">3</span>=&gt;<span class="string">'蜘蛛侠'</span>, <span class="number">6</span>=&gt;<span class="string">'钢铁侠'</span>, <span class="number">10</span>=&gt;<span class="string">'煎饼侠'</span>);</span><br><span class="line">$arr3 = [<span class="string">'张无忌'</span>, <span class="string">'赵敏'</span>, <span class="string">'灭绝师太'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//声明关联数组 -- 下标是字符串</span></span><br><span class="line">$info = [<span class="string">'name'</span>=&gt;<span class="string">'张二狗'</span>, <span class="string">'age'</span>=&gt;<span class="number">20</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>];</span><br><span class="line">$goods_info = [<span class="string">'goods_name'</span>=&gt;<span class="string">'小米 8'</span>, <span class="string">'goods_price'</span>=&gt;<span class="number">1999</span>];</span><br></pre></td></tr></table></figure>
+<h2 id="数组读写"><a href="#数组读写" class="headerlink" title="数组读写"></a>数组读写</h2><p>   不管是索引还是关联数组，都是通过下标来进行读写控制的。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> $arr2[<span class="number">6</span>];</span><br><span class="line"><span class="comment">//下标是字符串，一定要加引号</span></span><br><span class="line"><span class="comment">// 如果不加引号就会变为常量</span></span><br><span class="line"><span class="keyword">echo</span> $info[<span class="string">'name'</span>];</span><br><span class="line"></span><br><span class="line">$goods_info[<span class="string">'goods_name'</span>] = <span class="string">'小米 note 3'</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h2><p>foreach 语句结构，用来遍历数组(关联数组和索引数组均可)。</p>
+<p>格式: </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $key=&gt;$value)&#123;程序体&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $value)&#123;程序体&#125;</span><br></pre></td></tr></table></figure>
+<p>$arr : 要遍历的数组   </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$key: 单元的下标，可以是任意变量名</span><br><span class="line">$value: 单元的值，可以是任意变量名</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$arr = [<span class="string">'张无忌'</span>, <span class="string">'赵敏'</span>, <span class="string">'灭绝师太'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//第一次循环，将第一个单元取出</span></span><br><span class="line"><span class="comment">//将单元的下标，赋值给$key</span></span><br><span class="line"><span class="comment">//将单元的值， 赋值给$value</span></span><br><span class="line"><span class="comment">//第二次循环，将第二个单元取出，赋值步骤同上</span></span><br><span class="line"><span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key=&gt;$value) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $key . <span class="string">"-"</span> . $value . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$goods_info = [<span class="string">'goods_name'</span>=&gt;<span class="string">'小米 8'</span>, <span class="string">'goods_price'</span>=&gt;<span class="number">1999</span>];</span><br><span class="line"><span class="keyword">foreach</span> ($goods_info <span class="keyword">as</span> $k=&gt;$v) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $k . <span class="string">'-'</span> . $v . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果as后面只有一个变量，该变量就是数组的单元值</span></span><br><span class="line"><span class="keyword">foreach</span> ($goods_info <span class="keyword">as</span> $value) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="二维数组和多维数组"><a href="#二维数组和多维数组" class="headerlink" title="二维数组和多维数组"></a>二维数组和多维数组</h2><ul>
+<li>一维数组的单元中，保存了一个数组，那么该数组就是二维数组</li>
+<li>二维数组可以想象成一个表格</li>
+<li>二维数组同样也用下标来进行控制</li>
+<li>二维数组常用来存储一组相似/相关的数据</li>
+<li>二维数组的每个单元都保存一个一维数组，就是三维数组；三维数组的每个单元都保存一个数组就是四维数组； 依次类推，可以到n维。在一般开发中，最常用的是一维和二维数组，三维极少使用。</li>
+</ul>
+<p><img src="/images/php/1533544335589.png" alt=""><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同质数据</span></span><br><span class="line">$list = [</span><br><span class="line"><span class="number">0</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'zs'</span>, <span class="string">'age'</span>=&gt;<span class="number">20</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>],</span><br><span class="line"><span class="number">1</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'ls'</span>, <span class="string">'age'</span>=&gt;<span class="number">21</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line"><span class="number">2</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'ww'</span>, <span class="string">'age'</span>=&gt;<span class="number">19</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line">];</span><br></pre></td></tr></table></figure></p>
+<h2 id="遍历二维数组"><a href="#遍历二维数组" class="headerlink" title="遍历二维数组"></a>遍历二维数组</h2><pre><code>核心思想： 使用foreach取出第一维的数据（数组），第二层通过下标输出
+</code></pre><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$list = [</span><br><span class="line"><span class="number">0</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">1</span>, <span class="string">'name'</span>=&gt;<span class="string">'zs'</span>, <span class="string">'age'</span>=&gt;<span class="number">20</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>],</span><br><span class="line"><span class="number">1</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">2</span>, <span class="string">'name'</span>=&gt;<span class="string">'ls'</span>, <span class="string">'age'</span>=&gt;<span class="number">21</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line"><span class="number">2</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">3</span>, <span class="string">'name'</span>=&gt;<span class="string">'ww'</span>, <span class="string">'age'</span>=&gt;<span class="number">19</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">//通常在实际开发当中，都只用一层foreach;</span></span><br><span class="line"><span class="comment">//第二层数据的显示，使用$value[下标]</span></span><br><span class="line"><span class="comment">//$value是一位数组</span></span><br><span class="line"><span class="comment">//第一次循环: $value = ['id'=&gt;1, 'name'=&gt;'zs', 'age'=&gt;20, 'gender'=&gt;'男'];</span></span><br><span class="line"><span class="comment">//第二次循环: $value = ['id'=&gt;2, 'name'=&gt;'ls', 'age'=&gt;21, 'gender'=&gt;'女'];</span></span><br><span class="line"><span class="comment">//第三次循环: $value = ['id'=&gt;3, 'name'=&gt;'ww', 'age'=&gt;19, 'gender'=&gt;'女']</span></span><br><span class="line"><span class="keyword">foreach</span> ($list <span class="keyword">as</span> $key=&gt;$value) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $value[<span class="string">'id'</span>] . <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">echo</span> $value[<span class="string">'name'</span>]. <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">echo</span> $value[<span class="string">'age'</span>]. <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">echo</span> $value[<span class="string">'gender'</span>];</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="将数组输出成一个表格"><a href="#将数组输出成一个表格" class="headerlink" title="将数组输出成一个表格"></a>将数组输出成一个表格</h2><p>方式一 : 使用echo来输出整体的表格结构，再用foreach来循环输出tbody中的结构和数据<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$list = [</span><br><span class="line"><span class="number">0</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">1</span>, <span class="string">'name'</span>=&gt;<span class="string">'zs'</span>, <span class="string">'age'</span>=&gt;<span class="number">20</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>],</span><br><span class="line"><span class="number">1</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">2</span>, <span class="string">'name'</span>=&gt;<span class="string">'ls'</span>, <span class="string">'age'</span>=&gt;<span class="number">21</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line"><span class="number">2</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">3</span>, <span class="string">'name'</span>=&gt;<span class="string">'ww'</span>, <span class="string">'age'</span>=&gt;<span class="number">19</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;table border='1' width='600'&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;thead&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;th&gt;编号&lt;/th&gt;&lt;th&gt;姓名&lt;/th&gt;&lt;th&gt;年龄&lt;/th&gt;&lt;th&gt;性别&lt;/th&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;/thead&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;tbody&gt;"</span>;</span><br><span class="line"><span class="comment">//以第一次循环为例</span></span><br><span class="line"><span class="comment">//$value = ['id'=&gt;1, 'name'=&gt;'zs', 'age'=&gt;20, 'gender'=&gt;'男'];</span></span><br><span class="line"><span class="keyword">foreach</span> ($list <span class="keyword">as</span> $value) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>.$value[<span class="string">'id'</span>].<span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>.$value[<span class="string">'name'</span>].<span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>.$value[<span class="string">'age'</span>].<span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>.$value[<span class="string">'gender'</span>].<span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;/tbody&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;/table&gt;"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>方式二: 提前定义好表格结果，只循环tbody中的内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="comment">//同质数据</span></span><br><span class="line">$list = [</span><br><span class="line"><span class="number">0</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">1</span>, <span class="string">'name'</span>=&gt;<span class="string">'zs'</span>, <span class="string">'age'</span>=&gt;<span class="number">20</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>],</span><br><span class="line"><span class="number">1</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">2</span>, <span class="string">'name'</span>=&gt;<span class="string">'ls'</span>, <span class="string">'age'</span>=&gt;<span class="number">21</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line"><span class="number">2</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">3</span>, <span class="string">'name'</span>=&gt;<span class="string">'ww'</span>, <span class="string">'age'</span>=&gt;<span class="number">19</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line">];</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;table border="1" width="600" class="a"&gt;</span><br><span class="line">    &lt;thead class="b" style="color:red"&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;编号&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;年龄&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;性别&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">        <span class="meta">&lt;?php</span> <span class="keyword">foreach</span> ($list <span class="keyword">as</span> $value) &#123; <span class="meta">?&gt;</span></span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $value[<span class="string">'id'</span>]; <span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $value[<span class="string">'name'</span>]; <span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $value[<span class="string">'age'</span>]; <span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $value[<span class="string">'gender'</span>]; <span class="meta">?&gt;</span>&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        <span class="meta">&lt;?php</span> &#125; <span class="meta">?&gt;</span></span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="print-r函数"><a href="#print-r函数" class="headerlink" title="print_r函数"></a>print_r函数</h2><p>   该函数不但能够输出基本类型，还能够输出数组，在项目开发时经常使用该函数查看数组中的所有数据。</p>
+<p>   debug的核心思想就是跟踪变量，一段程序中所有变量中保存的是自己需要的数据，程序才在自己的掌控之下。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$info = [<span class="string">'id'</span>=&gt;<span class="number">10001</span>, <span class="string">'name'</span>=&gt;<span class="string">'张飞'</span>, <span class="string">'age'</span>=&gt;<span class="number">21</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>];</span><br><span class="line">print_r($info);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/php/1533781004203.png" alt=""></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$list = [</span><br><span class="line"><span class="number">0</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">1</span>, <span class="string">'name'</span>=&gt;<span class="string">'zs'</span>, <span class="string">'age'</span>=&gt;<span class="number">20</span>, <span class="string">'gender'</span>=&gt;<span class="string">'男'</span>],</span><br><span class="line"><span class="number">1</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">2</span>, <span class="string">'name'</span>=&gt;<span class="string">'ls'</span>, <span class="string">'age'</span>=&gt;<span class="number">21</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line"><span class="number">2</span>=&gt;[<span class="string">'id'</span>=&gt;<span class="number">3</span>, <span class="string">'name'</span>=&gt;<span class="string">'ww'</span>, <span class="string">'age'</span>=&gt;<span class="number">19</span>, <span class="string">'gender'</span>=&gt;<span class="string">'女'</span>],</span><br><span class="line">];</span><br><span class="line">print_r($list);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/php/1533781034981.png" alt=""></p>
+<p>使用 echo  来输出数组，则会得到以下错误</p>
+<p><img src="/images/php/1533781096919.png" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/06-PHP流程控制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1108,86 +1201,6 @@ null (空)
 <p>1.如果操作到的样式非常少，可以考虑css方法</p>
 <p>2.如果操作到的样式非常多，那么可以通过class方法来操作，将样式写到一个class类里面。</p>
 <p>3.如果考虑到后期维护方便，将css从js中分离出来，那么推荐使用class的方式来操作。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jQuery/13-jQuery插件机制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/24/jQuery/13-jQuery插件机制/" class="article-date">
-      <time datetime="2017-03-24T07:02:12.000Z" itemprop="datePublished">2017-03-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/24/jQuery/13-jQuery插件机制/">13-jQuery插件机制</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="jQuery插件机制"><a href="#jQuery插件机制" class="headerlink" title="jQuery插件机制"></a>jQuery插件机制</h1><h2 id="第三方插件"><a href="#第三方插件" class="headerlink" title="第三方插件"></a>第三方插件</h2><p>jQuery有着丰富的插件，使用这些插件能给jQuery提供一些额外的功能。</p>
-<p>jquery.color.js</p>
-<pre><code>animate不支持颜色的渐变，但是使用了jquery.color.js后，就可以支持颜色的渐变了。
-</code></pre><p>如何使用第三方插件：</p>
-<p>1.引入jQuery文件</p>
-<p>2.引入插件</p>
-<p>3.使用插件</p>
-<h2 id="制作插件"><a href="#制作插件" class="headerlink" title="制作插件"></a>制作插件</h2><ul>
-<li>jQuery对象扩展方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.fn. pluginName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="jQuery-UI"><a href="#jQuery-UI" class="headerlink" title="jQuery UI"></a>jQuery UI</h2><ul>
-<li>jQueryUI专指由jQuery官方维护的UI方向的插件。</li>
-</ul>
-<p>官方API：<br><a href="http://api.jqueryui.com/category/all/" target="_blank" rel="noopener">http://api.jqueryui.com/category/all/</a></p>
-<p>其他教程：jQueryUI教程</p>
-<p>基本使用:</p>
-<p>1.引入jQueryUI的样式文件</p>
-<p>2.引入jQuery</p>
-<p>3.引入jQueryUI的js文件</p>
-<p>4.使用jQueryUI功能</p>
 
       
     </div>
