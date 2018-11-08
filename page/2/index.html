@@ -273,6 +273,331 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-H5C3/08-自定义播放器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/19/H5C3/08-自定义播放器/" class="article-date">
+      <time datetime="2017-05-19T01:32:45.000Z" itemprop="datePublished">2017-05-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/19/H5C3/08-自定义播放器/">08-自定义播放器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="自定义播放器"><a href="#自定义播放器" class="headerlink" title="自定义播放器"></a>自定义播放器</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>独立完成自定义播放器处理浏览器表现不一致问题</li>
+<li>独立查找API完成自定义播放器功能</li>
+</ul>
+<h2 id="知识内容"><a href="#知识内容" class="headerlink" title="知识内容"></a>知识内容</h2><h3 id="api"><a href="#api" class="headerlink" title="api"></a>api</h3><blockquote>
+<p>音频和视频API一致</p>
+</blockquote>
+<p>方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addTextTrack()</td>
+<td>向音频/视频添加新的文本轨道</td>
+</tr>
+<tr>
+<td>canPlayType()</td>
+<td>检测浏览器是否能播放指定的音频/视频类型</td>
+</tr>
+<tr>
+<td>load()</td>
+<td>重新加载音频/视频元素</td>
+</tr>
+<tr>
+<td>play()</td>
+<td>开始播放音频/视频</td>
+</tr>
+<tr>
+<td>pause()</td>
+<td>暂停当前播放的音频/视频</td>
+</tr>
+</tbody>
+</table>
+<p>属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>audioTracks</td>
+<td>返回表示可用音轨的 AudioTrackList 对象</td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td>设置或返回是否在加载完成后随即播放音频/视频</td>
+</tr>
+<tr>
+<td>buffered</td>
+<td>返回表示音频/视频已缓冲部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td>controller</td>
+<td>返回表示音频/视频当前媒体控制器的 MediaController 对象</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>设置或返回音频/视频是否显示控件（比如播放/暂停等）</td>
+</tr>
+<tr>
+<td>crossOrigin</td>
+<td>设置或返回音频/视频的 CORS 设置</td>
+</tr>
+<tr>
+<td>currentSrc</td>
+<td>返回当前音频/视频的 URL</td>
+</tr>
+<tr>
+<td>currentTime</td>
+<td>设置或返回音频/视频中的当前播放位置（以秒计）</td>
+</tr>
+<tr>
+<td>defaultMuted</td>
+<td>设置或返回音频/视频默认是否静音</td>
+</tr>
+<tr>
+<td>defaultPlaybackRate</td>
+<td>设置或返回音频/视频的默认播放速度</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>返回当前音频/视频的长度（以秒计）</td>
+</tr>
+<tr>
+<td>ended</td>
+<td>返回音频/视频的播放是否已结束</td>
+</tr>
+<tr>
+<td>error</td>
+<td>返回表示音频/视频错误状态的 MediaError 对象</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>设置或返回音频/视频是否应在结束时重新播放</td>
+</tr>
+<tr>
+<td>mediaGroup</td>
+<td>设置或返回音频/视频所属的组合（用于连接多个音频/视频元素）</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>设置或返回音频/视频是否静音</td>
+</tr>
+<tr>
+<td>networkState</td>
+<td>返回音频/视频的当前网络状态</td>
+</tr>
+<tr>
+<td>paused</td>
+<td>设置或返回音频/视频是否暂停</td>
+</tr>
+<tr>
+<td>playbackRate</td>
+<td>设置或返回音频/视频播放的速度</td>
+</tr>
+<tr>
+<td>played</td>
+<td>返回表示音频/视频已播放部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>设置或返回音频/视频是否应该在页面加载后进行加载</td>
+</tr>
+<tr>
+<td>readyState</td>
+<td>返回音频/视频当前的就绪状态</td>
+</tr>
+<tr>
+<td>seekable</td>
+<td>返回表示音频/视频可寻址部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td>seeking</td>
+<td>返回用户是否正在音频/视频中进行查找</td>
+</tr>
+<tr>
+<td>src</td>
+<td>设置或返回音频/视频元素的当前来源</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>返回表示当前时间偏移的 Date 对象</td>
+</tr>
+<tr>
+<td>textTracks</td>
+<td>返回表示可用文本轨道的 TextTrackList 对象</td>
+</tr>
+<tr>
+<td>videoTracks</td>
+<td>返回表示可用视频轨道的 VideoTrackList 对象</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>设置或返回音频/视频的音量</td>
+</tr>
+</tbody>
+</table>
+<p>事件</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abort</td>
+<td>当音频/视频的加载已放弃时</td>
+</tr>
+<tr>
+<td>canplay</td>
+<td>当浏览器可以播放音频/视频时</td>
+</tr>
+<tr>
+<td>canplaythrough</td>
+<td>当浏览器可在不因缓冲而停顿的情况下进行播放时</td>
+</tr>
+<tr>
+<td>durationchange</td>
+<td>当音频/视频的时长已更改时</td>
+</tr>
+<tr>
+<td>emptied</td>
+<td>当目前的播放列表为空时</td>
+</tr>
+<tr>
+<td>ended</td>
+<td>当目前的播放列表已结束时</td>
+</tr>
+<tr>
+<td>error</td>
+<td>当在音频/视频加载期间发生错误时</td>
+</tr>
+<tr>
+<td>loadeddata</td>
+<td>当浏览器已加载音频/视频的当前帧时</td>
+</tr>
+<tr>
+<td>loadedmetadata</td>
+<td>当浏览器已加载音频/视频的元数据时</td>
+</tr>
+<tr>
+<td>loadstart</td>
+<td>当浏览器开始查找音频/视频时</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>当音频/视频已暂停时</td>
+</tr>
+<tr>
+<td>play</td>
+<td>当音频/视频已开始或不再暂停时</td>
+</tr>
+<tr>
+<td>playing</td>
+<td>当音频/视频在已因缓冲而暂停或停止后已就绪时</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>当浏览器正在下载音频/视频时</td>
+</tr>
+<tr>
+<td>ratechange</td>
+<td>当音频/视频的播放速度已更改时</td>
+</tr>
+<tr>
+<td>seeked</td>
+<td>当用户已移动/跳跃到音频/视频中的新位置时</td>
+</tr>
+<tr>
+<td>seeking</td>
+<td>当用户开始移动/跳跃到音频/视频中的新位置时</td>
+</tr>
+<tr>
+<td>stalled</td>
+<td>当浏览器尝试获取媒体数据，但数据不可用时</td>
+</tr>
+<tr>
+<td>suspend</td>
+<td>当浏览器刻意不获取媒体数据时</td>
+</tr>
+<tr>
+<td>timeupdate</td>
+<td>当目前的播放位置已更改时</td>
+</tr>
+<tr>
+<td>volumechange</td>
+<td>当音量已更改时</td>
+</tr>
+<tr>
+<td>waiting</td>
+<td>当视频由于需要缓冲下一帧而停止</td>
+</tr>
+</tbody>
+</table>
+<h3 id="细节注意"><a href="#细节注意" class="headerlink" title="细节注意"></a>细节注意</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*全屏操作后  自带的控制栏会显示  在显示的时候隐藏*/</span></span><br><span class="line"><span class="selector-tag">video</span><span class="selector-pseudo">::-webkit-media-controls</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.controls</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">700px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.2);</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">350px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="comment">/*比全屏的状态下的视频元素高*/</span></span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">100000000000</span>;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>需求驱动开发者使用什么API</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5C3/">H5C3</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-H5C3/07-全屏操作" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1426,162 +1751,6 @@ echo $callback . &quot;(&apos;$str&apos;)&quot;;
 <p>注意：  <a href="http://www.study.com" target="_blank" rel="noopener">www.study.com</a> 指向  d:/phpstudy/WWW/study 目录</p>
 <p> 配置两个域名：  <a href="http://www.study.com" target="_blank" rel="noopener">www.study.com</a>   <a href="http://www.demo.com" target="_blank" rel="noopener">www.demo.com</a></p>
 <h2 id="需要调整default不影响打开localhost"><a href="#需要调整default不影响打开localhost" class="headerlink" title="需要调整default不影响打开localhost"></a>需要调整<em>default</em>不影响打开localhost</h2><p><img src="/images/ajax/localhost.png" alt=""></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ajax/11-模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/04/ajax/11-模板引擎/" class="article-date">
-      <time datetime="2017-05-04T01:10:09.000Z" itemprop="datePublished">2017-05-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/ajax/11-模板引擎/">11-ArtTemplate模板引擎</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h1><h2 id="为什么要使用模板引擎"><a href="#为什么要使用模板引擎" class="headerlink" title="为什么要使用模板引擎"></a>为什么要使用模板引擎</h2><p>通过搜索用户名案例我们发现，要渲染到网页上的数据是使用js循环拼接字符串，再将拼接好的字符串填入tbody标签中的。</p>
-<p>   这种方式可读性差，出错不容易查找。</p>
-<p>   模板引擎技术就是为了解决字符串拼接问题的。 ==模板引擎技术本质就是拼接字符串。==</p>
-<p>   传统模式有两种拼接显示字符串的方式:</p>
-<ul>
-<li>在后端程序中拼接好，然后以字符串形式返回</li>
-<li>后端程序返回json字符串，前端程序接收了之后，解析json进行拼接</li>
-</ul>
-<p>模板引擎方式：</p>
-<p>模板引擎属于前端程序拼接字符串<br>提前定义好要显示格式，所有数据位置以特殊标记表示出来。模板引擎会自动分析，并将数据填写到对应的位置。</p>
-<p>我叫<strong> , 今年</strong> 岁了</p>
-<h2 id="常见模板引擎"><a href="#常见模板引擎" class="headerlink" title="常见模板引擎"></a>常见模板引擎</h2><p>ArtTemplate：<a href="https://github.com/aui/artTemplate" target="_blank" rel="noopener">https://github.com/aui/artTemplate</a></p>
-<p>velocity.js：<a href="https://github.com/shepherdwind/velocity.js" target="_blank" rel="noopener">https://github.com/shepherdwind/velocity.js</a></p>
-<p>Handlebars：<a href="http://handlebarsjs.com" target="_blank" rel="noopener">http://handlebarsjs.com</a></p>
-<h2 id="artTemplate快速上手"><a href="#artTemplate快速上手" class="headerlink" title="artTemplate快速上手"></a>artTemplate快速上手</h2><p>基本使用步骤:</p>
-<p>  1) 使用script标签引入arttemplate库文件 (template-web.js)</p>
-<p>  2) 定义标签，用来显示最终解析好的模板信息</p>
-<p>  3) 定义模板和模板中所需数据。</p>
-<pre><code>① 定义要显示在模板中的数据，必须是 json 对象
-② 使用script标签定义模板，type=&quot;text/template&quot;  id=&quot;tpl&quot;，并且使用 {{}}  将所有数据位置标记出来
-</code></pre><p>  4) 调用template函数，解析模板，将数据和模板组装到一起</p>
-<p>  5) 将解析好的模板字符串填充到事先定义好的标签中(显示到网页上)</p>
-<p>简单案例：拼接模板字符串 “我叫张三，今年20岁”，并输出在网页的div中</p>
-<p>模板:   我叫<strong> , 今年</strong> 岁了</p>
-<p>var json = {“name”:”zs”, “age”:20};</p>
-<p>① 引入 template-web.js库文件</p>
-<p>② 定义标签，用来显示最终解析好的模板信息</p>
-<p>③ 定义数据和模板</p>
-<p>④ 调用template函数将数据和模板揉到一起</p>
-<p>⑤ 将解析好的字符串写入定义好的标签中</p>
-<p><img src="/images/ajax/1534997889904.png" alt="1534997889904"></p>
-<p>关键点：</p>
-<p>1) 在定义模板时使用 script 标签， type=”text/==template==”  id=”tpl”</p>
-<p>2) 定义json对象，json对象中的key一定要和模板中的 一致</p>
-<p>3) 调用template函数进行解析</p>
-<pre><code>参数1: 模板的id值
-参数2: json对象
-</code></pre><h2 id="循环结构-each"><a href="#循环结构-each" class="headerlink" title="循环结构  each"></a>循环结构  each</h2><p>关键点: </p>
-<p>1) template函数需要的参数是一个json对象，所以需要声明json对象，里面是数组</p>
-<p>2) 在定义模板时使用each进行循环</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> each结构: </span><br><span class="line"></span><br><span class="line">  &#123;&#123;each data <span class="keyword">as</span> value&#125;&#125;</span><br><span class="line">  </span><br><span class="line">输出内容</span><br><span class="line"></span><br><span class="line"> &#123;&#123;/each&#125;&#125;</span><br><span class="line"></span><br><span class="line"> data: 要循环的数组</span><br><span class="line"></span><br><span class="line"> value: 循环取出的单元值</span><br><span class="line"></span><br><span class="line"> 注意: 使用 &#123;&#123;/each&#125;&#125; 结束循环</span><br></pre></td></tr></table></figure>
-<p>① 使用script标签引入arttemplate库文件 (template-web.js)</p>
-<p>② 定义标签，显示最终结果的标签</p>
-<p>③ 定义数据和模板</p>
-<p>④ 调用template函数，将数组和模板进行解析</p>
-<p>⑤ 将解析好的字符串显示到div中</p>
-<p><img src="/images/ajax/1534998872701.png" alt="1534998872701"></p>
-<p><img src="/images/ajax/1534998883342.png" alt="1534998883342"></p>
-<p><img src="/images/ajax/1534998890382.png" alt="1534998890382"></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  arr= [</span><br><span class="line"></span><br><span class="line">	&#123;<span class="string">"name"</span>:<span class="string">"zs"</span>, <span class="string">"age"</span>:<span class="number">20</span>&#125;,</span><br><span class="line"></span><br><span class="line">	&#123;<span class="string">"name"</span>:<span class="string">"ls"</span>, <span class="string">"age"</span>:<span class="number">20</span>&#125;,</span><br><span class="line"></span><br><span class="line">	&#123;<span class="string">"name"</span>:<span class="string">"ww"</span>, <span class="string">"age"</span>:<span class="number">20</span>&#125;,</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [</span><br><span class="line"></span><br><span class="line">	&#123;<span class="string">"sno"</span>:<span class="number">1</span>, <span class="string">"sname"</span>:<span class="string">"aaa"</span>, <span class="string">"sage"</span>:<span class="number">20</span>, <span class="string">"sgender"</span>:<span class="string">"nv"</span>, <span class="string">"semail"</span>:<span class="string">"dasdsad@d.acom"</span>, <span class="string">"stel"</span>:<span class="string">"12134333"</span>&#125;,</span><br><span class="line"></span><br><span class="line">	&#123;<span class="string">"sno"</span>:<span class="number">2</span>, <span class="string">"sname"</span>:<span class="string">"aaa"</span>, <span class="string">"sage"</span>:<span class="number">20</span>, <span class="string">"sgender"</span>:<span class="string">"nv"</span>, <span class="string">"semail"</span>:<span class="string">"dasdsad@d.acom"</span>, <span class="string">"stel"</span>:<span class="string">"12134333"</span>&#125;,</span><br><span class="line"></span><br><span class="line">	&#123;<span class="string">"sno"</span>:<span class="number">3</span>, <span class="string">"sname"</span>:<span class="string">"aaa"</span>, <span class="string">"sage"</span>:<span class="number">20</span>, <span class="string">"sgender"</span>:<span class="string">"nv"</span>, <span class="string">"semail"</span>:<span class="string">"dasdsad@d.acom"</span>, <span class="string">"stel"</span>:<span class="string">"12134333"</span>&#125;,</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h2 id="选择结构-—-if-else"><a href="#选择结构-—-if-else" class="headerlink" title="选择结构 — if else"></a>选择结构 — if else</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">关键点: 定义模板时使用 </span><br><span class="line"></span><br><span class="line">  &#123;&#123;<span class="keyword">if</span>  判断条件&#125;&#125;</span><br><span class="line"></span><br><span class="line">	程序块<span class="number">1</span></span><br><span class="line"></span><br><span class="line">  &#123;&#123;<span class="keyword">else</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">	程序块<span class="number">2</span></span><br><span class="line"></span><br><span class="line">  &#123;&#123;/<span class="keyword">if</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/ajax/1535073931982.png" alt="1535073931982"></p>
-<p>定义数据和模板</p>
-<p><img src="/images/ajax/1535073949659.png" alt="1535073949659"></p>
-<p><img src="/images/ajax/1535073977980.png" alt="1535073977980"></p>
-<h2 id="使用模板引擎改造搜索用户案例"><a href="#使用模板引擎改造搜索用户案例" class="headerlink" title="使用模板引擎改造搜索用户案例"></a>使用模板引擎改造搜索用户案例</h2><p>目标: 使用模板引擎来代替原来的字符串拼接</p>
-<p>① 引入库文件</p>
-<p>② 定义标签，显示最终结果的标签</p>
-<p>③ 定义数据和模板</p>
-<p>④ 调用template函数</p>
-<p>⑤ 将解析好的字符串渲染到tbody中</p>
-<p>1) 发送ajax请求</p>
-<p><img src="/images/ajax/1535075681764.png" alt="1535075681764"></p>
-<p>2) 后端php接收关键词，查询，再将结果返回给前端</p>
-<p>3) 前端显示数据 — 模板引擎</p>
-<p>   ① 引入 template-web.js 文件</p>
-<p>   ② 定义显示最终结果的标签 – tbody</p>
-<p>   ③ 定义数据和模板</p>
-<pre><code>   数据后端返回的 ---  数组，内部是json
-
-   需要包装成json
-
-   定义模板： each循环json中的数组，还可以增加if判断
-
-④ 调用template函数组装数据和模板
-
-⑤ 将结果显示到 tbody中
-</code></pre><p>定义模板:</p>
-<p><img src="/images/ajax/1535075924682.png" alt="1535075924682"></p>
-<p>定义数据：</p>
-<p><img src="/images/ajax/1535075908069.png" alt="1535075908069"></p>
-<h2 id="模板引擎原理简介"><a href="#模板引擎原理简介" class="headerlink" title="模板引擎原理简介"></a>模板引擎原理简介</h2><p> 核心原理: 使用正则替换模板引擎中的标记</p>
-<p> 例如: 我叫，今年岁</p>
-<p>  使用正则表达式找到模板字符串中的和,再用真实的数据进行替换。</p>
-<p> 核心方法:  </p>
-<p>  ① reg.exec(str);</p>
-<p>  reg: 正则表达式</p>
-<p>  str:  字符串</p>
-<p>  函数作用: 从str字符串中找到复合reg正则表达式的对象，如果没有则返回null</p>
-<p>  ② str.replace(str1, str2);</p>
-<p>  函数作用: 在str字符串中找到str1字符串，然后用str2字符串进行替换</p>
-<p>  例如:</p>
-<p>  str = “abcdefg”;</p>
-<p>  str1 = “bc”;</p>
-<p>  str2 = “zs”;</p>
-<p>  console.log(str.replace(str1, str2)); //  azsdefg</p>
-<p>  掌控每一步中变量的内容。</p>
 
       
     </div>

@@ -273,6 +273,143 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS/05-数据类型转换" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/19/JS/05-数据类型转换/" class="article-date">
+      <time datetime="2017-02-19T01:20:35.000Z" itemprop="datePublished">2017-02-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/19/JS/05-数据类型转换/">05-数据类型转换</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><ul>
+<li><p>介绍：在程序中，任何类型的数据之间都可以参与运算符的。比如数字可以和字符串参与运算，字符串可以和布尔值参与参数等等。</p>
+<p>总而言之，任何不同类型的数据之间可以参与任何不同的运算。</p>
+<ul>
+<li>如：案例，接收用户说输入的年龄，在用户年龄原有的基础之上加5.<br><code>var age = prompt(&#39;请输入你的年龄&#39;); //加入用户输入的是10</code><br><code>age = age + 5;</code><br><code>console.log(age);  //结果是 105，为什么？如何解决？</code></li>
+</ul>
+<p>注意：基本数据类型进行转换，只能通过功能获取到转换后的结果，但是原值不会发生改变的。</p>
+</li>
+</ul>
+<h2 id="将数据类型转换成字符串"><a href="#将数据类型转换成字符串" class="headerlink" title="将数据类型转换成字符串"></a>将数据类型转换成字符串</h2><p>  注意：其他数据转字符串，实质就是给其他数据两边加上字符串的特性（单引号或双引号）</p>
+<h3 id="1-强制转换"><a href="#1-强制转换" class="headerlink" title="1.强制转换"></a>1.强制转换</h3><p>明确告诉程序，要进行数据类型转换</p>
+<ul>
+<li><p><strong>变量tostring();方法</strong></p>
+<p><code>var num = 100；</code></p>
+<p><code>console.log(num.toString());//100</code></p>
+<p><code>console.log(num);//100</code></p>
+<p>​</p>
+</li>
+<li><p><strong>String(数据)方法</strong></p>
+<p><code>var num = 100;</code></p>
+<p><code>console.log(string(num));</code></p>
+<p><code>console.log(num);</code></p>
+<p>String()功能存在的目的是为了弥补tostring()的不足（null和undefined不能作为变量调用toString()方法进行字符串的强制转换）</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="2-隐式转换"><a href="#2-隐式转换" class="headerlink" title="2.隐式转换"></a>2.隐式转换</h2><p>偷偷的对数据进行类型转换</p>
+<p>  任何数据和字符串相加，其他非字符串类型的数据会自动转换为字符串。</p>
+<p>  其实就是看不见的用String(数据)转换。</p>
+<h3 id="什么叫做隐式转换？"><a href="#什么叫做隐式转换？" class="headerlink" title="什么叫做隐式转换？"></a>什么叫做隐式转换？</h3><pre><code>隐式转换，也被称为自动转换。就是在程序运行过程中，不需要我们手动转换，数据会根据运算情况自动的转换为其他类型的数据。
+</code></pre><h3 id="将数据的类型转换伪数组类型"><a href="#将数据的类型转换伪数组类型" class="headerlink" title="将数据的类型转换伪数组类型"></a>将数据的类型转换伪数组类型</h3><p>  对数值类型的转换规则，从左往右检测。遇到不是数就停止。</p>
+<p>  <strong>1.强制转换</strong></p>
+<p>  <strong>Number(数据)</strong></p>
+<p>  <code>console.log(Number(&quot;100&quot;));</code>            // 100</p>
+<p>  <code>console.log(Number(&quot;&quot;));</code>            // 0 为空，不加空格</p>
+<p>  <code>console.log(Number(“ ”));</code>            // 0        为空，加空格</p>
+<p>  <code>console.log(Number(“true”));</code>        // 1</p>
+<p>  <code>console.log(Number(“false”));</code>        // 0</p>
+<p>  <code>console.log(Number(“null”));</code>        // 0</p>
+<p>  <code>console.log(Number(“undefined”));</code>  // NaN</p>
+<p>  如果进行数值类型转换，出现了NaN时表示转换失败。</p>
+<p>  <strong>parseInt(数据)</strong></p>
+<p>  <code>console.log(parseInt (“100”));</code>            // 100</p>
+<p>  <code>console.log(parseInt (“100a1d2d2”));</code>    // 100   </p>
+<p>  <code>console.log(parseInt (“100.1”));</code>        // 100  取整</p>
+<p>  <code>console.log(parseInt (“d100”));</code>            // NaN</p>
+<p>  <code>console.log(parseInt (“”));</code>                // 0   为空，不加空格</p>
+<p>  <code>console.log(parseInt (“ ”));</code>            //NaN</p>
+<p>  <code>console.log(parseInt (“true”));</code>            // NaN</p>
+<p>  <code>console.log(parseInt (“false”));</code>        // NaN</p>
+<p>  <code>console.log(parseInt (“null”));</code>            // NaN</p>
+<p>  <code>console.log(parseInt (“undefined”));</code>    // NaN</p>
+<p>  <strong>parseFloat(数据)  （与parseInt的区别在于可以取出小数的部分）</strong></p>
+<p>  <code>console.log(parseFloat (“100”));</code>        // 100</p>
+<p>  <code>console.log(parseFloat (“100a1d2d2”));</code>    // 100   </p>
+<p>  <code>console.log(parseFloat (“100.1”));</code>        // 100.1 </p>
+<p>  <code>console.log(parseFloat (“d100.12”));</code>    // NaN</p>
+<h3 id="其他数据转字符串-String"><a href="#其他数据转字符串-String" class="headerlink" title="其他数据转字符串 String"></a>其他数据转字符串 String</h3><p>  任何数据和字符串做相加运算时，其他非字符串数据会自动的转换为String类型的数据。就相当于悄悄的，看不见的用String(其他数据)转换为字符串。<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result1 = <span class="literal">true</span> + <span class="string">'我'</span>; <span class="comment">// 布尔值 true 自动转换为字符串 'true'</span></span><br><span class="line"><span class="built_in">console</span>.log(result1); <span class="comment">// 'true我'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="其他数据转数字-Number"><a href="#其他数据转数字-Number" class="headerlink" title="其他数据转数字 Number"></a>其他数据转数字 Number</h3><p>  ​    在做算术运算时（除了和字符串做相加操作外）其他非数字类型的数据会自动转换为Number类型，其实就是看不见的用Number(数据)转换；<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result1 = <span class="string">'2'</span> - <span class="number">1</span>; <span class="comment">//字符串 '2' 自动转换为数字 2</span></span><br><span class="line"><span class="built_in">console</span>.log(result1); <span class="comment">// 1;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result2 = <span class="string">'3a'</span> - <span class="number">1</span>;  <span class="comment">//字符串 '3a' 自动转换为数字 NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(result2); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure></p>
+<p>  ​    在任何数据和NaN做算术运，结果是在都是NaN（除了和字符串相加操作外），包括NaN和本身运算。</p>
+<h3 id="其他数据转布尔-Boolean"><a href="#其他数据转布尔-Boolean" class="headerlink" title="其他数据转布尔 Boolean"></a>其他数据转布尔 Boolean</h3><p>  在取反、选择语句 和 循环语句中的条件表达式中，其他数据会自动的转换为布尔值。就相当于悄悄的，看不见的用Boolean(其他数据)转换为布尔值。<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(!<span class="number">1</span>);  <span class="comment">//false ; 数字1 转换为boolean值为 true,对true取反就是false</span></span><br><span class="line">consoel.log(!(<span class="number">1</span>&gt;=<span class="number">2</span>)); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-可以实现隐式转换"><a href="#使用-可以实现隐式转换" class="headerlink" title="使用 + - * / % 可以实现隐式转换"></a>使用 + - * / % 可以实现隐式转换</h3><p>  <code>console.log(“100” – 0 );</code></p>
+<p>  <code>console.log(“100” * 1 );</code></p>
+<p>  <code>console.log(“100” / 1 );</code></p>
+<p>  <code>console.log(“100” % Infinity);</code></p>
+<p>  <code>console.log(+ “100” );</code></p>
+<p>  **注意：使用（+加操作进行赋值的转换：需要将+前至于数据，前面不能有其他数据，否则会转换成字符串）。</p>
+<h3 id="将数据的数据类型转换为布尔类型"><a href="#将数据的数据类型转换为布尔类型" class="headerlink" title="将数据的数据类型转换为布尔类型"></a>将数据的数据类型转换为布尔类型</h3><p>  <strong>1.强制转换</strong></p>
+<p>  Boolean(数据)</p>
+<p>  <code>console.log(Boolean(“1233”));</code>        // true</p>
+<p>  <code>console.log(Boolean(100));</code>            // true </p>
+<p>  <strong>将“”、0、NaN、null、undefined转换层布尔类型为false，其他数据的转换结果均为true。</strong></p>
+<p>  <code>console.log(Boolean(“0”));</code>            //true</p>
+<p>  <code>console.log(Boolean(0));</code>            // false</p>
+<p>  <code>console.log(Boolean(“”));</code>            // false</p>
+<p>  <code>console.log(Boolean(NaN));</code>            // false</p>
+<p>  <code>console.log(Boolean(null));</code>            // false</p>
+<p>  <code>console.log(Boolean(undefined));</code>    // false</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS/04-运算符" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1117,107 +1254,6 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">         <span class="comment">/* 设置参与过渡的属性 */</span></span><br><span class="line">transition-property: width,height,background-color;</span><br><span class="line">transition-property: all; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 设置过渡完成的时间 */</span></span><br><span class="line">transition-duration: <span class="number">1</span>s; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 设置过渡延时执行的时间 */</span></span><br><span class="line">transition-delay: <span class="number">1</span>s; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 设置过渡的类型（速度类型） */</span></span><br><span class="line">transition-timing-<span class="function"><span class="keyword">function</span>: <span class="title">ease</span>;</span></span><br><span class="line"><span class="function"><span class="title">transition</span>-<span class="title">timing</span>-<span class="title">function</span>: <span class="title">ease</span>-<span class="title">in</span>;</span></span><br><span class="line"><span class="function"><span class="title">transition</span>-<span class="title">timing</span>-<span class="title">function</span>: <span class="title">ease</span>-<span class="title">out</span>;</span></span><br><span class="line"><span class="function"><span class="title">transition</span>-<span class="title">timing</span>-<span class="title">function</span>: <span class="title">ease</span>-<span class="title">in</span>-<span class="title">out</span>; </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">/* 代表当前过渡的速度是匀速完成的。 */</span></span><br><span class="line"><span class="function"><span class="title">transition</span>-<span class="title">timing</span>-<span class="title">function</span>: <span class="title">linear</span>; </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">         // 属性联写:</span></span><br><span class="line"><span class="function"><span class="title">transition</span>: <span class="title">all</span>  1<span class="title">s</span>  <span class="title">linear</span>; </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">         //或者单独为每一个属性设置过渡的效果：</span></span><br><span class="line"><span class="function">         <span class="title">transition</span>: <span class="title">width</span> 1<span class="title">s</span> <span class="title">linear</span>,</span></span><br><span class="line"><span class="function">                     <span class="title">height</span> 1<span class="title">s</span>  1<span class="title">s</span> <span class="title">linear</span>,</span></span><br><span class="line"><span class="function">                     <span class="title">background</span>-<span class="title">color</span> 1<span class="title">s</span> 2<span class="title">s</span> <span class="title">linear</span>;</span></span><br></pre></td></tr></table></figure>
 <h2 id="常用网"><a href="#常用网" class="headerlink" title="常用网"></a>常用网</h2><p>过渡调试网站：<a href="http://cubic-bezier.com/" target="_blank" rel="noopener">DiagramDesigner</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-HTML/08-Web字体" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/01/12/HTML/08-Web字体/" class="article-date">
-      <time datetime="2017-01-12T03:02:17.000Z" itemprop="datePublished">2017-01-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/HTML/08-Web字体/">06-Web字体</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Web字体"><a href="#Web字体" class="headerlink" title="Web字体"></a>Web字体</h1><ul>
-<li><p>开发人员可以为自已的网页指定特殊的字体，无需考虑用户电脑上是否安装了此特殊字体，从此把特殊字体处理成图片的时代便成为了过去。支持程度比较好，甚至IE低版本浏览器也能支持。</p>
-<p><a href="http://www.iconfont.cn/" target="_blank" rel="noopener">在线字体</a></p>
-<ul>
-<li>引用在线字体。（了解）</li>
-<li>下载到本地使用（推荐）</li>
-</ul>
-</li>
-<li><p><strong>字体格式</strong></p>
-<ul>
-<li><p>不同浏览器所支持的字体格式是不一样的，我们有必要了解一下有关字体格式的知识。</p>
-<ul>
-<li><p>1、TureType(.ttf)格式</p>
-<ul>
-<li>.ttf字体是Windows和Mac的最常见的字体，是一种RAW格式，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOS Mobile、Safari4.2+；</li>
-</ul>
-</li>
-<li><p>2、OpenType(.otf)格式</p>
-<ul>
-<li>.otf字体被认为是一种原始的字体格式，其内置在TureType的基础上，支持这种字体的浏览器有Firefox3.5+、Chrome4.0+、Safari3.1+、Opera10.0+、iOS Mobile、Safari4.2+；</li>
-</ul>
-</li>
-<li><p>3、Web Open Font Format(.woff)格式</p>
-<ul>
-<li>woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+；</li>
-</ul>
-</li>
-<li><p>4、Embedded Open Type(.eot)格式</p>
-<ul>
-<li>.eot字体是IE专用字体，可以从TrueType创建此格式字体，支持这种字体的浏览器有IE4+；</li>
-</ul>
-</li>
-<li><p>5、SVG(.svg)格式</p>
-<ul>
-<li>.svg字体是基于SVG字体渲染的一种格式，支持这种字体的浏览器有Chrome4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 
       
     </div>

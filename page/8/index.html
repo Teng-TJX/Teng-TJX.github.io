@@ -273,6 +273,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-jQuery/05-jQuery操作值与内容" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/22/jQuery/05-jQuery操作值与内容/" class="article-date">
+      <time datetime="2017-03-22T02:21:45.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/jQuery/05-jQuery操作值与内容/">05-jQuery操作值与内容</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="jQuery操作值与内容"><a href="#jQuery操作值与内容" class="headerlink" title="jQuery操作值与内容"></a>jQuery操作值与内容</h1><h2 id="val方法"><a href="#val方法" class="headerlink" title="val方法"></a>val方法</h2><ul>
+<li>val方法用于设置和获取表单元素的值，例如input、select、textarea的值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置值</span></span><br><span class="line">$(<span class="string">"#name"</span>).val(<span class="string">"张三"</span>);</span><br><span class="line"><span class="comment">//获取值</span></span><br><span class="line">$(<span class="string">"#name"</span>).val();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="html方法"><a href="#html方法" class="headerlink" title="html方法"></a>html方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置内容</span></span><br><span class="line">    $(<span class="string">"div"</span>).html(<span class="string">"&lt;span&gt;这是一段内容&lt;/span&gt;"</span>);</span><br><span class="line">    <span class="comment">//获取内容</span></span><br><span class="line">    $(<span class="string">"div"</span>).html()</span><br></pre></td></tr></table></figure>
+<h2 id="text方法"><a href="#text方法" class="headerlink" title="text方法"></a>text方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置内容</span></span><br><span class="line">$(<span class="string">"div"</span>).text(<span class="string">"&lt;span&gt;这是一段内容&lt;/span&gt;"</span>);</span><br><span class="line"><span class="comment">//获取内容</span></span><br><span class="line">$(<span class="string">"div"</span>).text()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>html方法与text方法的区别：<br>  html方法会识别html标签，text方法会把内容直接当成字符串，并不会识别html标签。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jQuery/04-jQuery操作DOM" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1579,371 +1647,6 @@
 <ul>
 <li>内层作用域可以访问外层作用域，反之不行</li>
 </ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS/35-函数进阶" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/15/JS/35-函数进阶/" class="article-date">
-      <time datetime="2017-03-15T01:39:16.000Z" itemprop="datePublished">2017-03-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/JS/35-函数进阶/">35-函数进阶</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="函数进阶"><a href="#函数进阶" class="headerlink" title="函数进阶"></a>函数进阶</h1><h2 id="函数的定义方式"><a href="#函数的定义方式" class="headerlink" title="函数的定义方式"></a>函数的定义方式</h2><ul>
-<li>函数声明</li>
-<li>函数表达式</li>
-<li><code>new Function</code></li>
-</ul>
-<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="函数表达式-推荐"><a href="#函数表达式-推荐" class="headerlink" title="函数表达式(推荐)"></a>函数表达式(推荐)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="构造函数创建方式："><a href="#构造函数创建方式：" class="headerlink" title="构造函数创建方式："></a>构造函数创建方式：</h2><p>(书写较为繁琐，通常不推荐使用)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>,<span class="string">'console.log(199, a, b);'</span>);</span><br><span class="line">fun(<span class="number">200</span>, <span class="number">300</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="函数声明与函数表达式的区别"><a href="#函数声明与函数表达式的区别" class="headerlink" title="函数声明与函数表达式的区别"></a>函数声明与函数表达式的区别</h2><ul>
-<li>函数声明必须有名字</li>
-<li>函数声明会函数提升，在预解析阶段就已创建，声明前后都可以调用</li>
-<li>函数表达式类似于变量赋值</li>
-<li>函数表达式可以没有名字，例如匿名函数</li>
-<li>函数表达式没有变量提升，在执行阶段创建，必须在表达式执行之后才可以调用</li>
-</ul>
-<h2 id="函数声明语句的问题："><a href="#函数声明语句的问题：" class="headerlink" title="函数声明语句的问题："></a>函数声明语句的问题：</h2><ul>
-<li><p>将函数声明语句书写在if..else中时，不同得浏览器展现得效果是不同得。</p>
-<ul>
-<li>下面是一个根据条件定义函数的例子：</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上代码执行结果在不同浏览器中结果不一致。</p>
-<p>不过我们可以使用函数表达式解决上面的问题：</p>
-<ul>
-<li>这是函数表达式得设置方式</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>小结论：<ul>
-<li>推荐使用函数表达式进行函数操作。</li>
-<li>如果习惯使用函数声明语句，可以在特殊场景中更换为函数表达式即可。</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数的调用方式"><a href="#函数的调用方式" class="headerlink" title="函数的调用方式"></a>函数的调用方式</h2><ul>
-<li>普通函数</li>
-<li>构造函数</li>
-<li>对象方法</li>
-</ul>
-<h2 id="函数内-this-指向的不同场景"><a href="#函数内-this-指向的不同场景" class="headerlink" title="函数内 this 指向的不同场景"></a>函数内 <code>this</code> 指向的不同场景</h2><p>函数的调用方式决定了 <code>this</code> 指向的不同：</p>
-<table>
-<thead>
-<tr>
-<th>调用方式</th>
-<th>非严格模式</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>普通函数调用</td>
-<td>window</td>
-<td>严格模式下是 undefined</td>
-</tr>
-<tr>
-<td>构造函数调用</td>
-<td>实例对象</td>
-<td>原型方法中 this 也是实例对象</td>
-</tr>
-<tr>
-<td>对象方法调用</td>
-<td>该方法所属对象</td>
-<td>紧挨着的对象</td>
-</tr>
-<tr>
-<td>事件绑定方法</td>
-<td>绑定事件对象</td>
-<td></td>
-</tr>
-<tr>
-<td>定时器函数</td>
-<td>window</td>
-</tr>
-</tbody>
-</table>
-<p>这就是对函数内部 this 指向的基本整理，写代码写多了自然而然就熟悉了。</p>
-<h2 id="函数也是对象"><a href="#函数也是对象" class="headerlink" title="函数也是对象"></a>函数也是对象</h2><ul>
-<li>所有函数都是 <code>Function</code> 的实例</li>
-</ul>
-<h2 id="call、apply、bind"><a href="#call、apply、bind" class="headerlink" title="call、apply、bind"></a>call、apply、bind</h2><blockquote>
-<p>那了解了函数 this 指向的不同场景之后，我们知道有些情况下我们为了使用某种特定环境的 this 引用，</p>
-</blockquote>
-<blockquote>
-<p>这时候时候我们就需要采用一些特殊手段来处理了，例如我们经常在定时器外部备份 this 引用，然后在定时器函数内部使用外部 this 的引用。</p>
-</blockquote>
-<blockquote>
-<p>然而实际上对于这种做法我们的 JavaScript 为我们专门提供了一些函数方法用来帮我们更优雅的处理函数内部 this 指向问题。</p>
-</blockquote>
-<blockquote>
-<p>这就是接下来我们要学习的 call、apply、bind 三个函数方法。</p>
-</blockquote>
-<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><ul>
-<li><ol>
-<li>call()  用于调用函数，参数1 可以修改this的指向<ul>
-<li>只有本次调用时this会被修改<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>,a,b);</span><br><span class="line">        &#125;</span><br><span class="line">        fun(<span class="number">100</span>,<span class="number">200</span>);</span><br><span class="line">        fun.call(&#123;<span class="attr">name</span>:<span class="string">'jack'</span>&#125;,<span class="number">200</span>,<span class="number">300</span>);</span><br><span class="line"><span class="string">``</span><span class="string">`        </span></span><br><span class="line"><span class="string">`</span>call()<span class="string">` 方法调用一个函数, 其具有一个指定的 `</span><span class="keyword">this</span><span class="string">` 值和分别地提供的参数(参数的列表)。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- 注意：该方法的作用和 `</span>apply()<span class="string">` 方法类似，只有一个区别，就是 `</span>call()<span class="string">` 方法接受的是若干个参数的列表，而 `</span>apply()<span class="string">` 方法接受的是一个包含多个参数的数组。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">语法：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">    fun.call(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<p>参数：</p>
-<ul>
-<li><p><code>thisArg</code></p>
-<ul>
-<li>在 fun 函数运行时指定的 this 值</li>
-<li>如果指定了 null 或者 undefined 则内部 this 指向 window</li>
-</ul>
-</li>
-<li><p><code>arg1, arg2, ...</code></p>
-<ul>
-<li>指定的参数列表</li>
-</ul>
-</li>
-</ul>
-<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><ul>
-<li><ol start="2">
-<li>apply() - 用于调用函数，参数1可以修改this的指向<ul>
-<li>只有本次调用时this会被修改。<ul>
-<li>与call的区别：</li>
-</ul>
-</li>
-<li>后续的实参值需要以数组形式传入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>,a,b);</span><br><span class="line">&#125;;</span><br><span class="line">fun(<span class="number">100</span>,<span class="number">200</span>);</span><br><span class="line">fun.apply(&#123;<span class="attr">age</span>:<span class="number">18</span>&#125;,[<span class="number">100</span>,<span class="number">200</span>]);</span><br><span class="line">fun();</span><br><span class="line">fun.apply();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<p><code>apply()</code> 方法调用一个函数, 其具有一个指定的 <code>this</code> 值，以及作为一个数组（或类似数组的对象）提供的参数。</p>
-<ul>
-<li>注意：该方法的作用和 <code>call()</code> 方法类似，只有一个区别，就是 <code>call()</code> 方法接受的是若干个参数的列表，而 <code>apply()</code> 方法接受的是一个包含多个参数的数组。</li>
-</ul>
-<p>语法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.apply(thisArg, [argsArray])</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<ul>
-<li><code>thisArg</code></li>
-<li><code>argsArray</code></li>
-</ul>
-<p><code>apply()</code> 与 <code>call()</code> 非常相似，不同之处在于提供参数的方式。<br><code>apply()</code> 使用参数数组而不是一组参数列表。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.apply(<span class="keyword">this</span>, [<span class="string">'eat'</span>, <span class="string">'bananas'</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><blockquote>
-<p>bind() 函数会创建一个新函数（称为绑定函数），新函数与被调函数（绑定函数的目标函数）具有相同的函数体（在 ECMAScript 5 规范中内置的call属性）。</p>
-</blockquote>
-<blockquote>
-<p>当目标函数被调用时 this 值绑定到 bind() 的第一个参数，该参数不能被重写。绑定函数被调用时，bind() 也接受预设的参数提供给原函数。</p>
-</blockquote>
-<blockquote>
-<p>一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。</p>
-</blockquote>
-<p>语法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.bind(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<ul>
-<li><p>thisArg</p>
-<ul>
-<li>当绑定函数被调用时，该参数会作为原函数运行时的 this 指向。当使用new 操作符调用绑定函数时，该参数无效。</li>
-</ul>
-</li>
-<li><p>arg1, arg2, …</p>
-<ul>
-<li>当绑定函数被调用时，这些参数将置于实参之前传递给被绑定的方法。</li>
-</ul>
-</li>
-</ul>
-<p>返回值：</p>
-<p>返回由指定的this值和初始化参数改造的原函数拷贝。</p>
-<ul>
-<li><ol start="3">
-<li>bind() - 用于创建函数副本，可以帮定副本内的this指向和某些实参<ul>
-<li>3.1 this的绑定操作</li>
-<li>参数1：用于绑定函数副本中的this，无法在通过call或者apply进行修改</li>
-<li>返回值：返回的函数副本<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line">fun();      <span class="comment">//会调用函数,执行代码</span></span><br><span class="line">fun.call(); <span class="comment">//会调用函数,执行代码</span></span><br><span class="line">fun.apply();<span class="comment">//会调用函数,执行代码</span></span><br><span class="line"><span class="keyword">var</span> fun2 = fun.bind(&#123;<span class="attr">name</span> :<span class="string">'jack'</span>&#125;)<span class="comment">//不会调用函数，而是返回函数副本</span></span><br><span class="line"><span class="built_in">console</span>.log(fun2);</span><br><span class="line">fun2();<span class="comment">//this为绑定的对象</span></span><br><span class="line">fun2.call(&#123;<span class="attr">age</span>:<span class="number">18</span>&#125;);<span class="comment">//this为绑定的对象，无法修改</span></span><br><span class="line">fun2.apply(&#123;<span class="attr">age</span>:<span class="number">18</span>&#125;);<span class="comment">//this为绑定的对象，无法修改</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>3.2绑定后续实参</p>
-<ul>
-<li>当使用bind绑定参数后，副本中的对应实参就是固定值了，调用时传参表示后续参数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a, b, c);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> fun2 = fun.bind(<span class="literal">null</span>, <span class="number">100</span>);</span><br><span class="line">fun2(<span class="number">200</span>, <span class="number">300</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子：使用某些功能时，如果某些参数长期设置为固定值，可以使用bind方式进行绑定</span></span><br><span class="line">		<span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">		<span class="comment">/*btn.addEventListener('click', function () &#123;</span></span><br><span class="line"><span class="comment">			console.log('这是点击事件1');</span></span><br><span class="line"><span class="comment">		&#125;);</span></span><br><span class="line"><span class="comment">		btn.addEventListener('click', function () &#123;</span></span><br><span class="line"><span class="comment">			console.log('这是点击事件2');</span></span><br><span class="line"><span class="comment">		&#125;);</span></span><br><span class="line"><span class="comment">		btn.addEventListener('click', function () &#123;</span></span><br><span class="line"><span class="comment">			console.log('这是点击事件3');</span></span><br><span class="line"><span class="comment">		&#125;);</span></span><br><span class="line"><span class="comment">		btn.addEventListener('click', function () &#123;</span></span><br><span class="line"><span class="comment">			console.log('这是点击事件4');</span></span><br><span class="line"><span class="comment">		&#125;);*/</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> btnClick = btn.addEventListener.bind(btn, <span class="string">'click'</span>);</span><br><span class="line">		btnClick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'这是点击事件1'</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		btnClick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'这是点击事件2'</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		btnClick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'这是点击事件3'</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		btnClick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'这是点击事件4'</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// bind - ie9以下不支持，但是常用.</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
-<li><p>call 和 apply 特性一样</p>
-<ul>
-<li>都是用来调用函数，而且是立即调用</li>
-<li>但是可以在调用函数的同时，通过第一个参数指定函数内部 <code>this</code> 的指向</li>
-<li>call 调用的时候，参数必须以参数列表的形式进行传递，也就是以逗号分隔的方式依次传递即可</li>
-<li>apply 调用的时候，参数必须是一个数组，然后在执行的时候，会将数组内部的元素一个一个拿出来，与形参一一对应进行传递</li>
-<li>如果第一个参数指定了 <code>null</code> 或者 <code>undefined</code> 则内部 this 指向 window</li>
-</ul>
-</li>
-<li><p>bind</p>
-<ul>
-<li>可以用来指定内部 this 的指向，然后生成一个改变了 this 指向的新的函数</li>
-<li>它和 call、apply 最大的区别是：bind 不会调用</li>
-<li>bind 支持传递参数，它的传参方式比较特殊，一共有两个位置可以传递<ul>
-<li><ol>
-<li>在 bind 的同时，以参数列表的形式进行传递</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>在调用的时候，以参数列表的形式进行传递</li>
-</ol>
-</li>
-<li>那到底以谁 bind 的时候传递的参数为准呢还是以调用的时候传递的参数为准</li>
-<li>两者合并：bind 的时候传递的参数和调用的时候传递的参数会合并到一起，传递到函数内部</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数的其它成员"><a href="#函数的其它成员" class="headerlink" title="函数的其它成员"></a>函数的其它成员</h2><ul>
-<li>arguments<ul>
-<li>实参集合</li>
-</ul>
-</li>
-<li>caller<ul>
-<li>函数的调用者</li>
-</ul>
-</li>
-<li>length<ul>
-<li>形参的个数</li>
-</ul>
-</li>
-<li>name<ul>
-<li>函数的名称</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(fn.length) <span class="comment">// =&gt; 形参的个数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">arguments</span>) <span class="comment">// 伪数组实参参数集合</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee === fn) <span class="comment">// 函数本身</span></span><br><span class="line"><span class="built_in">console</span>.log(fn.caller) <span class="comment">// 函数的调用者</span></span><br><span class="line"><span class="built_in">console</span>.log(fn.name) <span class="comment">// =&gt; 函数的名字</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">fn(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
-<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><ul>
-<li><p>函数可以作为参数</p>
-<ul>
-<li>参数：</li>
-<li><p>使用场景：当函数内的某些数据不确定时，采用参数。</p>
-</li>
-<li><p>形参和实参：</p>
-<ul>
-<li>书写位置：形参书写在函数体的小括号中，相当于一个局部变量</li>
-<li>实参书写在函数调用中，用于以值传递的方式给形参赋值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>函数可以作为返回值</p>
-<ul>
-<li>返回值：<ul>
-<li>函数根据功能分为两类。获取操作和设置操作</li>
-<li>获取操作必须设置返回值，设置操作不需要设置返回值。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="作为参数"><a href="#作为参数" class="headerlink" title="作为参数"></a>作为参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eat</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'吃完了'</span>)</span><br><span class="line">    callback()</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eat(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'去唱歌'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="作为返回值"><a href="#作为返回值" class="headerlink" title="作为返回值"></a>作为返回值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">genFun</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === type</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isArray = genFun(<span class="string">'[object Array]'</span>)</span><br><span class="line"><span class="keyword">var</span> isObject = genFun(<span class="string">'[object Object]'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(isArray([])) <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(isArray(&#123;&#125;)) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
-<h4 id="函数的属性"><a href="#函数的属性" class="headerlink" title="函数的属性"></a>函数的属性</h4><blockquote>
-<p>函数的属性：</p>
-</blockquote>
-<ul>
-<li><ol>
-<li>length - 用于获取形参个数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params">a,b,c</span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(fun.length);</span><br><span class="line"><span class="string">``</span><span class="string">`       </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- 2. prototype - 用于获取原型对象</span></span><br><span class="line"><span class="string">    - 这个属性是给构造函数准备的，普通函数不使用</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- 3. caller - 用于表示函数的调用位置</span></span><br><span class="line"><span class="string">    - 返回值：</span></span><br><span class="line"><span class="string">        - 全局调用函数，返回null</span></span><br><span class="line"><span class="string">        - 在某个函数内调用当前函数，返回调用位置</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">        <span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(fun.caller);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            fun();</span><br><span class="line">        &#125;;</span><br><span class="line">        fun2();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>arguments属性 - 相当于函数内的arguments伪数组对象<ul>
-<li>这个属性官方已经不推荐使用了，推荐使用arguments对象结构<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fun.arguments);</span><br><span class="line">&#125;</span><br><span class="line">fun(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>4.1 arguments的使用</p>
-<ul>
-<li>作用：用于获取函数传入的所有实参</li>
-<li>返回值：伪数组对象(没有数组的方法)</li>
-<li>常用的使用场景：模拟函数重载(根据实参的个数不同，设置不同的功能)   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如，函数传1个参数，直接打印，两个参个求和，3个参数求最大值</span></span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">arguments</span>.length === <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'和为:'</span> + (<span class="built_in">arguments</span>[<span class="number">0</span>] + <span class="built_in">arguments</span>[<span class="number">1</span>]));</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> ag1 = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> ag2 = <span class="built_in">arguments</span>[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">var</span> ag3 = <span class="built_in">arguments</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> max = ag1 &gt; ag2 ? ag1 : ag2;</span><br><span class="line">        <span class="built_in">console</span>.log(max &gt; ag3 ? max : ag3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">fun(<span class="number">100</span>);</span><br><span class="line">fun(<span class="number">100</span>,<span class="number">200</span>);</span><br><span class="line">fun(<span class="number">100</span>,<span class="number">200</span>,<span class="number">350</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>4.2 arguments.callee - 用于获取当前函数</p>
-<ul>
-<li>官方不推荐使用这个属性，直接使用名字即可<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);</span><br><span class="line">&#125;;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数的其他使用方式-函数闭包"><a href="#函数的其他使用方式-函数闭包" class="headerlink" title="函数的其他使用方式(函数闭包)"></a>函数的其他使用方式(函数闭包)</h2><ul>
-<li>函数的使用方式：<ul>
-<li>1 基本使用形式：函数声明语句，函数表达式</li>
-<li>2 立即执行函数(自调用函数)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//		- (function () &#123;&#125;)(); </span></span><br><span class="line"><span class="comment">//		- 注意：最后要加;</span></span><br><span class="line"><span class="comment">//		- 作用：在书写位置执行一次，用于减少全局变量得使用</span></span><br><span class="line"><span class="comment">//		- 使用场景：会将每个独立的功能外使用立即执行函数包裹。（多个功能代码，多人得代码）</span></span><br><span class="line"><span class="comment">//    - 常用的参数：</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">100</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		(<span class="function"><span class="keyword">function</span> (<span class="params">window, document, count</span>) </span>&#123;</span><br><span class="line">			<span class="comment">// var win = window;</span></span><br><span class="line">			<span class="built_in">window</span>.count;</span><br><span class="line">			<span class="comment">// window得属性中，document属性使用是最多的</span></span><br><span class="line">			<span class="comment">// 为了减少对window对象属性得访问次数，可以将document进行相同设置</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 如果在具体操作时还需要使用某些内容，也可以按照上面得方式进行设置，例如count</span></span><br><span class="line">		&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>, count);</span><br><span class="line"></span><br><span class="line">	&#125;)();</span><br><span class="line">	(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;)();</span><br><span class="line">	count;</span><br><span class="line">	<span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="模块化操作"><a href="#模块化操作" class="headerlink" title="模块化操作"></a>模块化操作</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模块：模块实际上就是'部分'</span></span><br><span class="line">		<span class="comment">// 模块化：将一团功能代码清晰得分割为多个部分就成为模块化。</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 模块化的操作方式：</span></span><br><span class="line">		<span class="comment">//		1 使用立即执行函数</span></span><br><span class="line">		<span class="comment">//				- 将每个模块外使用立即执行函数包裹</span></span><br><span class="line">		<span class="comment">//				- 需要将每个模块中得主体功能进行'暴露'操作:将主体功能设置给window的属性</span></span><br><span class="line">		<span class="comment">//				- 通常还可以将每个模块得功能代码使用独立得文件保存</span></span><br><span class="line">		<span class="comment">//      使用这种模块化操作方式得问题：</span></span><br><span class="line">		<span class="comment">//				* 依赖关系(例如game模块需要使用snake和food模块，我们就称game依赖于snake和food)</span></span><br><span class="line">		<span class="comment">//				- 由于多个功能相互之间具有依赖关系,意味着文件得引入顺序需要考虑</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//		2 使用requirejs进行模块化操作</span></span><br><span class="line">		<span class="comment">//				- requirejs是一个js库，这个库跟jQuery没有关系</span></span><br><span class="line">		<span class="comment">//				- 作用：用于进行模块化操作</span></span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -273,6 +273,87 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-ajax/01-Ajax技术" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/02/ajax/01-Ajax技术/" class="article-date">
+      <time datetime="2017-05-02T01:11:39.000Z" itemprop="datePublished">2017-05-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/02/ajax/01-Ajax技术/">01-Ajax 技术</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Ajax-技术"><a href="#Ajax-技术" class="headerlink" title="Ajax 技术"></a>Ajax 技术</h1><h2 id="案例—新用户注册时用户名冲突问题"><a href="#案例—新用户注册时用户名冲突问题" class="headerlink" title="案例—新用户注册时用户名冲突问题"></a>案例—新用户注册时用户名冲突问题</h2><h2 id="传统模式解决方案"><a href="#传统模式解决方案" class="headerlink" title="传统模式解决方案"></a>传统模式解决方案</h2><p>1) 在注册页面中输入用户名和密码，点击“注册”时，要将表单数据提交给后台</p>
+<p><img src="/images/ajax/05.png" alt="1523691565801"></p>
+<p>2) 后台PHP页面，接收用户名和密码之后，要去验证用户名是否存在，如果存在则提示用户名存在，再跳转回注册页面，重新输入。</p>
+<p>  当用户名存在时，提示用户名已被占用，再跳转回登录页</p>
+<p><img src="/images/ajax/06.png" alt="1523691637131"></p>
+<p><img src="/images/ajax/07.png" alt="1523691696235"></p>
+<h2 id="ajax解决方案"><a href="#ajax解决方案" class="headerlink" title="ajax解决方案"></a>ajax解决方案</h2><p>当光标离开用户名文本框时，就已经验证了用户名是否存在，并给予提示了。</p>
+<p>  用户名被占用： </p>
+<p><img src="/images/ajax/08.png" alt="1523691892998"></p>
+<p>用户名可用 :</p>
+<p><img src="/images/ajax/09.png" alt="1523691866761"></p>
+<blockquote>
+<p>两种模式对比</p>
+</blockquote>
+<p>传统模式： </p>
+<p>  两个页面 —  前端注册表单页（index.html）  和  后端数据验证页（index.php）</p>
+<p><img src="/images/ajax/10.png" alt="1524655686232"></p>
+<p>Ajax模式 :</p>
+<p>  两个页面 — 前端注册表单页（index.html）  和  后端数据验证页（index.php）</p>
+<p><img src="/images/ajax/11.png" alt="1524656343611"></p>
+<p>Ajax的优势：没有页面跳转，刷新页面内容，用户体验提升。</p>
+<p>ajax就是在页面没有刷新或者没有跳转的情况下还能更新页面的某一部分数据</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/28-cookie和session的联系" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1062,79 +1143,6 @@ stel   char(11)
 <p>字段: admin_age</p>
 <p>修改条件: admin_gender=’男’</p>
 <p><img src="/images/php/1534297543190.png" alt="1534297543190"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP/19-添加数据" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/26/PHP/19-添加数据/" class="article-date">
-      <time datetime="2017-04-26T02:23:06.000Z" itemprop="datePublished">2017-04-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/PHP/19-添加数据/">19-添加数据</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="3-添加数据"><a href="#3-添加数据" class="headerlink" title="3. 添加数据"></a>3. 添加数据</h1><p>格式： insert  into  表名(字段1，字段2，…)  values(值1，值2，…);</p>
-<p>关键点:</p>
-<p>   1) 字段和值需要一一对应，如果不对应会造成添加失败或者数据错误</p>
-<p>   2) 如果每个字段都有数据，则不需要在表名后设置字段列表</p>
-<p>   3) 带有auto_increment属性的字段可以使用null来设置，MySQL会自动填充数据</p>
-<blockquote>
-<p>案例1: 向student表添加一条数据</p>
-</blockquote>
-<p>方式一:</p>
-<p><img src="/images/php/1534295770586.png" alt="1534295770586"></p>
-<p>方式二:</p>
-<p><img src="/images/php/1534295979697.png" alt="1534295979697"></p>
-<p>方式三: </p>
-<p><img src="/images/php/1534296150393.png" alt="1534296150393"></p>
 
       
     </div>

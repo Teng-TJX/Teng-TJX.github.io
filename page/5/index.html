@@ -273,6 +273,79 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-PHP/19-添加数据" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/26/PHP/19-添加数据/" class="article-date">
+      <time datetime="2017-04-26T02:23:06.000Z" itemprop="datePublished">2017-04-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/26/PHP/19-添加数据/">19-添加数据</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="3-添加数据"><a href="#3-添加数据" class="headerlink" title="3. 添加数据"></a>3. 添加数据</h1><p>格式： insert  into  表名(字段1，字段2，…)  values(值1，值2，…);</p>
+<p>关键点:</p>
+<p>   1) 字段和值需要一一对应，如果不对应会造成添加失败或者数据错误</p>
+<p>   2) 如果每个字段都有数据，则不需要在表名后设置字段列表</p>
+<p>   3) 带有auto_increment属性的字段可以使用null来设置，MySQL会自动填充数据</p>
+<blockquote>
+<p>案例1: 向student表添加一条数据</p>
+</blockquote>
+<p>方式一:</p>
+<p><img src="/images/php/1534295770586.png" alt="1534295770586"></p>
+<p>方式二:</p>
+<p><img src="/images/php/1534295979697.png" alt="1534295979697"></p>
+<p>方式三: </p>
+<p><img src="/images/php/1534296150393.png" alt="1534296150393"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/18-数据查询" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1316,97 +1389,6 @@ static在递归操作中非常有用。
 <p> <img src="/images/php/1533952559547.png" alt=""></p>
 <pre><code>$GLOBALS的功能和global差不多，都不推荐使用。
 </code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP/09-PHP文件上传" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/24/PHP/09-PHP文件上传/" class="article-date">
-      <time datetime="2017-04-24T02:05:37.000Z" itemprop="datePublished">2017-04-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/24/PHP/09-PHP文件上传/">09-PHP文件上传</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p> 文件上传属于一种特殊的表单提交，也需要两个页面 —  表单页  和   数据处理页。<br><img src="/images/php/1525424869723.png" alt=""></p>
-<p>upload.html表单页</p>
-<p><img src="/images/php/1533787848965.png" alt=""></p>
-<p>upload.php 上传文件处理页</p>
-<p><img src="/images/php/1533788030706.png" alt=""></p>
-<p>文件上传核心点总结:</p>
-<h2 id="核心点一：表单设计"><a href="#核心点一：表单设计" class="headerlink" title="核心点一：表单设计"></a>核心点一：表单设计</h2><pre><code>表单标签form中必须额外增加 enctype属性，必须使用post提交表单
-
-文件域必须有name属性和值
-</code></pre><h2 id="核心点二-—-FILES"><a href="#核心点二-—-FILES" class="headerlink" title="核心点二  —  $_FILES"></a>核心点二  —  $_FILES</h2><p>$_FILES是一个二维数组，保存了上传文件的相关信息：</p>
-<p> 第一维下标是 文件域的name值</p>
-<p> 第二维有5个固定单元</p>
-<p>   name: 上传的文件名</p>
-<p>   type: 上传的文件类型</p>
-<p>   tmp_name: 上传文件在服务器临时存储的路径</p>
-<p>   error:  错误码，错误码有0-4  5个值。 等于0时，代表文件正常上传</p>
-<pre><code>0：代表正常上传，没有错误
-
-1：代表上传文件大小超过了 php.ini中 upload_max_filesize 定义的大小
-
-2：代表上传文件大小超过了 php.ini中 post_max_size 定义的表单最大值
-
-3：文件只有部分被上传 
-
-4：没有文件被上传 
-</code></pre><p>   size: 上传文件的大小  bit</p>
-<p><img src="/images/php/1533545384816.png" alt=""></p>
-<h2 id="核心点三-—-move-uploaded-file"><a href="#核心点三-—-move-uploaded-file" class="headerlink" title="核心点三  —  move_uploaded_file**"></a>核心点三  —  move_uploaded_file**</h2><p>从$_FILES中我们可以知道，文件已经正常上传到服务器了。</p>
-<p>所以，接下来就需要将文件从临时保存路径，移动到我们希望保存的路径中。</p>
-<p>move_uploaded_file (参数1， 参数2)；</p>
-<p> 参数1: 临时路径  —&gt;  $_FILES[‘pic’][‘tmp_name’]</p>
-<p> 参数2: 目标路径  —&gt;  使用相对路径移动到当前目录下   ./ </p>
-
       
     </div>
     

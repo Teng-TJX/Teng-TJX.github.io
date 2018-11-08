@@ -273,6 +273,97 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-PHP/09-PHP文件上传" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/24/PHP/09-PHP文件上传/" class="article-date">
+      <time datetime="2017-04-24T02:05:37.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/24/PHP/09-PHP文件上传/">09-PHP文件上传</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p> 文件上传属于一种特殊的表单提交，也需要两个页面 —  表单页  和   数据处理页。<br><img src="/images/php/1525424869723.png" alt=""></p>
+<p>upload.html表单页</p>
+<p><img src="/images/php/1533787848965.png" alt=""></p>
+<p>upload.php 上传文件处理页</p>
+<p><img src="/images/php/1533788030706.png" alt=""></p>
+<p>文件上传核心点总结:</p>
+<h2 id="核心点一：表单设计"><a href="#核心点一：表单设计" class="headerlink" title="核心点一：表单设计"></a>核心点一：表单设计</h2><pre><code>表单标签form中必须额外增加 enctype属性，必须使用post提交表单
+
+文件域必须有name属性和值
+</code></pre><h2 id="核心点二-—-FILES"><a href="#核心点二-—-FILES" class="headerlink" title="核心点二  —  $_FILES"></a>核心点二  —  $_FILES</h2><p>$_FILES是一个二维数组，保存了上传文件的相关信息：</p>
+<p> 第一维下标是 文件域的name值</p>
+<p> 第二维有5个固定单元</p>
+<p>   name: 上传的文件名</p>
+<p>   type: 上传的文件类型</p>
+<p>   tmp_name: 上传文件在服务器临时存储的路径</p>
+<p>   error:  错误码，错误码有0-4  5个值。 等于0时，代表文件正常上传</p>
+<pre><code>0：代表正常上传，没有错误
+
+1：代表上传文件大小超过了 php.ini中 upload_max_filesize 定义的大小
+
+2：代表上传文件大小超过了 php.ini中 post_max_size 定义的表单最大值
+
+3：文件只有部分被上传 
+
+4：没有文件被上传 
+</code></pre><p>   size: 上传文件的大小  bit</p>
+<p><img src="/images/php/1533545384816.png" alt=""></p>
+<h2 id="核心点三-—-move-uploaded-file"><a href="#核心点三-—-move-uploaded-file" class="headerlink" title="核心点三  —  move_uploaded_file**"></a>核心点三  —  move_uploaded_file**</h2><p>从$_FILES中我们可以知道，文件已经正常上传到服务器了。</p>
+<p>所以，接下来就需要将文件从临时保存路径，移动到我们希望保存的路径中。</p>
+<p>move_uploaded_file (参数1， 参数2)；</p>
+<p> 参数1: 临时路径  —&gt;  $_FILES[‘pic’][‘tmp_name’]</p>
+<p> 参数2: 目标路径  —&gt;  使用相对路径移动到当前目录下   ./ </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP/08-PHP超全局变量" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1158,101 +1249,6 @@ null (空)
 <h3 id="克隆元素"><a href="#克隆元素" class="headerlink" title="克隆元素"></a>克隆元素</h3><ul>
 <li>作用：复制匹配的元素<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 复制$(selector)所匹配到的元素（深度复制）</span></span><br><span class="line"><span class="comment">//cloneNode(true)</span></span><br><span class="line"><span class="comment">// 返回值为复制的新元素，和原来的元素没有任何关系了。即修改新元素，不会影响到原来的元素。</span></span><br><span class="line">$(selector).clone();</span><br></pre></td></tr></table></figure></li>
 </ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jQuery/15-jQuery动画" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/25/jQuery/15-jQuery动画/" class="article-date">
-      <time datetime="2017-03-25T02:01:20.000Z" itemprop="datePublished">2017-03-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/25/jQuery/15-jQuery动画/">15-jquery动画</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="jquery动画"><a href="#jquery动画" class="headerlink" title="jquery动画"></a>jquery动画</h1><p>通过下拉菜单引入动画。</p>
-<p>jquery提供了三组动画，这些动画都是标准的、有规律的效果，jquery还提供了自定义动画的功能。</p>
-<h2 id="显示与隐藏"><a href="#显示与隐藏" class="headerlink" title="显示与隐藏"></a>显示与隐藏</h2><p>显示(show)与隐藏(hide)是一组动画：</p>
-<h3 id="show方法详解："><a href="#show方法详解：" class="headerlink" title="show方法详解："></a>show方法详解：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">show([speed], [callback]);</span><br><span class="line"><span class="comment">//speed(可选)：动画的执行时间</span></span><br><span class="line"><span class="number">1.</span>如果不传，就没有动画效果。</span><br><span class="line"><span class="number">2.</span>毫秒值(比如<span class="number">1000</span>),动画在<span class="number">1000</span>毫秒执行完成(推荐)</span><br><span class="line"><span class="number">3.</span>固定字符串，slow(<span class="number">200</span>)、normal(<span class="number">400</span>)、fast(<span class="number">600</span>)，如果传其他字符串，则默认为normal。</span><br><span class="line"><span class="comment">//callback(可选):执行完动画后执行的回调函数</span></span><br></pre></td></tr></table></figure>
-<h3 id="hide方法详解："><a href="#hide方法详解：" class="headerlink" title="hide方法详解："></a>hide方法详解：</h3><p>与show方法的用法完全一致。</p>
-<p>show/hide：修改的是元素的width、height、opacity。</p>
-<h3 id="滑入与滑出"><a href="#滑入与滑出" class="headerlink" title="滑入与滑出"></a>滑入与滑出</h3><p>滑入(slideUp)与滑出(slideDown)是一组动画，效果与卷帘门类似<br>slideUp/slideDown,使用方法与show/hide基本一致。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">slideUp(speed, callback);</span><br><span class="line"><span class="comment">//speed(可选)：动画的执行时间</span></span><br><span class="line"><span class="number">1.</span>如果不传，默认为normal，注意区分show/hide。</span><br><span class="line"><span class="number">2.</span>毫秒值(比如<span class="number">1000</span>),动画在<span class="number">1000</span>毫秒执行完成(推荐)</span><br><span class="line"><span class="number">3.</span>固定字符串，slow(<span class="number">200</span>)、normal(<span class="number">400</span>)、fast(<span class="number">600</span>)</span><br><span class="line"><span class="comment">//callback(可选):执行完动画后执行的回调函数</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="滑入滑出切换"><a href="#滑入滑出切换" class="headerlink" title="滑入滑出切换"></a>滑入滑出切换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(selector).slideToggle(speed,callback);</span><br><span class="line"><span class="comment">//如果是隐藏状态，那么执行slideDown操作，如果是显示状态，那么执行slideUp操作。</span></span><br></pre></td></tr></table></figure>
-<p>slideUp/slideDown：修改的是元素的height</p>
-<h3 id="淡入与淡出"><a href="#淡入与淡出" class="headerlink" title="淡入与淡出"></a>淡入与淡出</h3><blockquote>
-<p>fadeIn/fadeOut使用方法与show/hide、slideDown/slideUp一致。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fadeIn(speed, callback);</span><br><span class="line"><span class="comment">//speed(可选)：动画的执行时间</span></span><br><span class="line"><span class="number">1.</span>如果不传，默认是normal。</span><br><span class="line"><span class="number">2.</span>毫秒值(比如<span class="number">1000</span>),动画在<span class="number">1000</span>毫秒执行完成(推荐)</span><br><span class="line"><span class="number">3.</span>固定字符串，slow(<span class="number">200</span>)、normal(<span class="number">400</span>)、fast(<span class="number">600</span>)</span><br><span class="line"><span class="comment">//callback(可选):执行完动画后执行的回调函数</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="淡入淡出切换："><a href="#淡入淡出切换：" class="headerlink" title="淡入淡出切换："></a>淡入淡出切换：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fadeToggle(speed, callback);</span><br><span class="line"><span class="comment">//如果当前元素处于隐藏状态，那么执行fadeIn操作，如果处于显示状态，那么执行fadeOut操作。</span></span><br></pre></td></tr></table></figure>
-<h3 id="淡入淡出到某个值"><a href="#淡入淡出到某个值" class="headerlink" title="淡入淡出到某个值"></a>淡入淡出到某个值</h3><p>与淡入淡出的区别：淡入淡出只能控制元素的不透明度从 完全不透明 到完全透明；而fadeTo可以指定元素不透明度的具体值。并且时间参数是必需的！<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fadeTo(speed, value, callback)<span class="comment">//可以设置具体的透明度</span></span><br><span class="line"><span class="comment">//speed（必须）</span></span><br><span class="line"><span class="comment">//value  0-1之间的数值(比如0.4)，表示淡到某一个值。</span></span><br><span class="line"><span class="comment">//callback(可选) 回调函数</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>fade系列方法：修改的是元素的opacity</li>
-</ul>
-<ul>
-<li><p>1.jQuery给我们提供了三组动画，show/hide、slideUp/slideDown、fadeIn/fadeOut</p>
-</li>
-<li><p>2.动画切换方法：slideToggle、fadeToggle，注意：show和hide没有切换的方法。</p>
-</li>
-<li><p>3.淡入淡出到某个值：fadeTo方法。</p>
-</li>
-<li>4.show/slideDown/fadeIn三个是显示效果、hide/slideUp/fadeOut三个是隐藏效果。</li>
-<li>5.show/hide修改的是元素的height,width,opacity。slide系列方法修改的是元素的height。fade系列方法修改的是元素的opacity。这三种方法修改的这些值，都是带数字的，因为带了数字才能做渐变。</li>
-</ul>
-<h2 id="自定义动画"><a href="#自定义动画" class="headerlink" title="自定义动画"></a>自定义动画</h2><h3 id="animate：自定义动画"><a href="#animate：自定义动画" class="headerlink" title="animate：自定义动画"></a>animate：自定义动画</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(selector).animate(&#123;params&#125;,[speed],[callback]);</span><br><span class="line"><span class="comment">// &#123;params&#125;：要执行动画的CSS属性，带数字（必选）</span></span><br><span class="line"><span class="comment">// speed：执行动画时长（可选）</span></span><br><span class="line"><span class="comment">// callback：动画执行完后立即执行的回调函数（可选）</span></span><br></pre></td></tr></table></figure>
-<h3 id="动画支持的属性"><a href="#动画支持的属性" class="headerlink" title="动画支持的属性"></a>动画支持的属性</h3><h4 id="动画支持的属性："><a href="#动画支持的属性：" class="headerlink" title="动画支持的属性："></a>动画支持的属性：</h4><pre><code>http://www.w3school.com.cn/jquery/effect_animate.asp
-</code></pre><h5 id="easing参数"><a href="#easing参数" class="headerlink" title="easing参数"></a>easing参数</h5><p>控制动画在不同元素的速度，默认为“swing”</p>
-<p>“swing”：在开头和结尾移动慢，在中间移动速度快</p>
-<p>“linear”：匀速移动</p>
-<h2 id="动画队列问题"><a href="#动画队列问题" class="headerlink" title="动画队列问题"></a>动画队列问题</h2><p>引出事件队列效果</p>
-<p>在同一个元素上执行多个动画，那么对于这个动画来说，后面的动画会被放到动画队列中，等前面的动画执行完成了才会执行（联想：地铁进站）。</p>
-<h2 id="停止动画"><a href="#停止动画" class="headerlink" title="停止动画"></a>停止动画</h2><h3 id="stop方法：停止动画效果"><a href="#stop方法：停止动画效果" class="headerlink" title="stop方法：停止动画效果"></a>stop方法：停止动画效果</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stop(clearQueue, jumpToEnd);</span><br><span class="line"><span class="comment">//第一个参数：是否清除队列</span></span><br><span class="line"><span class="comment">//第二个参数：是否跳转到最终效果</span></span><br></pre></td></tr></table></figure>
-<p><strong>最常用的停止动画：stop();</strong></p>
 
       
     </div>
